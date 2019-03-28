@@ -91,7 +91,7 @@ public class Logo {
                     "dddddkO0000000000K00000OOOOOOOOOOOOOOOO000OO0OOkkxxxkxxxxk0000000000000KXWMMMMMM";
         }
         public String ethereum ;
-    {ethereum="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+        {ethereum="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0doOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl;..'dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -115,8 +115,40 @@ public class Logo {
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xdOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" ;
     }
+        public String litecoin ="                                 ...',,,,,,'...                                 \n" +
+                "                           .,coxOKXXNWWWWWWNXXKOxoc,.                           \n" +
+                "                       .,lkKNMMMWNK0OOkkkkOO0KNWMMMNKkl,.                       \n" +
+                "                     ;d0NWMWKkoc;'..        ..';cokKWMWN0d,                     \n" +
+                "                  .cONMMNOo;.                      .;oONMWNOc.                  \n" +
+                "                .c0WWW0o,          .,,,,,,,,,,,.       ,oKWMW0c.                \n" +
+                "               ;OWMW0c.           .kWWWWWWWWWWX:         .c0WMWO;               \n" +
+                "             .oXMMXl.             lNMMMMMMMMMWd.           .oXMMXo.             \n" +
+                "            .xNMWO,              ,KMMMMMMMMMW0'              ;OWMNx.            \n" +
+                "           .xWMWx.              .xWMMMMMMWWMNc                .kWWWx.           \n" +
+                "           oWMWx.               cNMMMMMMMMMWx. .               .kWWWo           \n" +
+                "          :XMMO'               '0MMMMMMMMMMNxlkk,               ,KMMX:          \n" +
+                "         .xWMNc               .dWMMMMMMMMMWMWWWd.                lWMMx.         \n" +
+                "         ,KWWO.               cXMMMMMMMMMMMMWXx.                 ,0MMK;         \n" +
+                "         cNMMx.           'ldONMMMMMMMMMMXkl;'.                  .kMMNc         \n" +
+                "         lWMMo           ,KMWMWMMMMMMMMWNo                       .xWMWl         \n" +
+                "         lWMMd          .xWNWMMMMMMWMMMk:.                       .xWMWc         \n" +
+                "         :NWWk.         .c:c0WMMMMMMMMX;                         .OMMX:         \n" +
+                "         'OMMK,            lNMMMMMMMWWo                          :XMM0'         \n" +
+                "          oWMWd.          ;KMMWMMMMMMNOddddddddddddddddd,       .xMMWo          \n" +
+                "          'OMMXc         .xWMMMMMMMMMMMMMMMMMMMMMMMMMWMK,       lNMMO.          \n" +
+                "           ;KMMK;        cNMMMMMMMMMMMMMMMMMMMMMMMMMMMNl       cXWMK;           \n" +
+                "            :KWMKc      '0MMMMMMMMMMMMMMMMMMMMMMMMMMMWk.     .lXMWK:            \n" +
+                "             ;0MMNx.    ;xxxxxxxxxxxxxxxxxxxxxxxxxxdxd'     'xNMM0;             \n" +
+                "              'xNWW0c.                                    .lKWMNx'              \n" +
+                "               .:0WWW0c.                                .l0WWW0:                \n" +
+                "                 .c0WWWKx:.                          .:xXWWW0c.                 \n" +
+                "                   .:kXWMWXkl;..                ..;lkKWMWXx:.                   \n" +
+                "                      'ckKWMMWX0kdlc:;;;;;;:cldk0XWMMWKkc'                      \n" +
+                "                         .;lx0XWMMMMMMMMMMMMMMMMWX0xl;.                         \n" +
+                "                             ..,:codxxxxxxxxdoc:,..                             ";
 
 
-    }
+
+}
 
 
