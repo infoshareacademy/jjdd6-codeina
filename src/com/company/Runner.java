@@ -26,6 +26,7 @@ public class Runner {
             if(Exit == 9){con = 0;}
             else if(Exit == 1){con = 1;}
             else if(Exit == 2){con = 2;}
+
         }
     }
 }
