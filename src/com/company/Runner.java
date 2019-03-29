@@ -12,11 +12,15 @@ public class Runner {
 
         while (con != 0) {
             if(con == 1) {Crypto = inteface.Menu();
-            if(Crypto <= 10){con = 2;}
+            if(Crypto <= 10){
+                inteface.Logo(Crypto);
+                con = 2;}
             else{
                 System.out.println("ERROR");
                 con = 0;}
             }
+
+
 
             if(con == 2){
             Option = inteface.Options();

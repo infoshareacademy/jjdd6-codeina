@@ -48,10 +48,10 @@ public class Logo {
                     "--------------------------------------------------------------------------------\n";
         }
 
-        public String dogeCoin;
+        public String dogeCoinLogo;
 
         {
-            dogeCoin = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX00KWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+            dogeCoinLogo = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX00KWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMWX0OO0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOxxkOXMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMW0dlllokKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMXxodkOOKWMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMWKdlllodxxOKWMMMMMMMMMMMMMMMMMMMMMMMMMNkoodkOk0WMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -93,8 +93,8 @@ public class Logo {
                     "dddddkO0000000000K00000OOOOOOOOOOOOOOOO000OO0OOkkxxxkxxxxk0000000000000KXWMMMMMM\n" +
                     "--------------------------------------------------------------------------------\n";
         }
-        public String ethereum ;
-        {ethereum="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+        public String ethereumLogo ;
+        {ethereumLogo="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0doOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl;..'dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -119,7 +119,7 @@ public class Logo {
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                 "--------------------------------------------------------------------------------\n";
     }
-        public String litecoin ="                                 ...',,,,,,'...                                 \n" +
+        public String litecoinLogo ="                                 ...',,,,,,'...                                 \n" +
                 "                           .,coxOKXXNWWWWWWNXXKOxoc,.                           \n" +
                 "                       .,lkKNMMMWNK0OOkkkkOO0KNWMMMNKkl,.                       \n" +
                 "                     ;d0NWMWKkoc;'..        ..';cokKWMWN0d,                     \n" +
@@ -151,6 +151,13 @@ public class Logo {
                 "                         .;lx0XWMMMMMMMMMMMMMMMMWX0xl;.                         \n" +
                 "                             ..,:codxxxxxxxxdoc:,..                             \n" +
                 "--------------------------------------------------------------------------------\n";
+
+        public String bitcoinCashLogo =" ";
+    public String nemLogo =" ";
+    public String decredLogo =" ";
+    public String zCashLogo =" ";
+    public String dashLogo =" ";
+    public String ethereumClassicLogo =" ";
 
 
 
