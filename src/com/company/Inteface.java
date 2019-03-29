@@ -29,7 +29,9 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
         System.out.println("                   Co chcesz zrobic:");
         System.out.println("----------------------------------------------------------------");
+
         System.out.println("1) Wyswietlic obecna cene");
+
 
 
         System.out.println("----------------------------------------------------------------");
@@ -48,15 +50,21 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
         System.out.println("                   Co chcesz zrobic:");
         System.out.println("----------------------------------------------------------------");
-        System.out.println("1) Zamknac program");
-        System.out.println("2) Wrocic do wyboru kryptowaluty");
-        System.out.println("3) Wrocic do wyboru Opcji");
 
+        System.out.println("1) Wrocic do wyboru Kryptowaluty");
+        System.out.println("2) Wrocic do wyboru Opcji");
+        System.out.println("9) Zamknac program");
 
 
         System.out.println("----------------------------------------------------------------");
         Scanner input = new Scanner(System.in);
         int clientAnswerExit = input.nextInt();
+
+        if(clientAnswerExit == 9) {
+            System.out.println("----------------------------------------------------------------");
+            System.out.println("                        Zegnaj!");
+            System.out.println("----------------------------------------------------------------");
+        }
 
         return clientAnswerExit;
     }
@@ -69,7 +77,9 @@ public class Inteface {
 
 
             logo.printLogo(logo.bitcoinLogo);}
+
         System.out.println(" ");
+
         loadingData.printInformationFromLastLineOfCSV("btc.csv");
 
 

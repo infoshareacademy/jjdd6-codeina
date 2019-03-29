@@ -11,7 +11,10 @@ public class Logo {
         }
         public String bitcoinLogo; // rozmiar 80 https://www.ascii-art-generator.org/
         {
-            bitcoinLogo = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+
+            bitcoinLogo = "--------------------------------------------------------------------------------\n"+
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWNXXXXXXNWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMMWNKkdl:,'.......'';:ldkKWMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMMMMMMMMMMMMMMN0dc'.                    .,cxKWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -43,7 +46,10 @@ public class Logo {
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0kxdollccllodxO0XWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM";
+
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "--------------------------------------------------------------------------------\n";
+
         }
 
         public String dogeCoin;
@@ -88,7 +94,10 @@ public class Logo {
                     "xddxO0000000000000OOOOOOOOO0OOO00OOOOOkkkkkxxxxxxxxxxxkkkkkO0000000000KNMMMMMMMM\n" +
                     "xddxO0O00000000000000OOOOOO0OOOOO000OO0OOOOOkkxxxxxxkkkkkkO0K0000000000XWMMMMMMM\n" +
                     "ddddkOO0000000000000000OOOOOOOOOOO0OOO000000OOkxxxxkkkkkxk0000000000000KNMMMMMMM\n" +
-                    "dddddkO0000000000K00000OOOOOOOOOOOOOOOO000OO0OOkkxxxkxxxxk0000000000000KXWMMMMMM";
+
+                    "dddddkO0000000000K00000OOOOOOOOOOOOOOOO000OO0OOkkxxxkxxxxk0000000000000KXWMMMMMM\n" +
+                    "--------------------------------------------------------------------------------\n";
+
         }
         public String ethereum ;
         {ethereum="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -113,7 +122,10 @@ public class Logo {
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol;..'c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xdOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" ;
+
+            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "--------------------------------------------------------------------------------\n";
+
     }
         public String litecoin ="                                 ...',,,,,,'...                                 \n" +
                 "                           .,coxOKXXNWWWWWWNXXKOxoc,.                           \n" +
@@ -145,7 +157,9 @@ public class Logo {
                 "                   .:kXWMWXkl;..                ..;lkKWMWXx:.                   \n" +
                 "                      'ckKWMMWX0kdlc:;;;;;;:cldk0XWMMWKkc'                      \n" +
                 "                         .;lx0XWMMMMMMMMMMMMMMMMWX0xl;.                         \n" +
-                "                             ..,:codxxxxxxxxdoc:,..                             ";
+                "                             ..,:codxxxxxxxxdoc:,..                             \n" +
+                "--------------------------------------------------------------------------------\n";
+
 
 
 
