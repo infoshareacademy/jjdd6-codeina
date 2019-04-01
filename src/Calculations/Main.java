@@ -6,10 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CryptoCurrency cryptoCurrency = new CryptoCurrency();
+        ChooseOption chooseOption = new ChooseOption();
 
-        Double price = cryptoCurrency.getPrice();
-        System.out.println(price);
+        chooseOption.choose();
+
+
 
 
 
