@@ -103,7 +103,7 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public void emptySpacer() {
+    public void emptySpacer() {                 //TODO autoclear terminal (not in intellij)
         for (int i = 0; i <= 20; i++) {
             System.out.println("\n");
         }
@@ -150,7 +150,7 @@ public class Inteface {
                 loadingData.printInformationFromLastLineOfCSV("csv/etc.csv");
                 break;
         }
-
+                //TODO array list of crypto for Option1 String value
     }
 
 }
