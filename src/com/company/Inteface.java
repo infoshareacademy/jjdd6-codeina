@@ -120,34 +120,34 @@ public class Inteface {
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
-                loadingData.printInformationFromLastLineOfCSV("btc.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/btc.csv");
                 break;
             case 2:
-                loadingData.printInformationFromLastLineOfCSV("bch.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/bch.csv");
                 break;
             case 3:
-                loadingData.printInformationFromLastLineOfCSV("ltc.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/ltc.csv");
                 break;
             case 4:
-                loadingData.printInformationFromLastLineOfCSV("eth.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/eth.csv");
                 break;
             case 5:
-                loadingData.printInformationFromLastLineOfCSV("xem.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/xem.csv");
                 break;
             case 6:
-                loadingData.printInformationFromLastLineOfCSV("dcr.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/dcr.csv");
                 break;
             case 7:
-                loadingData.printInformationFromLastLineOfCSV("zec.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/zec.csv");
                 break;
             case 8:
-                loadingData.printInformationFromLastLineOfCSV("dash.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/dash.csv");
                 break;
             case 9:
-                loadingData.printInformationFromLastLineOfCSV("doge.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/doge.csv");
                 break;
             case 10:
-                loadingData.printInformationFromLastLineOfCSV("etc.csv");
+                loadingData.printInformationFromLastLineOfCSV("csv/etc.csv");
                 break;
         }
 
