@@ -4,7 +4,7 @@
 
     public class ChooseOption {
 
-        public void choose(){
+        public void choose() {
 
             System.out.println("Jakie dzialanie chcialbys wykonac ?");
             System.out.println("1. Srednia cena ");
@@ -16,18 +16,17 @@
             Scanner sc = new Scanner(System.in);
             Integer option = sc.nextInt();
 
-            switch (option){
-                case 1: option.equals(1);
-                matematicOperations.average();
+            switch (option) {
+                case 1:
+                    option.equals(1);
+                    matematicOperations.average();
 
-                case 2: option.equals(2);
-                matematicOperations.extremsValue();
-
-
-
-
-
-    }
+                case 2:
+                    option.equals(2);
+                    matematicOperations.extremsValue();
 
 
+            }
+
+        }
 }
