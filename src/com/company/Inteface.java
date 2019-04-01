@@ -22,15 +22,11 @@ public class Inteface {
         System.out.println("9) Dogecoin");
         System.out.println("10) Ethereum Classic");
 
-
         System.out.println("----------------------------------------------------------------");
 
         Scanner input = new Scanner(System.in);
         int clientAnswerMenu = input.nextInt();
-
-        for (int i = 0; i <= 20; i++) {
-            System.out.println("\n");
-        }
+        emptySpacer();
         return clientAnswerMenu;
     }
 
@@ -81,11 +77,7 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
         Scanner input = new Scanner(System.in);
         int clientAnswerOptions = input.nextInt();
-
-        for (int i = 0; i <= 20; i++) {
-            System.out.println("\n");
-        }
-
+        emptySpacer();
         return clientAnswerOptions;
 
     }
@@ -102,6 +94,7 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
         Scanner input = new Scanner(System.in);
         int clientAnswerExit = input.nextInt();
+        emptySpacer();
         if (clientAnswerExit == 9) {
             System.out.println("----------------------------------------------------------------");
             System.out.println("                        Zegnaj!");
@@ -110,9 +103,21 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public void Option1(int Crypto) throws FileNotFoundException {
-        LoadingData loadingData = new LoadingData();
+    public void emptySpacer() {
+        for (int i = 0; i <= 20; i++) {
+            System.out.println("\n");
+        }
+    }
 
+    public void error() {
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("                ERROR! Zle wybrales opcje.");
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public void Option1(int Crypto) throws FileNotFoundException {
+        System.out.println("----------------------------------------------------------------");
+        LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
                 loadingData.printInformationFromLastLineOfCSV("btc.csv");
