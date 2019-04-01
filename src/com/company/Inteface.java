@@ -12,66 +12,144 @@ public class Inteface {
         System.out.println("                   Wybierz Kryptowalute:");
         System.out.println("----------------------------------------------------------------");
         System.out.println("1) Bitcoin");
-
+        System.out.println("2) Bitcoin Cash");
+        System.out.println("3) Litecoin");
+        System.out.println("4) Ethereum");
+        System.out.println("5) NEM");
+        System.out.println("6) Decred");
+        System.out.println("7) ZCash");
+        System.out.println("8) Dash");
+        System.out.println("9) Dogecoin");
+        System.out.println("10) Ethereum Classic");
 
         System.out.println("----------------------------------------------------------------");
 
         Scanner input = new Scanner(System.in);
         int clientAnswerMenu = input.nextInt();
-
-        for (int i = 0; i <= 20; i++) {
-            System.out.println("\n");
-        }
+        emptySpacer();
         return clientAnswerMenu;
     }
-    public int Options(){
+
+    public void Logo(int Crypto) throws InterruptedException {
+        Logo logo = new Logo();
+        switch (Crypto) {
+            case 1:
+                logo.printLogo(logo.bitcoinLogo);
+                break;
+            case 2:
+                logo.printLogo(logo.bitcoinCashLogo);
+                break;
+            case 3:
+                logo.printLogo(logo.litecoinLogo);
+                break;
+            case 4:
+                logo.printLogo(logo.ethereumLogo);
+                break;
+            case 5:
+                logo.printLogo(logo.nemLogo);
+                break;
+            case 6:
+                logo.printLogo(logo.decredLogo);
+                break;
+            case 7:
+                logo.printLogo(logo.zCashLogo);
+                break;
+            case 8:
+                logo.printLogo(logo.dashLogo);
+                break;
+            case 9:
+                logo.printLogo(logo.dogeCoinLogo);
+                break;
+            case 10:
+                logo.printLogo(logo.ethereumClassicLogo);
+                break;
+        }
+    }
+
+    public int Options() {
 
         System.out.println("----------------------------------------------------------------");
         System.out.println("                   Co chcesz zrobic:");
         System.out.println("----------------------------------------------------------------");
-        System.out.println("1) Wyswietlic obecna cene");
+        System.out.println("1) Wyswietlic ostatnia cene");
 
 
         System.out.println("----------------------------------------------------------------");
         Scanner input = new Scanner(System.in);
         int clientAnswerOptions = input.nextInt();
-
-        for (int i = 0; i <= 20; i++) {
-            System.out.println("\n");
-        }
-
+        emptySpacer();
         return clientAnswerOptions;
 
     }
 
-    public int Exit(){
+    public int Exit() {
         System.out.println("----------------------------------------------------------------");
         System.out.println("                   Co chcesz zrobic:");
         System.out.println("----------------------------------------------------------------");
-        System.out.println("1) Zamknac program");
-        System.out.println("2) Wrocic do wyboru kryptowaluty");
-        System.out.println("3) Wrocic do wyboru Opcji");
-
+        System.out.println("1) Wrocic do wyboru Kryptowaluty");
+        System.out.println("2) Wrocic do wyboru Opcji");
+        System.out.println("9) Zamknac program");
 
 
         System.out.println("----------------------------------------------------------------");
         Scanner input = new Scanner(System.in);
         int clientAnswerExit = input.nextInt();
-
+        emptySpacer();
+        if (clientAnswerExit == 9) {
+            System.out.println("----------------------------------------------------------------");
+            System.out.println("                        Zegnaj!");
+            System.out.println("----------------------------------------------------------------");
+        }
         return clientAnswerExit;
     }
 
-    public void Option1(int Crypto) throws FileNotFoundException, InterruptedException {
+    public void emptySpacer() {
+        for (int i = 0; i <= 20; i++) {
+            System.out.println("\n");
+        }
+    }
+
+    public void error() {
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("                ERROR! Zle wybrales opcje.");
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public void Option1(int Crypto) throws FileNotFoundException {
+        System.out.println("----------------------------------------------------------------");
         LoadingData loadingData = new LoadingData();
-        Logo logo = new Logo();
-
-        if(Crypto == 1){
-
-
-            logo.printLogo(logo.bitcoinLogo);}
-        System.out.println(" ");
-        loadingData.printInformationFromLastLineOfCSV("btc.csv");
-
+        switch (Crypto) {
+            case 1:
+                loadingData.printInformationFromLastLineOfCSV("csv/btc.csv");
+                break;
+            case 2:
+                loadingData.printInformationFromLastLineOfCSV("csv/bch.csv");
+                break;
+            case 3:
+                loadingData.printInformationFromLastLineOfCSV("csv/ltc.csv");
+                break;
+            case 4:
+                loadingData.printInformationFromLastLineOfCSV("csv/eth.csv");
+                break;
+            case 5:
+                loadingData.printInformationFromLastLineOfCSV("csv/xem.csv");
+                break;
+            case 6:
+                loadingData.printInformationFromLastLineOfCSV("csv/dcr.csv");
+                break;
+            case 7:
+                loadingData.printInformationFromLastLineOfCSV("csv/zec.csv");
+                break;
+            case 8:
+                loadingData.printInformationFromLastLineOfCSV("csv/dash.csv");
+                break;
+            case 9:
+                loadingData.printInformationFromLastLineOfCSV("csv/doge.csv");
+                break;
+            case 10:
+                loadingData.printInformationFromLastLineOfCSV("csv/etc.csv");
+                break;
+        }
 
     }
 
