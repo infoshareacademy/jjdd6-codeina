@@ -9,7 +9,7 @@ public class Inteface {
 
 
         System.out.println("----------------------------------------------------------------");
-        System.out.println("                   Wybierz Kryptowalute:");
+        System.out.println("                   Choose Cryptocurrency:");
         System.out.println("----------------------------------------------------------------");
         System.out.println("1) Bitcoin");
         System.out.println("2) Bitcoin Cash");
@@ -69,9 +69,9 @@ public class Inteface {
     public int Options() {
 
         System.out.println("----------------------------------------------------------------");
-        System.out.println("                   Co chcesz zrobic:");
+        System.out.println("                   What you want to do:");
         System.out.println("----------------------------------------------------------------");
-        System.out.println("1) Wyswietlic ostatnia cene");
+        System.out.println("1) Show the last price");
 
 
         System.out.println("----------------------------------------------------------------");
@@ -84,11 +84,11 @@ public class Inteface {
 
     public int Exit() {
         System.out.println("----------------------------------------------------------------");
-        System.out.println("                   Co chcesz zrobic:");
+        System.out.println("                   What you want to do:");
         System.out.println("----------------------------------------------------------------");
-        System.out.println("1) Wrocic do wyboru Kryptowaluty");
-        System.out.println("2) Wrocic do wyboru Opcji");
-        System.out.println("9) Zamknac program");
+        System.out.println("1) Return to Cryptocurrency selection");
+        System.out.println("2) Return to Option selection");
+        System.out.println("9) Exit");
 
 
         System.out.println("----------------------------------------------------------------");
@@ -97,7 +97,7 @@ public class Inteface {
         emptySpacer();
         if (clientAnswerExit == 9) {
             System.out.println("----------------------------------------------------------------");
-            System.out.println("                        Zegnaj!");
+            System.out.println("                        Have a nice day!");
             System.out.println("----------------------------------------------------------------");
         }
         return clientAnswerExit;
@@ -111,7 +111,7 @@ public class Inteface {
 
     public void error() {
         System.out.println("----------------------------------------------------------------");
-        System.out.println("                ERROR! Zle wybrales opcje.");
+        System.out.println("                ERROR! You chose wrong option.");
         System.out.println("----------------------------------------------------------------");
     }
 
