@@ -80,7 +80,5 @@ public class Options {
                 loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
                 break;
         }
-
     }
-
 }

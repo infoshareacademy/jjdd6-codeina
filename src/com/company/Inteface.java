@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Inteface {
@@ -72,6 +71,7 @@ public class Inteface {
         System.out.println("                   What you want to do:");
         System.out.println("----------------------------------------------------------------");
         System.out.println("1) Show the last price");
+        System.out.println("2) Show the price at given day");
 
 
         System.out.println("----------------------------------------------------------------");
@@ -103,7 +103,7 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public void emptySpacer() {                 //TODO autoclear terminal (not in intellij)
+    public static void emptySpacer() {
         for (int i = 0; i <= 20; i++) {
             System.out.println("\n");
         }
@@ -119,7 +119,4 @@ public class Inteface {
         System.out.println("                ERROR! You chose wrong option.");
         System.out.println("----------------------------------------------------------------");
     }
-
-
-
 }
