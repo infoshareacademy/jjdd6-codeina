@@ -45,7 +45,6 @@ public class Options {
         }
 
     }
-
     public void Option2(int Crypto) throws FileNotFoundException {
         System.out.println("----------------------------------------------------------------");
         LoadingData loadingData = new LoadingData();
@@ -81,6 +80,5 @@ public class Options {
                 loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
                 break;
         }
-
     }
 }

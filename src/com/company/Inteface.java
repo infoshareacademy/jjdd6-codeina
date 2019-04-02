@@ -119,6 +119,4 @@ public class Inteface {
         System.out.println("                ERROR! You chose wrong option.");
         System.out.println("----------------------------------------------------------------");
     }
-
-
 }
