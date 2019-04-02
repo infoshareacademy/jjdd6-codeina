@@ -103,7 +103,7 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public void emptySpacer() {
+    public void emptySpacer() {                 //TODO autoclear terminal (not in intellij)
         for (int i = 0; i <= 20; i++) {
             System.out.println("\n");
         }
