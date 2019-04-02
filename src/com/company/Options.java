@@ -45,4 +45,42 @@ public class Options {
         }
 
     }
+
+    public void Option2(int Crypto) throws FileNotFoundException {
+        System.out.println("----------------------------------------------------------------");
+        LoadingData loadingData = new LoadingData();
+        switch (Crypto) {
+            case 1:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[0]);
+                break;
+            case 2:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[1]);
+                break;
+            case 3:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[2]);
+                break;
+            case 4:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[3]);
+                break;
+            case 5:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[4]);
+                break;
+            case 6:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[5]);
+                break;
+            case 7:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[6]);
+                break;
+            case 8:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[7]);
+                break;
+            case 9:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[8]);
+                break;
+            case 10:
+                loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
+                break;
+        }
+
+    }
 }

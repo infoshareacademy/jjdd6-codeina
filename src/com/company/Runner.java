@@ -28,6 +28,9 @@ public class Runner {
                     if (Option == 1) {
                         options.Option1(Crypto);
                         con = 9;
+                    } else if (Option == 2) {
+                        options.Option2(Crypto);
+                        con = 9;
                     } else {
                         con = 10;
                     }

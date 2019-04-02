@@ -11,7 +11,7 @@ public class Downloader {
     public static void downloader(String urlCsvFile, String fileName) throws IOException {
         URL website = new URL(urlCsvFile);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-        FileOutputStream fos = new FileOutputStream("csv/"+fileName+".csv");
+        FileOutputStream fos = new FileOutputStream("csv/" + fileName + ".csv");
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
 
