@@ -47,7 +47,7 @@ public class LoadingData {
     }
 
     public String gettingDateFromUser() {
-        System.out.println("Podaj datę (format daty :\"rok-miesiąc-dzień\" ):");
+        System.out.println("Choose date (date format :\"year-month-day\" ):");
         Scanner scanner = new Scanner(System.in);
         String date = scanner.nextLine();
         return date;
@@ -71,8 +71,10 @@ public class LoadingData {
                 }
             }
             if (!flag) {
-                System.out.println("Incorrect date format, or date out of range.");
-                System.out.println("Try again ;-)");
+                Inteface.emptySpacer();
+                System.out.println("----------------------------------------------------------------");
+                System.out.println("    Incorrect date format, or date out of range. Try again!");
+                System.out.println("----------------------------------------------------------------");
                 printInformationFromHistoricalDate(csv);
             }
 

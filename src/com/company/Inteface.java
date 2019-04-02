@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Inteface {
@@ -72,6 +71,7 @@ public class Inteface {
         System.out.println("                   What you want to do:");
         System.out.println("----------------------------------------------------------------");
         System.out.println("1) Show the last price");
+        System.out.println("2) Show the price at given day");
 
 
         System.out.println("----------------------------------------------------------------");
@@ -103,11 +103,16 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public void emptySpacer() {                 //TODO autoclear terminal (not in intellij)
+    public static void emptySpacer() {
         for (int i = 0; i <= 20; i++) {
             System.out.println("\n");
         }
     }
+
+//    public static void clearScreen() {
+//        System.out.print("\033[H\033[2J");
+//        System.out.flush();
+//    }
 
     public void error() {
         System.out.println("----------------------------------------------------------------");
@@ -115,42 +120,5 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
     }
 
-    public void Option1(int Crypto) throws FileNotFoundException {
-        System.out.println("----------------------------------------------------------------");
-        LoadingData loadingData = new LoadingData();
-        switch (Crypto) {
-            case 1:
-                loadingData.printInformationFromLastLineOfCSV("csv/btc.csv");
-                break;
-            case 2:
-                loadingData.printInformationFromLastLineOfCSV("csv/bch.csv");
-                break;
-            case 3:
-                loadingData.printInformationFromLastLineOfCSV("csv/ltc.csv");
-                break;
-            case 4:
-                loadingData.printInformationFromLastLineOfCSV("csv/eth.csv");
-                break;
-            case 5:
-                loadingData.printInformationFromLastLineOfCSV("csv/xem.csv");
-                break;
-            case 6:
-                loadingData.printInformationFromLastLineOfCSV("csv/dcr.csv");
-                break;
-            case 7:
-                loadingData.printInformationFromLastLineOfCSV("csv/zec.csv");
-                break;
-            case 8:
-                loadingData.printInformationFromLastLineOfCSV("csv/dash.csv");
-                break;
-            case 9:
-                loadingData.printInformationFromLastLineOfCSV("csv/doge.csv");
-                break;
-            case 10:
-                loadingData.printInformationFromLastLineOfCSV("csv/etc.csv");
-                break;
-        }
-                //TODO array list of crypto for Option1 String value
-    }
 
 }

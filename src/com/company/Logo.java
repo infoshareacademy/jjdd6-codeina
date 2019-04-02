@@ -53,7 +53,7 @@ public class Logo {
     public String dogeCoinLogo;
 
     {
-        dogeCoinLogo ="--------------------------------------------------------------------------------\n"+
+        dogeCoinLogo = "--------------------------------------------------------------------------------\n" +
                 "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX00KWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                 "MMMMMMMMMMMWX0OO0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOxxkOXMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                 "MMMMMMMMMMW0dlllokKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMXxodkOOKWMMMMMMMMMMMMMMMMMMMMMMM\n" +
@@ -100,243 +100,243 @@ public class Logo {
     public String ethereumLogo;
 
     {
-        ethereumLogo = "--------------------------------------------------------------------------------\n"+
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0doOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl;..'dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXkool;...'lKMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxoool;.....c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dooool;......;OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdoooool;.......,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkdooooooc,........'oXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMWXkooolc:;,'.  ........lKMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMWKdlc:;,'.....       ....:0WMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMW0l,'..........           .:KMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMXOxc,.........        ..:dkXMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMWX000xo;'.....     .,ldxxx0WMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKkxO00kdc,..  .;oxxdc,c0WMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMXOdodk00Oxoodxxo;'.,dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xooodxOxoc,....:OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkdoool;.....'lKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dool;....;kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol;..'c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xdOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                        "--------------------------------------------------------------------------------\n";
+        ethereumLogo = "--------------------------------------------------------------------------------\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0doOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl;..'dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXkool;...'lKMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxoool;.....c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dooool;......;OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdoooool;.......,xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkdooooooc,........'oXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMWXkooolc:;,'.  ........lKMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMWKdlc:;,'.....       ....:0WMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMW0l,'..........           .:KMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMXOxc,.........        ..:dkXMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMWX000xo;'.....     .,ldxxx0WMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKkxO00kdc,..  .;oxxdc,c0WMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMXOdodk00Oxoodxxo;'.,dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xooodxOxoc,....:OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkdoool;.....'lKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dool;....;kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol;..'c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOo;.,dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0xdOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                "--------------------------------------------------------------------------------\n";
     }
 
     public String litecoinLogo =
-            "--------------------------------------------------------------------------------\n"+
-            "                                 ...',,,,,,'...                                 \n" +
-            "                           .,coxOKXXNWWWWWWNXXKOxoc,.                           \n" +
-            "                       .,lkKNMMMWNK0OOkkkkOO0KNWMMMNKkl,.                       \n" +
-            "                     ;d0NWMWKkoc;'..        ..';cokKWMWN0d,                     \n" +
-            "                  .cONMMNOo;.                      .;oONMWNOc.                  \n" +
-            "                .c0WWW0o,          .,,,,,,,,,,,.       ,oKWMW0c.                \n" +
-            "               ;OWMW0c.           .kWWWWWWWWWWX:         .c0WMWO;               \n" +
-            "             .oXMMXl.             lNMMMMMMMMMWd.           .oXMMXo.             \n" +
-            "            .xNMWO,              ,KMMMMMMMMMW0'              ;OWMNx.            \n" +
-            "           .xWMWx.              .xWMMMMMMWWMNc                .kWWWx.           \n" +
-            "           oWMWx.               cNMMMMMMMMMWx. .               .kWWWo           \n" +
-            "          :XMMO'               '0MMMMMMMMMMNxlkk,               ,KMMX:          \n" +
-            "         .xWMNc               .dWMMMMMMMMMWMWWWd.                lWMMx.         \n" +
-            "         ,KWWO.               cXMMMMMMMMMMMMWXx.                 ,0MMK;         \n" +
-            "         cNMMx.           'ldONMMMMMMMMMMXkl;'.                  .kMMNc         \n" +
-            "         lWMMo           ,KMWMWMMMMMMMMWNo                       .xWMWl         \n" +
-            "         lWMMd          .xWNWMMMMMMWMMMk:.                       .xWMWc         \n" +
-            "         :NWWk.         .c:c0WMMMMMMMMX;                         .OMMX:         \n" +
-            "         'OMMK,            lNMMMMMMMWWo                          :XMM0'         \n" +
-            "          oWMWd.          ;KMMWMMMMMMNOddddddddddddddddd,       .xMMWo          \n" +
-            "          'OMMXc         .xWMMMMMMMMMMMMMMMMMMMMMMMMMWMK,       lNMMO.          \n" +
-            "           ;KMMK;        cNMMMMMMMMMMMMMMMMMMMMMMMMMMMNl       cXWMK;           \n" +
-            "            :KWMKc      '0MMMMMMMMMMMMMMMMMMMMMMMMMMMWk.     .lXMWK:            \n" +
-            "             ;0MMNx.    ;xxxxxxxxxxxxxxxxxxxxxxxxxxdxd'     'xNMM0;             \n" +
-            "              'xNWW0c.                                    .lKWMNx'              \n" +
-            "               .:0WWW0c.                                .l0WWW0:                \n" +
-            "                 .c0WWWKx:.                          .:xXWWW0c.                 \n" +
-            "                   .:kXWMWXkl;..                ..;lkKWMWXx:.                   \n" +
-            "                      'ckKWMMWX0kdlc:;;;;;;:cldk0XWMMWKkc'                      \n" +
-            "                         .;lx0XWMMMMMMMMMMMMMMMMWX0xl;.                         \n" +
-            "                             ..,:codxxxxxxxxdoc:,..                             \n" +
-            "--------------------------------------------------------------------------------\n";
+            "--------------------------------------------------------------------------------\n" +
+                    "                                 ...',,,,,,'...                                 \n" +
+                    "                           .,coxOKXXNWWWWWWNXXKOxoc,.                           \n" +
+                    "                       .,lkKNMMMWNK0OOkkkkOO0KNWMMMNKkl,.                       \n" +
+                    "                     ;d0NWMWKkoc;'..        ..';cokKWMWN0d,                     \n" +
+                    "                  .cONMMNOo;.                      .;oONMWNOc.                  \n" +
+                    "                .c0WWW0o,          .,,,,,,,,,,,.       ,oKWMW0c.                \n" +
+                    "               ;OWMW0c.           .kWWWWWWWWWWX:         .c0WMWO;               \n" +
+                    "             .oXMMXl.             lNMMMMMMMMMWd.           .oXMMXo.             \n" +
+                    "            .xNMWO,              ,KMMMMMMMMMW0'              ;OWMNx.            \n" +
+                    "           .xWMWx.              .xWMMMMMMWWMNc                .kWWWx.           \n" +
+                    "           oWMWx.               cNMMMMMMMMMWx. .               .kWWWo           \n" +
+                    "          :XMMO'               '0MMMMMMMMMMNxlkk,               ,KMMX:          \n" +
+                    "         .xWMNc               .dWMMMMMMMMMWMWWWd.                lWMMx.         \n" +
+                    "         ,KWWO.               cXMMMMMMMMMMMMWXx.                 ,0MMK;         \n" +
+                    "         cNMMx.           'ldONMMMMMMMMMMXkl;'.                  .kMMNc         \n" +
+                    "         lWMMo           ,KMWMWMMMMMMMMWNo                       .xWMWl         \n" +
+                    "         lWMMd          .xWNWMMMMMMWMMMk:.                       .xWMWc         \n" +
+                    "         :NWWk.         .c:c0WMMMMMMMMX;                         .OMMX:         \n" +
+                    "         'OMMK,            lNMMMMMMMWWo                          :XMM0'         \n" +
+                    "          oWMWd.          ;KMMWMMMMMMNOddddddddddddddddd,       .xMMWo          \n" +
+                    "          'OMMXc         .xWMMMMMMMMMMMMMMMMMMMMMMMMMWMK,       lNMMO.          \n" +
+                    "           ;KMMK;        cNMMMMMMMMMMMMMMMMMMMMMMMMMMMNl       cXWMK;           \n" +
+                    "            :KWMKc      '0MMMMMMMMMMMMMMMMMMMMMMMMMMMWk.     .lXMWK:            \n" +
+                    "             ;0MMNx.    ;xxxxxxxxxxxxxxxxxxxxxxxxxxdxd'     'xNMM0;             \n" +
+                    "              'xNWW0c.                                    .lKWMNx'              \n" +
+                    "               .:0WWW0c.                                .l0WWW0:                \n" +
+                    "                 .c0WWWKx:.                          .:xXWWW0c.                 \n" +
+                    "                   .:kXWMWXkl;..                ..;lkKWMWXx:.                   \n" +
+                    "                      'ckKWMMWX0kdlc:;;;;;;:cldk0XWMMWKkc'                      \n" +
+                    "                         .;lx0XWMMMMMMMMMMMMMMMMWX0xl;.                         \n" +
+                    "                             ..,:codxxxxxxxxdoc:,..                             \n" +
+                    "--------------------------------------------------------------------------------\n";
 
     public String bitcoinCashLogo =
-            "--------------------------------------------------------------------------------\n"+
-            "                   'o0WMMMMWXOdc;..          ..;cdOXWMMMMWKo'                   \n" +
-            "                 'dXWMMMW0d:.                      .:d0WMMMWXd'                 \n" +
-            "               .oXMMMMXx;.                            .;xXMMMMXo.               \n" +
-            "              ;0WMMMNx'                                  'xNMMMW0;              \n" +
-            "             cXMMMWO;           ..  ;o:.                   ;OWMMMXc             \n" +
-            "            lNMMMNd.           c0k'.dWX;                    .dNMMMNl            \n" +
-            "           cXMMMNo.            :XWd'oNW0dooooc,.             .oNMMMXc           \n" +
-            "          ,0MMMWd.         ..,:dXMWXNWMWWWMMMMNk'             .dWMMM0,          \n" +
-            "         .dWMMMO'         .xXNWMMMMXxc:;;:l0WMMWd.             'OMMMWd.         \n" +
-            "         '0MMMNl           ,c:l0MMMK,      cNMMNo               lNMMM0'         \n" +
-            "         :NMMMK,               cNMMWd. ..'l0WMMXd;.             ,KMMMN:         \n" +
-            "         lWMMMO.               .kMMMNOOKXNWWWMMMMWKc.           .OMMMWl         \n" +
-            "         lWMMMO.                cXMMMXxlcc;;;ckWMMMX:           .OMMMWl         \n" +
-            "         cNMMM0'                .kMMMK,       '0MMMWo           '0MMMNc         \n" +
-            "         ,KMMMNc                 cNMMWd.    .,xNMMM0,           cNMMMK,         \n" +
-            "         .xWMMMk.                .OMMMKoclokKNMMN0o'           .kMMMWx.         \n" +
-            "          ;KMMMNo              .cxXMMMMMMWWWMNxc,.             oNMMMK;          \n" +
-            "           lNMMMXc             :XNK0OKMNKo;kWX;               cXMMMNl           \n" +
-            "           .dNMMMXl.           .''.  :XWNo ,0Xo.            .lXMMMNd.           \n" +
-            "            .oNMMMNx'                .okxc. .'.            'xNMMMNo.            \n" +
-            "             .cKMMMWKl.                                  .lKWMMMKc.             \n" +
-            "               'kNMMMWKo'                              'oKWMMMNx'               \n" +
-            "                .;ONMMMMXkc'.                      .'ckXMMMMNO;.                \n" +
-            "                  .;xXWMMMWN0dc;..            ..,cd0NWMMMWXx;.                  \n" +
-             "--------------------------------------------------------------------------------\n";
+            "--------------------------------------------------------------------------------\n" +
+                    "                   'o0WMMMMWXOdc;..          ..;cdOXWMMMMWKo'                   \n" +
+                    "                 'dXWMMMW0d:.                      .:d0WMMMWXd'                 \n" +
+                    "               .oXMMMMXx;.                            .;xXMMMMXo.               \n" +
+                    "              ;0WMMMNx'                                  'xNMMMW0;              \n" +
+                    "             cXMMMWO;           ..  ;o:.                   ;OWMMMXc             \n" +
+                    "            lNMMMNd.           c0k'.dWX;                    .dNMMMNl            \n" +
+                    "           cXMMMNo.            :XWd'oNW0dooooc,.             .oNMMMXc           \n" +
+                    "          ,0MMMWd.         ..,:dXMWXNWMWWWMMMMNk'             .dWMMM0,          \n" +
+                    "         .dWMMMO'         .xXNWMMMMXxc:;;:l0WMMWd.             'OMMMWd.         \n" +
+                    "         '0MMMNl           ,c:l0MMMK,      cNMMNo               lNMMM0'         \n" +
+                    "         :NMMMK,               cNMMWd. ..'l0WMMXd;.             ,KMMMN:         \n" +
+                    "         lWMMMO.               .kMMMNOOKXNWWWMMMMWKc.           .OMMMWl         \n" +
+                    "         lWMMMO.                cXMMMXxlcc;;;ckWMMMX:           .OMMMWl         \n" +
+                    "         cNMMM0'                .kMMMK,       '0MMMWo           '0MMMNc         \n" +
+                    "         ,KMMMNc                 cNMMWd.    .,xNMMM0,           cNMMMK,         \n" +
+                    "         .xWMMMk.                .OMMMKoclokKNMMN0o'           .kMMMWx.         \n" +
+                    "          ;KMMMNo              .cxXMMMMMMWWWMNxc,.             oNMMMK;          \n" +
+                    "           lNMMMXc             :XNK0OKMNKo;kWX;               cXMMMNl           \n" +
+                    "           .dNMMMXl.           .''.  :XWNo ,0Xo.            .lXMMMNd.           \n" +
+                    "            .oNMMMNx'                .okxc. .'.            'xNMMMNo.            \n" +
+                    "             .cKMMMWKl.                                  .lKWMMMKc.             \n" +
+                    "               'kNMMMWKo'                              'oKWMMMNx'               \n" +
+                    "                .;ONMMMMXkc'.                      .'ckXMMMMNO;.                \n" +
+                    "                  .;xXWMMMWN0dc;..            ..,cd0NWMMMWXx;.                  \n" +
+                    "--------------------------------------------------------------------------------\n";
     public String decredLogo =
             "--------------------------------------------------------------------------------\n" +
-            "             .                      ............. ...                           \n" +
-            "       ..,,,,,,,,;,;;,..           .':llllllllllllooolllc:;'..                  \n" +
-            "        ..,::cccccccccc:'.           .;oxkkkkkkkkkOOOOOOOOOkxo:,.               \n" +
-            "           .';:cccccccccc:,..          ..,lxOkkkkkOOOOOOOOOOOOOkd:..            \n" +
-            "             .';:ccccccccccc;'.           .'cxkkkkkOOOOOOOOOOOOOOOxc.           \n" +
-            "               ..,:ccccccclllc:'.            .:oddddddxkOOOOOOOOOOOOx;.         \n" +
-            "                 .':ccccccllllllc,..           ........',:okOOOOOOOOOk:.        \n" +
-            "              ..',:cccccccllllllllc;..                    .'ckOOOOOOOOk:.       \n" +
-            "            ..,:cccccccccclllllllllll:'..                   .,dOOOOOOO0x,       \n" +
-            "           .,:cccccccccccllllllllllllllc:,..                  ,xOOOOOOOOc.      \n" +
-            "         .':c:ccccccccc::;;;;;;;;;;;;;;;;;;..                 .lOOOOOOO0d.      \n" +
-            "        .,:::ccccccc:,....                                    .:OOOOOOO0d.      \n" +
-            "       .'::::ccccc:'.                                         .oOOOOOOO0o.      \n" +
-            "       .;::::cccc;.                                          .:kOOOOOOOO:.      \n" +
-            "      .,:::cc:cc;.                                          .ckOOOOOOO0d.       \n" +
-            "      .,::::::cc,.                                       ..:dOOOOOOOOOx,        \n" +
-            "      .,::::::cc,.                 ..''''''''''''''''',;coxOOOOOOOOOOx,.        \n" +
-            "      .,:::::ccc;.                 ..:dkkkkkkkkkkkkkkkOOOOOOOOOOOOOOl.          \n" +
-            "       .:::::ccc:,.                   .;lokkkkkkkkOOOOOOOOOOOOOOOko,.           \n" +
-            "       .,:::ccccc:,.                     .,lxkkkkkOOOOOOOOOOOOkdc'.             \n" +
-            "        .;::::ccccc:,...                   .'cxkkkOOOOOOOOOOxc'.                \n" +
-            "         .,:cccccccccc:;,''''''''.           ..:dkOOOOOOOOOOxl,.                \n" +
-            "          .';ccccccccccccllllllllc,..           .;okOOOOOOOOOOko;.              \n" +
-            "            .':ccccccccccclllllllllc;..           .'cxOOOOOOOOOOOd:.            \n" +
-            "              ..,:ccccccccllllllllllll:'..          ..:dOOOOOOOOOOOkl'.         \n" +
-            "                 ..',;:ccccllllllllllllllc,..          .;okOOOOOOOOOOko;.       \n" +
-            "                     .................''..'..            .',,,,,,,,,,,,,.       \n" +
-            "--------------------------------------------------------------------------------\n" ;
+                    "             .                      ............. ...                           \n" +
+                    "       ..,,,,,,,,;,;;,..           .':llllllllllllooolllc:;'..                  \n" +
+                    "        ..,::cccccccccc:'.           .;oxkkkkkkkkkOOOOOOOOOkxo:,.               \n" +
+                    "           .';:cccccccccc:,..          ..,lxOkkkkkOOOOOOOOOOOOOkd:..            \n" +
+                    "             .';:ccccccccccc;'.           .'cxkkkkkOOOOOOOOOOOOOOOxc.           \n" +
+                    "               ..,:ccccccclllc:'.            .:oddddddxkOOOOOOOOOOOOx;.         \n" +
+                    "                 .':ccccccllllllc,..           ........',:okOOOOOOOOOk:.        \n" +
+                    "              ..',:cccccccllllllllc;..                    .'ckOOOOOOOOk:.       \n" +
+                    "            ..,:cccccccccclllllllllll:'..                   .,dOOOOOOO0x,       \n" +
+                    "           .,:cccccccccccllllllllllllllc:,..                  ,xOOOOOOOOc.      \n" +
+                    "         .':c:ccccccccc::;;;;;;;;;;;;;;;;;;..                 .lOOOOOOO0d.      \n" +
+                    "        .,:::ccccccc:,....                                    .:OOOOOOO0d.      \n" +
+                    "       .'::::ccccc:'.                                         .oOOOOOOO0o.      \n" +
+                    "       .;::::cccc;.                                          .:kOOOOOOOO:.      \n" +
+                    "      .,:::cc:cc;.                                          .ckOOOOOOO0d.       \n" +
+                    "      .,::::::cc,.                                       ..:dOOOOOOOOOx,        \n" +
+                    "      .,::::::cc,.                 ..''''''''''''''''',;coxOOOOOOOOOOx,.        \n" +
+                    "      .,:::::ccc;.                 ..:dkkkkkkkkkkkkkkkOOOOOOOOOOOOOOl.          \n" +
+                    "       .:::::ccc:,.                   .;lokkkkkkkkOOOOOOOOOOOOOOOko,.           \n" +
+                    "       .,:::ccccc:,.                     .,lxkkkkkOOOOOOOOOOOOkdc'.             \n" +
+                    "        .;::::ccccc:,...                   .'cxkkkOOOOOOOOOOxc'.                \n" +
+                    "         .,:cccccccccc:;,''''''''.           ..:dkOOOOOOOOOOxl,.                \n" +
+                    "          .';ccccccccccccllllllllc,..           .;okOOOOOOOOOOko;.              \n" +
+                    "            .':ccccccccccclllllllllc;..           .'cxOOOOOOOOOOOd:.            \n" +
+                    "              ..,:ccccccccllllllllllll:'..          ..:dOOOOOOOOOOOkl'.         \n" +
+                    "                 ..',;:ccccllllllllllllllc,..          .;okOOOOOOOOOOko;.       \n" +
+                    "                     .................''..'..            .',,,,,,,,,,,,,.       \n" +
+                    "--------------------------------------------------------------------------------\n";
 
 
     public String zCashLogo =
             "--------------------------------------------------------------------------------\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMWXOxoc;'..            ..';:lxOKNMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMN0dc,.                            .,cd0NMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMWXkc'.                                    .'cxXWMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMXkc.                                            .:kXWMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMWKo'              ..,:clloddddddoolc:,'.              'oKWMMMMMMMMMMM\n" +
-            "MMMMMMMMMW0l.           ..;coxkO0000000000000KKK00kxl:'.           .c0WMMMMMMMMM\n" +
-            "MMMMMMMMXo.          .,cdkOOOOOOOOkdlllllllld00000KKKK0xl,.          .lKMMMMMMMM\n" +
-            "MMMMMMNk'          'cdkOOOOOOOOOOOx'        ,k000000KKKKK0kl'          'xNMMMMMM\n" +
-            "MMMMMXl.         'lxkkkkOOOOOOOOOOd.        ,k0000000KKKKKKK0d,         .cKMMMMM\n" +
-            "MMMW0;         .lxkkkkkkkkkkkkkkkkd.        ,xOOOOOOOO000KKKKK0d'         ;0WMMM\n" +
-            "MMW0,        .:dkkkkkkkkko,........          .........:kK0KKKKKKOc.        'OWMM\n" +
-            "MM0,        .lxkkkkkkkkkkc.                           .d0000KKKKK0d.        'OMM\n" +
-            "MK;        .lxxxxkkkkkkkkc.                           .d000000KKKKKx'        ;KM\n" +
-            "Nl        .lxxxxxxxxkkkkkc.                           'x00000000KKKKx.        lN\n" +
-            "O.       .cxxxxxxxxxxkkkkl'..............            'dO0000000000KK0o.       .k\n" +
-            "c        ,dxxxxxxxxxxxxkkxxddxdxxxxxxxdc,.         .:x0000000000000KKO:        :\n" +
-            "'       .cxxxxxxxxxxxxxxxxkkkkkkkkkkko,           .lOOO00000000000000Kd.       .\n" +
-            "        'oxdxxxxxxxxxxxxxxxkkkkkkkkx:.           ;dOOOOOO0000000000000k,        \n" +
-            "        ,ddddxxxxxxxxxxxxxxxxkkkkxo'           .ckOOOOOOOOO00000000000O:        \n" +
-            "        ;ddddddxxxxxxxxxxxxxxxxkx:.           ,okOOOOOOOOOOOO0000000000c        \n" +
-            "        ,dddddddddxxxxxxxxxxxxxo,           .:xkkkOOOOOOOOOOOOOOO00000O:        \n" +
-            "        'oddddddddddxxxxxxxxxdc.           'okkkkkkOOOOOOOOOOOOOOO0000k;        \n" +
-            ".       .ldddddddddddxxxxxxxo,           .:dkkkkkkkkkOOOOOOOOOOOOOO000x.       .\n" +
-            ";        ;oddddddddddddxxxdc.          ,:oxkkkkkkkkkkkOOOOOOOOOOOOOOOOc        ,\n" +
-            "d.       .cddddddddddddddo;.          .,;;;;;;;;;;;;:::okOOOOOOOOOOOOd.        o\n" +
-            "K;        'lddddddddddddl.                             ,xkkkOOOOOOOOx,        ,K\n" +
-            "Wk.        ,lddddddddddd;                              ,xkkkkOOOOOOx;        .xW\n" +
-            "MNo.        'ldodddddddd,                              ,xkkkkkkOkOx,        .oNM\n" +
-            "MMNl.        .codddddddo;                              ;xkkkkkkkko'         lXMM\n" +
-            "MMMNo.        .,loddddddl:::::::::,.        .;c::ccccccoxkkkkkkd:.        .lNMMM\n" +
-            "MMMMNx.         .;loddddddddddddddl.        'dxxxxxxxkkkkkkkkdc.         .dNMMMM\n" +
-            "MMMMMWO;          .;coddddddddddddl.        'oxxxxxxxxxxkkxo:.          ,OWMMMMM\n" +
-            "MMMMMMMXd.          .':lodddddddddo;'....''':dxxxxxxxxxxoc'.          .oXMMMMMMM\n" +
-            "MMMMMMMMWKl.           ..,:loddddddddddddddddxxxxxxdoc;'.           .c0WMMMMMMMM\n" +
-            "MMMMMMMMMMW0l.             ..',:cllooodddddooolc:;'..             .l0WMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMWKd,.                 ............                 .,dKWMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMNOo,.                                        .,lONMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMN0d:'.                                 ':d0NMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMWN0xl;'.                      .';lx0NWMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWX0xl;'.            .';ldOXWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "--------------------------------------------------------------------------------\n";
+                    "MMMMMMMMMMMMMMMMMMMMMMMMWXOxoc;'..            ..';:lxOKNMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMN0dc,.                            .,cd0NMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMWXkc'.                                    .'cxXWMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMXkc.                                            .:kXWMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMWKo'              ..,:clloddddddoolc:,'.              'oKWMMMMMMMMMMM\n" +
+                    "MMMMMMMMMW0l.           ..;coxkO0000000000000KKK00kxl:'.           .c0WMMMMMMMMM\n" +
+                    "MMMMMMMMXo.          .,cdkOOOOOOOOkdlllllllld00000KKKK0xl,.          .lKMMMMMMMM\n" +
+                    "MMMMMMNk'          'cdkOOOOOOOOOOOx'        ,k000000KKKKK0kl'          'xNMMMMMM\n" +
+                    "MMMMMXl.         'lxkkkkOOOOOOOOOOd.        ,k0000000KKKKKKK0d,         .cKMMMMM\n" +
+                    "MMMW0;         .lxkkkkkkkkkkkkkkkkd.        ,xOOOOOOOO000KKKKK0d'         ;0WMMM\n" +
+                    "MMW0,        .:dkkkkkkkkko,........          .........:kK0KKKKKKOc.        'OWMM\n" +
+                    "MM0,        .lxkkkkkkkkkkc.                           .d0000KKKKK0d.        'OMM\n" +
+                    "MK;        .lxxxxkkkkkkkkc.                           .d000000KKKKKx'        ;KM\n" +
+                    "Nl        .lxxxxxxxxkkkkkc.                           'x00000000KKKKx.        lN\n" +
+                    "O.       .cxxxxxxxxxxkkkkl'..............            'dO0000000000KK0o.       .k\n" +
+                    "c        ,dxxxxxxxxxxxxkkxxddxdxxxxxxxdc,.         .:x0000000000000KKO:        :\n" +
+                    "'       .cxxxxxxxxxxxxxxxxkkkkkkkkkkko,           .lOOO00000000000000Kd.       .\n" +
+                    "        'oxdxxxxxxxxxxxxxxxkkkkkkkkx:.           ;dOOOOOO0000000000000k,        \n" +
+                    "        ,ddddxxxxxxxxxxxxxxxxkkkkxo'           .ckOOOOOOOOO00000000000O:        \n" +
+                    "        ;ddddddxxxxxxxxxxxxxxxxkx:.           ,okOOOOOOOOOOOO0000000000c        \n" +
+                    "        ,dddddddddxxxxxxxxxxxxxo,           .:xkkkOOOOOOOOOOOOOOO00000O:        \n" +
+                    "        'oddddddddddxxxxxxxxxdc.           'okkkkkkOOOOOOOOOOOOOOO0000k;        \n" +
+                    ".       .ldddddddddddxxxxxxxo,           .:dkkkkkkkkkOOOOOOOOOOOOOO000x.       .\n" +
+                    ";        ;oddddddddddddxxxdc.          ,:oxkkkkkkkkkkkOOOOOOOOOOOOOOOOc        ,\n" +
+                    "d.       .cddddddddddddddo;.          .,;;;;;;;;;;;;:::okOOOOOOOOOOOOd.        o\n" +
+                    "K;        'lddddddddddddl.                             ,xkkkOOOOOOOOx,        ,K\n" +
+                    "Wk.        ,lddddddddddd;                              ,xkkkkOOOOOOx;        .xW\n" +
+                    "MNo.        'ldodddddddd,                              ,xkkkkkkOkOx,        .oNM\n" +
+                    "MMNl.        .codddddddo;                              ;xkkkkkkkko'         lXMM\n" +
+                    "MMMNo.        .,loddddddl:::::::::,.        .;c::ccccccoxkkkkkkd:.        .lNMMM\n" +
+                    "MMMMNx.         .;loddddddddddddddl.        'dxxxxxxxkkkkkkkkdc.         .dNMMMM\n" +
+                    "MMMMMWO;          .;coddddddddddddl.        'oxxxxxxxxxxkkxo:.          ,OWMMMMM\n" +
+                    "MMMMMMMXd.          .':lodddddddddo;'....''':dxxxxxxxxxxoc'.          .oXMMMMMMM\n" +
+                    "MMMMMMMMWKl.           ..,:loddddddddddddddddxxxxxxdoc;'.           .c0WMMMMMMMM\n" +
+                    "MMMMMMMMMMW0l.             ..',:cllooodddddooolc:;'..             .l0WMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMWKd,.                 ............                 .,dKWMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMNOo,.                                        .,lONMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMN0d:'.                                 ':d0NMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMWN0xl;'.                      .';lx0NWMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWX0xl;'.            .';ldOXWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "--------------------------------------------------------------------------------\n";
 
     public String dashLogo =
-            "--------------------------------------------------------------------------------\n"+
-            "MMMMMMMMMMMMMMMMMMMMMMMMWNX0kxdolcc:::;;;;:::cclodxk0KNWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMWX0kdlc:;;;;;;;:;;;;;;;;:;;;;;;;:cldk0XWMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMNKkdl::;;;;;;;;;;;::;;;;;;::;;;;;;;;:;;::cdkKNMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMWKkoc:::;;;;;;;;;;;;;;;;;;;;;;;;::;;;;:;;;;;:;:cokKWMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMN0dc:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:cd0NMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMN0o::;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;::o0NMMMMMMMMMM\n" +
-            "MMMMMMMMW0o:::;;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;:d0WMMMMMMMM\n" +
-            "MMMMMMWXxc::;;;;;:;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;:;;;;;::cxXWMMMMMM\n" +
-            "MMMMMW0o:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;::o0WMMMMM\n" +
-            "MMMMWOc:;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;:cOWMMMM\n" +
-            "MMMNkc;:;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;:;ckNMMM\n" +
-            "MMWkc:;;;;;;;;;;;;;;;;;:clllllllllllllllllllllllllllllllllllllcc:;;;;:;;;;;ckNMM\n" +
-            "MWOc::;;;;;;;;;;:;;;;;;l0NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXKOdc:;;;;:;;;cOWM\n" +
-            "MKo::;;;;;;;;;;;;;;;;;ckWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkc;;;;;;;;:oKM\n" +
-            "Nk:;;;;;;;;;;;;;::;;;:dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXd::;;:;;;;:xN\n" +
-            "Kl::;;:;;;;;;;;;;;;:;ckXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXWMMMMMMMMMMXo:;;;;:;;;;lK\n" +
-            "kc;;;;:;;;;;;;;;;;;;::ccccccccccccccccccccccccccccccccdKMMMMMMMMMWOc;;;;;:;;;;:k\n" +
-            "d::;;:;;;;;:;;::cccccccccccccccccc::;:;;;;;;;;;;;;;;;:kNMMMMMMMMMKo:;:;;;;;;;::d\n" +
-            "o;;;;;;:;;;;;:lOXXXXXXXXXXXXXXXXXKd:;;;:;;;;;;;;;;;;:oXMMMMMMMMMNx:;;;:;;;;;;;;o\n" +
-            "l;;::;;:;;:;;ckWMMMMMMMMMMMMMMMMWKl;;::;;;;;;;;;;;:;c0WMMMMMMMMWOc;;;;;;;;;::;;l\n" +
-            "o;;;;;;;;;;;:dXMMMMMMMMMMMMMMMMMXd:;;;;;;;;;;;;;;:;:xNMMMMMMMMMKo:;;;;;;;:;;;;;o\n" +
-            "o::;;;;;;;:;cxKKKKKKKKKKKKKKKKKKxc;:::;:;;;;;;;;;;:oKMMMMMMMMMNx:;;;;;;;;;;;;::d\n" +
-            "x:;;;;;;;;;;:::::::::::::::::::::::;;::;;;;;;;;;:;cOWMMMMMMMMW0c;;;;;;;;;;:;;;:x\n" +
-            "Oc;:;;;;;;;:;;::clllllllllllllllllllllllllllllllllkNMMMMMMMMMXo:;;;;;;;;;;;;:;cO\n" +
-            "Xd:;;::;;;;;;:;ckXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNWMMMMMMMMMXx:;;;;;;;;;;:;;;:dX\n" +
-            "WOc;:;;:;;;::;:xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0o:;;;;;;;;;;:;;;;cOW\n" +
-            "MNx:;;:;;;;;;;oKMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0dc:;;:;;;;;;;;;;;;:xNM\n" +
-            "MMXd:;;;::;;;:xKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXKOxl:;;;;;:::;;;;;;;;;:dXMM\n" +
-            "MMWKo:;;:;;;:::cccccccccccccccccccccccccccccccccccccc::;;;;;;;;;;;;;:;;;;;:oKMMM\n" +
-            "MMMWKo:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;;;;;;;;::oKWMMM\n" +
-            "MMMMMXd:;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;;;;;;:;;;;;:dXMMMMM\n" +
-            "MMMMMMNkl:;;;;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;:;;;;;;:;:lkNMMMMMM\n" +
-            "MMMMMMMWKdc;;;:;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;cdKWMMMMMMM\n" +
-            "MMMMMMMMMN0o:;;:;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;::;:o0NMMMMMMMMM\n" +
-            "MMMMMMMMMMMNOoc:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:cd0NMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMN0xl:;;;;;;;;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:lxKNMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMWXOdl:;;;;;::;::;;;;;;;;;;;;:;;;;;;;;;;;;;;::lx0XWMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMWX0koc::;;;::;;;;;;;;;;;;;;;;;;;:;;;::ldk0NWMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMWX0Oxolc::;;;;;;;::;;;:;;;::cldxO0XWMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWNX0kxolcc::::::::ccloxO0XWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "--------------------------------------------------------------------------------\n";
+            "--------------------------------------------------------------------------------\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMWNX0kxdolcc:::;;;;:::cclodxk0KNWMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMWX0kdlc:;;;;;;;:;;;;;;;;:;;;;;;;:cldk0XWMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMNKkdl::;;;;;;;;;;;::;;;;;;::;;;;;;;;:;;::cdkKNMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMWKkoc:::;;;;;;;;;;;;;;;;;;;;;;;;::;;;;:;;;;;:;:cokKWMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMN0dc:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:cd0NMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMN0o::;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;::o0NMMMMMMMMMM\n" +
+                    "MMMMMMMMW0o:::;;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;:d0WMMMMMMMM\n" +
+                    "MMMMMMWXxc::;;;;;:;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;:;;;;;::cxXWMMMMMM\n" +
+                    "MMMMMW0o:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;::o0WMMMMM\n" +
+                    "MMMMWOc:;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;:cOWMMMM\n" +
+                    "MMMNkc;:;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;:;ckNMMM\n" +
+                    "MMWkc:;;;;;;;;;;;;;;;;;:clllllllllllllllllllllllllllllllllllllcc:;;;;:;;;;;ckNMM\n" +
+                    "MWOc::;;;;;;;;;;:;;;;;;l0NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXKOdc:;;;;:;;;cOWM\n" +
+                    "MKo::;;;;;;;;;;;;;;;;;ckWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkc;;;;;;;;:oKM\n" +
+                    "Nk:;;;;;;;;;;;;;::;;;:dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXd::;;:;;;;:xN\n" +
+                    "Kl::;;:;;;;;;;;;;;;:;ckXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXWMMMMMMMMMMXo:;;;;:;;;;lK\n" +
+                    "kc;;;;:;;;;;;;;;;;;;::ccccccccccccccccccccccccccccccccdKMMMMMMMMMWOc;;;;;:;;;;:k\n" +
+                    "d::;;:;;;;;:;;::cccccccccccccccccc::;:;;;;;;;;;;;;;;;:kNMMMMMMMMMKo:;:;;;;;;;::d\n" +
+                    "o;;;;;;:;;;;;:lOXXXXXXXXXXXXXXXXXKd:;;;:;;;;;;;;;;;;:oXMMMMMMMMMNx:;;;:;;;;;;;;o\n" +
+                    "l;;::;;:;;:;;ckWMMMMMMMMMMMMMMMMWKl;;::;;;;;;;;;;;:;c0WMMMMMMMMWOc;;;;;;;;;::;;l\n" +
+                    "o;;;;;;;;;;;:dXMMMMMMMMMMMMMMMMMXd:;;;;;;;;;;;;;;:;:xNMMMMMMMMMKo:;;;;;;;:;;;;;o\n" +
+                    "o::;;;;;;;:;cxKKKKKKKKKKKKKKKKKKxc;:::;:;;;;;;;;;;:oKMMMMMMMMMNx:;;;;;;;;;;;;::d\n" +
+                    "x:;;;;;;;;;;:::::::::::::::::::::::;;::;;;;;;;;;:;cOWMMMMMMMMW0c;;;;;;;;;;:;;;:x\n" +
+                    "Oc;:;;;;;;;:;;::clllllllllllllllllllllllllllllllllkNMMMMMMMMMXo:;;;;;;;;;;;;:;cO\n" +
+                    "Xd:;;::;;;;;;:;ckXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNWMMMMMMMMMXx:;;;;;;;;;;:;;;:dX\n" +
+                    "WOc;:;;:;;;::;:xNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0o:;;;;;;;;;;:;;;;cOW\n" +
+                    "MNx:;;:;;;;;;;oKMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0dc:;;:;;;;;;;;;;;;:xNM\n" +
+                    "MMXd:;;;::;;;:xKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXKOxl:;;;;;:::;;;;;;;;;:dXMM\n" +
+                    "MMWKo:;;:;;;:::cccccccccccccccccccccccccccccccccccccc::;;;;;;;;;;;;;:;;;;;:oKMMM\n" +
+                    "MMMWKo:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;;;;;;;;::oKWMMM\n" +
+                    "MMMMMXd:;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;;;;;;:;;;;;:dXMMMMM\n" +
+                    "MMMMMMNkl:;;;;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;:;;;;;;:;:lkNMMMMMM\n" +
+                    "MMMMMMMWKdc;;;:;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;;;;;;cdKWMMMMMMM\n" +
+                    "MMMMMMMMMN0o:;;:;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;;;::;:o0NMMMMMMMMM\n" +
+                    "MMMMMMMMMMMNOoc:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:cd0NMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMN0xl:;;;;;;;;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:lxKNMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMWXOdl:;;;;;::;::;;;;;;;;;;;;:;;;;;;;;;;;;;;::lx0XWMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMWX0koc::;;;::;;;;;;;;;;;;;;;;;;;:;;;::ldk0NWMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMWX0Oxolc::;;;;;;;::;;;:;;;::cldxO0XWMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWNX0kxolcc::::::::ccloxO0XWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "--------------------------------------------------------------------------------\n";
     public String ethereumClassicLogo =
-            "--------------------------------------------------------------------------------\n"+
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxc;cONMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl:;,:dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoll:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dolll:;;,,,ckNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdlllllc;;,,,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxollodxOOkxl:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dooxO0KX0OkO00Odl:,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMXOxk0KXKOxdoc;;:ldO00kdldKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWXKXK0kdollllc;,,,,;:oxO00KNMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOdllcllllll:;,,,,,,,,;cxKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWX0kdl:;;;;;;;,,''''',:ok0KWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKK0koc;,,,''',;lxO00kx0NMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKxodk0KKOxoc:cdO00kdc:lOWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolooxk0KK00Odl:,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dllllodol:;,,,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkollll:;,,,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdlll:;,,,;dXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol:;,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc;;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolxXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-            "--------------------------------------------------------------------------------\n";
-    public String nemLogo="--------------------------------------------------------------------------------\n"+
+            "--------------------------------------------------------------------------------\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxc;cONMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl:;,:dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoll:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dolll:;;,,,ckNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdlllllc;;,,,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxollodxOOkxl:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dooxO0KX0OkO00Odl:,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMXOxk0KXKOxdoc;;:ldO00kdldKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXKXK0kdollllc;,,,,;:oxO00KNMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOdllcllllll:;,,,,,,,,;cxKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWX0kdl:;;;;;;;,,''''',:ok0KWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKK0koc;,,,''',;lxO00kx0NMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKxodk0KKOxoc:cdO00kdc:lOWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolooxk0KK00Odl:,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dllllodol:;,,,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkollll:;,,,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdlll:;,,,;dXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol:;,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc;;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolxXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "--------------------------------------------------------------------------------\n";
+    public String nemLogo = "--------------------------------------------------------------------------------\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMWNNXK00OkkkxxxxxxxxkkOO0KKXNWWMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMMMMMMMWNKOkdol:;,'......................',;cloxk0XNWMMMMMMMMMMMMMMMMM\n" +
             "MMMMMMMMMMMWX0kdl:,........'',,;;;::::::::::;;,,''.....  ...',:lxOKNWMMMMMMMMMMM\n" +
