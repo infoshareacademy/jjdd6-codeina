@@ -1,27 +1,30 @@
 package Calculations;
 
+
+
+
 public class MatematicOperations {
 
-        void average(){
 
-                System.out.println("Wywolano srednia");
+        public void average(){
+
+
 
         }
 
-        void extremsValue(){
+        public void extremsValue(){
 
-                System.out.println("Wywoalno extrema");
+
+        }
+
+        public void median(){
+
 
         }
 
 
-
-
-        void median(){
-
-
-                System.out.println("wywolano mediane");
-
-        }
 
 }
+
+
+
