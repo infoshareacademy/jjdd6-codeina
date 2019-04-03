@@ -72,6 +72,7 @@ public class Inteface {
         System.out.println("----------------------------------------------------------------");
         System.out.println("1) Show the last price");
         System.out.println("2) Show the price at given day");
+        System.out.println("3) Show prices at given dates");
 
 
         System.out.println("----------------------------------------------------------------");

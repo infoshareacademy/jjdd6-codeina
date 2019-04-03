@@ -31,7 +31,10 @@ public class Runner {
                     } else if (Option == 2) {
                         options.Option2(Crypto);
                         con = 9;
-                    } else {
+                    }else if (Option == 3){
+                        options.Option3(Crypto);
+                        con = 9;
+                    }else {
                         con = 10;
                     }
                 }
