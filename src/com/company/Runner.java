@@ -10,11 +10,13 @@ public class Runner {
     public void Run() throws FileNotFoundException, InterruptedException {
 
         Inteface inteface = new Inteface();
+        Options options = new Options();
         while (con != 0) {
             try {
                 if (con == 1) {
                     Crypto = inteface.Menu();
                     if (Crypto <= 10) {
+                        Downloader.download(Crypto);
                         inteface.Logo(Crypto);
                         con = 2;
                     } else {
@@ -24,7 +26,10 @@ public class Runner {
                 if (con == 2) {
                     Option = inteface.Options();
                     if (Option == 1) {
-                        inteface.Option1(Crypto);
+                        options.Option1(Crypto);
+                        con = 9;
+                    } else if (Option == 2) {
+                        options.Option2(Crypto);
                         con = 9;
                     } else {
                         con = 10;

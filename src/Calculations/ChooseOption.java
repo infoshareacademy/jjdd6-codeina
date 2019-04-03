@@ -1,10 +1,24 @@
 package Calculations;
 
+import com.company.CryptoCurrency;
+import com.company.LoadingData;
+
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ChooseOption {
 
-    public void choose() {
+    public void choose() throws FileNotFoundException {
+
+
+        System.out.println("Choose analyse period");
+        LoadingData loadingData = new LoadingData();
+        List<CryptoCurrency> ld = loadingData.getCryptoCurrencyFromDateToDate("csv/btc.csv");
+
+
+
+
 
         System.out.println("What You want to see ?");
         System.out.println("1. Average price ");
