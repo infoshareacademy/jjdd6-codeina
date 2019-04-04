@@ -4,7 +4,10 @@ import com.company.CryptoCurrency;
 import com.company.LoadingData;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ChooseOption {
@@ -38,7 +41,7 @@ public class ChooseOption {
 
             case 2:
                 option.equals(2);
-                matematicOperations.extremsValue();
+                matematicOperations.findExtremeValue();
                 break;
 
             case 3:
