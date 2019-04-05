@@ -1,10 +1,6 @@
-package Calculations;
-
-import com.company.CryptoCurrency;
-import com.company.LoadingData;
+package com.calculations;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
 public class Main {
 

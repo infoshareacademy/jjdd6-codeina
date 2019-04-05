@@ -1,11 +1,9 @@
-package Calculations;
+package com.calculations;
 
 import com.company.CryptoCurrency;
 import com.company.LoadingData;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -17,11 +15,10 @@ public class ChooseOption {
 
         System.out.println("Choose analyse period");
         LoadingData loadingData = new LoadingData();
-        List<CryptoCurrency> ld = loadingData.getCryptoCurrencyFromDateToDate("csv/btc.csv");
 
-
-
-
+        //TODO
+// Tu bede przyjmowac mape! Janek nad nia pracuje 05.04.2019
+//        List<CryptoCurrency> ld = loadingData.getCryptoCurrencyFromDateToDate("csv/btc.csv");
 
         System.out.println("What You want to see ?");
         System.out.println("1. Average price ");
@@ -33,6 +30,8 @@ public class ChooseOption {
         Scanner sc = new Scanner(System.in);
         Integer option = sc.nextInt();
 
+//        TODO
+        //Metody beda przyjmowac paremetr mapy, ktora bedzie zczytana wyzej
         switch (option) {
             case 1:
                 option.equals(1);

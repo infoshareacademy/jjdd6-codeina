@@ -1,4 +1,4 @@
-package Calculations;
+package com.calculations;
 
 public class Communicate {
 }
