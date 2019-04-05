@@ -7,6 +7,7 @@
     <groupId>com.infoshareacademy.jjdd6</groupId>
     <artifactId>codeina</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.target>1.10</maven.compiler.target>
@@ -36,6 +37,19 @@
                     <archive>
                         <manifest>
                             <mainClass>com.company.main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.company.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

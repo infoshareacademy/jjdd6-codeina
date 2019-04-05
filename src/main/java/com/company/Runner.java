@@ -4,37 +4,37 @@ import java.io.FileNotFoundException;
 
 public class Runner {
     private int con = 1;
-    private int Crypto = 0;
-    private int Option = 0;
+    private int crypto = 0;
+    private int option = 0;
 
-    public void Run() throws FileNotFoundException, InterruptedException {
+    public void run() throws FileNotFoundException, InterruptedException {
 
         Inteface inteface = new Inteface();
         Options options = new Options();
         while (con != 0) {
             try {
                 if (con == 1) {
-                    Crypto = inteface.Menu();
-                    if (Crypto <= 10) {
-                        Downloader.download(Crypto);
-                        inteface.Logo(Crypto);
+                    crypto = inteface.menu();
+                    if (crypto <= 10) {
+                        Downloader.download(crypto);
+                        inteface.Logo(crypto);
                         con = 2;
                     } else {
                         con = 10;
                     }
                 }
                 if (con == 2) {
-                    Option = inteface.Options();
-                    if (Option == 1) {
-                        options.Option1(Crypto);
+                    option = inteface.Options();
+                    if (option == 1) {
+                        options.Option1(crypto);
                         con = 9;
-                    } else if (Option == 2) {
-                        options.Option2(Crypto);
+                    } else if (option == 2) {
+                        options.Option2(crypto);
                         con = 9;
-                    }else if (Option == 3){
-                        options.Option3(Crypto);
+                    } else if (option == 3) {
+                        options.Option3(crypto);
                         con = 9;
-                    }else {
+                    } else {
                         con = 10;
                     }
                 }
@@ -52,7 +52,7 @@ public class Runner {
                 }
                 if (con == 10) {
                     inteface.error();
-                    if (Crypto == 0) {
+                    if (crypto == 0) {
                         con = 1;
                     } else {
                         con = 9;

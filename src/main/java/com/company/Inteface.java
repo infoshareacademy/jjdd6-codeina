@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Inteface {
 
-    public int Menu() {
+    public int menu() {
 
 
         System.out.println("----------------------------------------------------------------");
