@@ -5,6 +5,8 @@ import java.io.IOException;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        Downloader.download(2);
+        String csv = "csv/btc.csv" ;
+        LoadingData loadingData = new LoadingData() ;
+        loadingData.getCryptoCurrencyFromDateToDate(csv) ;
     }
 }

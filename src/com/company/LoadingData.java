@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,11 +27,15 @@ public class LoadingData {
     public CryptoCurrency sortingLineOfText(String lineOfText) { //zwraca obiekt (kryptowalutę z datą i ceną)
         String[] parts = lineOfText.split(",");
         Double price = 0.0;
+        LocalDate date ;
         try {
             price = Double.parseDouble(parts[5]);
         } catch (Exception e) {
         }
-        String date = parts[0];
+        try{date = LocalDate.parse(parts[0]);}catch (Exception e){
+            date =LocalDate.now() ;
+        }
+
         CryptoCurrency cryptoCurrency = new CryptoCurrency();
         cryptoCurrency.setPrice(price);
         cryptoCurrency.setDate(date);
@@ -50,14 +55,28 @@ public class LoadingData {
         boolean flag = false;
         CryptoCurrency cryptoCurrency = new CryptoCurrency();
         File file = new File(csv);
-        String lineOfText = null;
-        System.out.println("Choose date (date format :\"year-month-day\" ):");
-        Scanner scanner = new Scanner(System.in);
-        String date = scanner.nextLine();
-        Scanner inputStream = new Scanner(file);
-        try{
+        while(!flag) try {
+            String lineOfText = null;
+            System.out.println("Choose date (date format :\"year-month-day\" ):");
+            Scanner scanner = new Scanner(System.in);
+            String string = scanner.nextLine();
+            LocalDate date;
+
+            try {
+                date = LocalDate.parse(string);
+            } catch (Exception e) {
+                Inteface.emptySpacer();
+                System.out.println("----------------------------------------------------------------");
+                System.out.println("             Incorrect date format. Try again!");
+                System.out.println("----------------------------------------------------------------");
+                continue;
+            }
+            Scanner inputStream = new Scanner(file);
+            lineOfText = inputStream.next();
             while (inputStream.hasNext()) {
                 lineOfText = inputStream.next();
+                String [] parts =lineOfText.split(",") ;
+                if(parts[0]=="date"){continue;}
                 cryptoCurrency = sortingLineOfText(lineOfText);
                 if ((cryptoCurrency.getDate().equals(date))) {
                     flag = true;
@@ -67,12 +86,11 @@ public class LoadingData {
             if (!flag) {
                 Inteface.emptySpacer();
                 System.out.println("----------------------------------------------------------------");
-                System.out.println("    Incorrect date format, or date out of range. Try again!");
+                System.out.println("                 Date out of range. Try again!");
                 System.out.println("----------------------------------------------------------------");
-                gettingDateFromUserAndReturningCryptoCurrencyFromThatDate(csv);
             }
 
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -96,7 +114,7 @@ public class LoadingData {
         while (inputStream.hasNext()){
             lineOfText= inputStream.next() ;
             CryptoCurrency cryptoCurrency=sortingLineOfText(lineOfText) ;
-            String date =cryptoCurrency.getDate() ;
+            LocalDate date =cryptoCurrency.getDate() ;
             if((cryptoCurrency.getDate()).equals(firstCryptoCurrency.getDate())){
                 startAddingToList=true ;
             }
