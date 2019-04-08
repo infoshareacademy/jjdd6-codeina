@@ -1,17 +1,18 @@
 package com.company;
+
 import java.time.LocalDate;
 
 public class CryptoCurrency {
     private Double price;
     private LocalDate date;
 
-    public CryptoCurrency(){
+    public CryptoCurrency() {
 
     }
 
-    public CryptoCurrency(Double price , LocalDate date){
-        this.price= price ;
-        this.date = date ;
+    public CryptoCurrency(Double price, LocalDate date) {
+        this.price = price;
+        this.date = date;
     }
 
     public Double getPrice() {
