@@ -3,11 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
 public class LoadingData {
 
     public String readingLastLineOFFile(String fileName) throws FileNotFoundException { //zwraca ostatnią linijkę csf-ki
@@ -35,11 +31,7 @@ public class LoadingData {
         try{date = LocalDate.parse(parts[0]);}catch (Exception e){
             date =LocalDate.now() ;
         }
-
-        CryptoCurrency cryptoCurrency = new CryptoCurrency();
-        cryptoCurrency.setPrice(price);
-        cryptoCurrency.setDate(date);
-        return cryptoCurrency;
+        return new CryptoCurrency(price,date);
     }
 
     public void printingInformation(CryptoCurrency cryptoCurrency) { // wypisuje pobrane dane
@@ -51,7 +43,7 @@ public class LoadingData {
         printingInformation(sortingLineOfText(readingLastLineOFFile(csv)));
     }
 
-    public CryptoCurrency gettingDateFromUserAndReturningCryptoCurrencyFromThatDate(String csv) throws FileNotFoundException {
+    public CryptoCurrency scanningDateFromUser(String csv) throws FileNotFoundException {
         boolean flag = false;
         CryptoCurrency cryptoCurrency = new CryptoCurrency();
         File file = new File(csv);
@@ -62,32 +54,26 @@ public class LoadingData {
             String string = scanner.nextLine();
             LocalDate date;
 
-            try {
-                date = LocalDate.parse(string);
-            } catch (Exception e) {
-                Inteface.emptySpacer();
-                System.out.println("----------------------------------------------------------------");
-                System.out.println("             Incorrect date format. Try again!");
-                System.out.println("----------------------------------------------------------------");
-                continue;
-            }
-            Scanner inputStream = new Scanner(file);
-            lineOfText = inputStream.next();
-            while (inputStream.hasNext()) {
-                lineOfText = inputStream.next();
-                String [] parts =lineOfText.split(",") ;
-                if(parts[0]=="date"){continue;}
-                cryptoCurrency = sortingLineOfText(lineOfText);
-                if ((cryptoCurrency.getDate().equals(date))) {
+                    try {
+                        date = LocalDate.parse(string);
+                    } catch (Exception e) {
+                        printCommunicate1();
+                        continue;
+                    }
+                    Scanner inputStream = new Scanner(file);
+//            lineOfText = inputStream.next();
+                    while (inputStream.hasNext()) {
+                        lineOfText = inputStream.next();
+                        String [] parts =lineOfText.split(",") ;
+                        if(parts[0]=="date"){continue;}
+                        cryptoCurrency = sortingLineOfText(lineOfText);
+                        if ((cryptoCurrency.getDate().equals(date))) {
                     flag = true;
                     break;
                 }
             }
             if (!flag) {
-                Inteface.emptySpacer();
-                System.out.println("----------------------------------------------------------------");
-                System.out.println("                 Date out of range. Try again!");
-                System.out.println("----------------------------------------------------------------");
+            printCommunicate2();
             }
 
         } catch (FileNotFoundException e) {
@@ -97,35 +83,38 @@ public class LoadingData {
         return cryptoCurrency;
     }
 
-    public void printInformationFromHistoricalDate(String csv) throws FileNotFoundException { //<-wyświetla informacje po podaniu daty
-        CryptoCurrency cryptoCurrency =gettingDateFromUserAndReturningCryptoCurrencyFromThatDate(csv) ;
-        printingInformation(cryptoCurrency);
+    private void printCommunicate1() {
+        Inteface.emptySpacer();
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("             Incorrect date format. Try again!");
+        System.out.println("----------------------------------------------------------------");
     }
 
+    private void printCommunicate2() {
+        Inteface.emptySpacer();
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("                 Date out of range. Try again!");
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public void printInformationFromHistoricalDate(String csv) throws FileNotFoundException { //<-wyświetla informacje po podaniu daty
+        CryptoCurrency cryptoCurrency = scanningDateFromUser(csv) ;
+        printingInformation(cryptoCurrency);
+    }
+    public boolean newerDate(LocalDate ld1 , LocalDate ld2 ){
+        return ld1.compareTo(ld2)>0 ;
+    }
+
+
     public List<CryptoCurrency> getCryptoCurrencyFromDateToDate(String csv) throws FileNotFoundException { //WIP
-        String lineOfText = null;
-        boolean startAddingToList =false  ;
-        List<CryptoCurrency> listOfCryptoCurrencies = new ArrayList<>();
-        CryptoCurrency firstCryptoCurrency = gettingDateFromUserAndReturningCryptoCurrencyFromThatDate(csv);
-        CryptoCurrency lastCryptoCurrency = gettingDateFromUserAndReturningCryptoCurrencyFromThatDate(csv);
-        File file = new File(csv);
-        String data = null;
-        Scanner inputStream = new Scanner(file);
-        while (inputStream.hasNext()){
-            lineOfText= inputStream.next() ;
-            CryptoCurrency cryptoCurrency=sortingLineOfText(lineOfText) ;
-            LocalDate date =cryptoCurrency.getDate() ;
-            if((cryptoCurrency.getDate()).equals(firstCryptoCurrency.getDate())){
-                startAddingToList=true ;
-            }
-            if((cryptoCurrency.getDate()).equals(lastCryptoCurrency.getDate())){
-                listOfCryptoCurrencies.add(lastCryptoCurrency);
-                startAddingToList=false ;
-            }
-            else if(startAddingToList){
-                listOfCryptoCurrencies.add(cryptoCurrency) ;
-            }
+        CryptoCurrency firstCryptoCurrency = scanningDateFromUser(csv);
+        CryptoCurrency lastCryptoCurrency = scanningDateFromUser(csv);
+        if(newerDate(firstCryptoCurrency.getDate(),lastCryptoCurrency.getDate())){ // jesli pobrane dane sa w zlej kolejnosci zamien ich kolejnosc
+            CryptoCurrency temporary = firstCryptoCurrency ;
+            firstCryptoCurrency = lastCryptoCurrency ;
+            lastCryptoCurrency =temporary ;
         }
+        List<CryptoCurrency> listOfCryptoCurrencies =  loadingCrypotoCurrencyIntoMyList(csv,firstCryptoCurrency,lastCryptoCurrency) ;
 
 
         for (CryptoCurrency currency : listOfCryptoCurrencies) {
@@ -135,4 +124,34 @@ public class LoadingData {
         return listOfCryptoCurrencies;
     }
 
+    private List<CryptoCurrency> loadingCrypotoCurrencyIntoMyList(String csv ,CryptoCurrency first , CryptoCurrency last) throws FileNotFoundException {
+        List<CryptoCurrency> listOfCryptoCurrencies = new ArrayList<>();
+        String lineOfText = null;
+        boolean startAddingToList =false  ;
+        File file = new File(csv);
+        String data = null;
+        Scanner inputStream = new Scanner(file);
+        while (inputStream.hasNext()){
+            lineOfText= inputStream.next() ;
+            CryptoCurrency cryptoCurrency=sortingLineOfText(lineOfText) ;
+            LocalDate date =cryptoCurrency.getDate() ;
+            if((cryptoCurrency.getDate()).equals(first.getDate())){
+                startAddingToList=true ;
+            }
+            if((cryptoCurrency.getDate()).equals(last.getDate())){
+                listOfCryptoCurrencies.add(last);
+                startAddingToList=false ;
+            }
+            else if(startAddingToList){
+                listOfCryptoCurrencies.add(cryptoCurrency) ;
+            }
+        }
+        return listOfCryptoCurrencies ;
+    }
+
+    public Map<LocalDate ,CryptoCurrency> getMapFromList(List<CryptoCurrency> list){
+        Map<LocalDate, CryptoCurrency> map = new HashMap<LocalDate, CryptoCurrency>() ;
+        list.forEach(o-> map.put(o.getDate(),o));
+        return map ;
+    }
 }
