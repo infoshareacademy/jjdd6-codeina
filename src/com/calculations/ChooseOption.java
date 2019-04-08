@@ -2,16 +2,12 @@ package com.calculations;
 
 import com.company.CryptoCurrency;
 import com.company.LoadingData;
-
 import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class ChooseOption {
 
     public void choose() throws FileNotFoundException {
-
 
         System.out.println("Choose analyse period");
         LoadingData loadingData = new LoadingData();
@@ -30,28 +26,27 @@ public class ChooseOption {
         Scanner sc = new Scanner(System.in);
         Integer option = sc.nextInt();
 
-//        TODO
-        //Metody beda przyjmowac paremetr mapy, ktora bedzie zczytana wyzej
-        switch (option) {
-            case 1:
-                option.equals(1);
-                matematicOperations.average();
-                break;
 
-            case 2:
-                option.equals(2);
-                matematicOperations.findExtremeValue();
-                break;
-
-            case 3:
-                option.equals(3);
-                matematicOperations.median();
-                break;
-
-            default:
-                System.out.println("Choose again, wrong number!");
-                choose();
-        }
+//        switch (option) {
+//            case 1:
+//                option.equals(1);
+//                matematicOperations.average();
+//                break;
+//
+//            case 2:
+//                option.equals(2);
+//                matematicOperations.findExtremeValue();
+//                break;
+//
+//            case 3:
+//                option.equals(3);
+//                matematicOperations.median();
+//                break;
+//
+//            default:
+//                System.out.println("Choose again, wrong number!");
+//                choose();
+//        }
 
     }
 }

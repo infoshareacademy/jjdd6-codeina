@@ -1,58 +1,50 @@
 package com.calculations;
 
-
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class MatematicOperations{
-        //made for test
-        public static void main(String[] args) {
+public class MatematicOperations {
 
-                LocalDate localDate = LocalDate.now();
+    public Double average(Map<LocalDate, Double> fromCsv) {
 
-                Map<LocalDate, Double> cryptoMap = new HashMap<>();
+        Double sumOfElements = fromCsv.values().stream()
+                .collect(Collectors.summingDouble(Double::doubleValue));
+        return sumOfElements / fromCsv.size();
+    }
+
+    public Map.Entry<LocalDate, Double> findExtremeValue(Map<LocalDate, Double> fromCsv) {
+
+        Map.Entry<LocalDate, Double> highestValue = fromCsv.entrySet().stream()
+                .max(Map.Entry.comparingByValue(Comparator.comparingDouble(Double::doubleValue)))
+                .get();
+        return highestValue;
+    }
+
+    public double median(Map<LocalDate, Double> fromCsv) {
+
+        List<Double> arrayOfValues = new ArrayList<>(fromCsv.values());
+
+        int lengthOfArray =  arrayOfValues.size();
+        int med = lengthOfArray/2;
+
+        arrayOfValues = arrayOfValues.stream()
+                .sorted((o1, o2) -> (int) (o1 - o2))
+                .collect(Collectors.toList());
 
 
-                cryptoMap.put(new LocalDate("2018.01.05"), 11.00);
-
+        if (lengthOfArray % 2 == 0) {
+            med = (lengthOfArray + 1) /2;
+            System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + ".");
+            System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + ".");
+            return med;
         }
 
-
-
-
-
-        public void average(Map <LocalDate, Double> fromCsv) {
-
-
-
-
-
-        }
-
-        public static Map.Entry<LocalDate, Double> findExtremeValue(Map <LocalDate, Double> fromCsv) {
-
-
-                Map.Entry<LocalDate, Double> highestValue = fromCsv.entrySet().stream()
-                        .max(Map.Entry.comparingByValue(Comparator.comparingDouble(Double::doubleValue)))
-                        .get();
-
-                 return highestValue;
-
-        }
-
-        public void median(Map <Data, Double> fromCsv){
-
-
-
-
-        }
-
-
-
+            System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + ".");
+            System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + ".");
+        return med;
+    }
 }
-
 
 
