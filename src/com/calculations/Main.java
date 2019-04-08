@@ -9,7 +9,5 @@ public class Main {
         ChooseOption chooseOption = new ChooseOption();
         chooseOption.choose();
 
-
-
     }
 }

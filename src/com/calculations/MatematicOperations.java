@@ -11,6 +11,7 @@ public class MatematicOperations {
 
         Double sumOfElements = fromCsv.values().stream()
                 .collect(Collectors.summingDouble(Double::doubleValue));
+        System.out.println(sumOfElements/fromCsv.size());
         return sumOfElements / fromCsv.size();
     }
 
@@ -19,6 +20,7 @@ public class MatematicOperations {
         Map.Entry<LocalDate, Double> highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(Double::doubleValue)))
                 .get();
+        System.out.println(highestValue);
         return highestValue;
     }
 

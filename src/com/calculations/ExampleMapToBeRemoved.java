@@ -7,17 +7,10 @@ import java.util.Map;
 
 public class ExampleMapToBeRemoved {
 
-    public static void main(String[] args) {
 
-        MatematicOperations matematicOperations = new MatematicOperations();
+    public HashMap<LocalDate,Double> exampleMap(){
 
-        matematicOperations.median(exampleMap());
-    }
-
-
-    public static Map exampleMap(){
-
-        Map<LocalDate, Double> cryptoMap = new HashMap<>();
+        HashMap<LocalDate, Double> cryptoMap = new HashMap<>();
 
         LocalDate localDate = LocalDate.now();
 
