@@ -9,7 +9,7 @@ public class Options {
             "csv/doge.csv", "csv/etc.csv"};
 
     public void Option1(int Crypto) throws FileNotFoundException {
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
@@ -42,11 +42,11 @@ public class Options {
             case 10:
                 loadingData.printInformationFromLastLineOfCSV(cryptoCurrencyFile[9]);
                 break;
-        }System.out.println("----------------------------------------------------------------");
+        }Inteface.printLine();
 
     }
     public void Option2(int Crypto) throws FileNotFoundException {
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
@@ -79,10 +79,11 @@ public class Options {
             case 10:
                 loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
                 break;
-        }System.out.println("----------------------------------------------------------------");
+        }Inteface.printLine();
+
     }
         public void Option3(int Crypto) throws FileNotFoundException {
-            System.out.println("----------------------------------------------------------------");
+            Inteface.printLine();
             LoadingData loadingData = new LoadingData();
             switch (Crypto) {
                 case 1:
@@ -115,6 +116,6 @@ public class Options {
                 case 10:
                     loadingData.getCryptoCurrencyFromDateToDate(cryptoCurrencyFile[9]);
                     break;
-            }System.out.println("----------------------------------------------------------------");
+            }Inteface.printLine();
     }
 }

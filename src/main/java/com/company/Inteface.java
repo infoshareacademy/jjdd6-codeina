@@ -7,9 +7,9 @@ public class Inteface {
     public int menu() {
 
 
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("                   Choose Cryptocurrency:");
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("1) Bitcoin");
         System.out.println("2) Bitcoin Cash");
         System.out.println("3) Litecoin");
@@ -20,7 +20,7 @@ public class Inteface {
         System.out.println("8) Dash");
         System.out.println("9) Dogecoin");
         System.out.println("10) Ethereum Classic");
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
 
         return scanValueFromKeyboardWithCleaner();
     }
@@ -63,34 +63,34 @@ public class Inteface {
 
     public int Options() {
 
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("                   What you want to do:");
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("1) Show the last price");
         System.out.println("2) Show the price at given day");
         System.out.println("3) Show prices at given dates");
 
 
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         return scanValueFromKeyboardWithCleaner();
     }
 
     public int Exit() {
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("                   What you want to do:");
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("1) Return to Cryptocurrency selection");
         System.out.println("2) Return to Option selection");
         System.out.println("9) Exit");
 
 
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         int clientAnswerExit = scanValueFromKeyboardWithCleaner();
         if (clientAnswerExit == 9) {
             clearScreen();
-            System.out.println("----------------------------------------------------------------");
+            Inteface.printLine();
             System.out.println("                        Have a nice day!");
-            System.out.println("----------------------------------------------------------------");
+            Inteface.printLine();
         }
         return clientAnswerExit;
     }
@@ -107,14 +107,17 @@ public class Inteface {
     }
 
     public void error() {
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
         System.out.println("                ERROR! You chose wrong option.");
-        System.out.println("----------------------------------------------------------------");
+        Inteface.printLine();
     }
     public int scanValueFromKeyboardWithCleaner(){
         Scanner input = new Scanner(System.in);
         int clientAnswerMenu = input.nextInt();
         clearScreen();
         return clientAnswerMenu;
+    }
+    public static void printLine(){
+        System.out.println("----------------------------------------------------------------");
     }
 }
