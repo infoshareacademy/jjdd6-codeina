@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class MatematicOperations {
 
-
     public Double average(Map<LocalDate, Double> fromCsv) {
 
         Double sumOfElements = fromCsv.values().stream()
