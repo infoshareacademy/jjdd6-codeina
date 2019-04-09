@@ -42,7 +42,6 @@ public class ChooseOption {
 //
 //            case 4:
 //
-//
 //            default:
 //                System.out.println("Choose again, wrong number!");
 //                choose();
