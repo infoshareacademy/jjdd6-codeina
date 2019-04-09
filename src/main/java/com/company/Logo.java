@@ -5,7 +5,7 @@ public class Logo {
 
         char[] pixels = logo.toCharArray();
         for (int i = 0; i < pixels.length; i++) {
-            Thread.sleep(2);
+            Thread.sleep(1);
             System.out.printf(String.valueOf(pixels[i]));
         }
     }

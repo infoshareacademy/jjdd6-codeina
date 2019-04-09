@@ -2,14 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Inteface {
+public class Interface {
 
     public int menu() {
 
-
-        Inteface.printLine();
-        System.out.println("                   Choose Cryptocurrency:");
-        Inteface.printLine();
+        Interface.printLine();
+        System.out.println("                     Choose Cryptocurrency:");
+        Interface.printLine();
         System.out.println("1) Bitcoin");
         System.out.println("2) Bitcoin Cash");
         System.out.println("3) Litecoin");
@@ -20,12 +19,12 @@ public class Inteface {
         System.out.println("8) Dash");
         System.out.println("9) Dogecoin");
         System.out.println("10) Ethereum Classic");
-        Inteface.printLine();
+        Interface.printLine();
 
         return scanValueFromKeyboardWithCleaner();
     }
 
-    public void Logo(int Crypto) throws InterruptedException {
+    public void logo(int Crypto) throws InterruptedException {
         Logo logo = new Logo();
         switch (Crypto) {
             case 1:
@@ -61,45 +60,38 @@ public class Inteface {
         }
     }
 
-    public int Options() {
+    public int options() {
 
-        Inteface.printLine();
-        System.out.println("                   What you want to do:");
-        Inteface.printLine();
+        Interface.printLine();
+        System.out.println("                      What you want to do:");
+        Interface.printLine();
         System.out.println("1) Show the last price");
         System.out.println("2) Show the price at given day");
         System.out.println("3) Show prices at given dates");
 
-
-        Inteface.printLine();
+        Interface.printLine();
         return scanValueFromKeyboardWithCleaner();
     }
 
-    public int Exit() {
-        Inteface.printLine();
-        System.out.println("                   What you want to do:");
-        Inteface.printLine();
+    public int exit() {
+        Interface.printLine();
+        System.out.println("                      What you want to do:");
+        Interface.printLine();
         System.out.println("1) Return to Cryptocurrency selection");
         System.out.println("2) Return to Option selection");
         System.out.println("9) Exit");
 
 
-        Inteface.printLine();
+        Interface.printLine();
         int clientAnswerExit = scanValueFromKeyboardWithCleaner();
         if (clientAnswerExit == 9) {
             clearScreen();
-            Inteface.printLine();
+            Interface.printLine();
             System.out.println("                        Have a nice day!");
-            Inteface.printLine();
+            Interface.printLine();
         }
         return clientAnswerExit;
     }
-
-//    public static void emptySpacer() {
-//        for (int i = 0; i <= 20; i++) {
-//            System.out.println("\n");
-//        }
-//    }
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -107,14 +99,15 @@ public class Inteface {
     }
 
     public void error() {
-        Inteface.printLine();
-        System.out.println("                ERROR! You chose wrong option.");
-        Inteface.printLine();
+        clearScreen();
+        Interface.printLine();
+        System.out.println("!!!!!             ERROR! You chose wrong option!           !!!!!");
+        Interface.printLine();
     }
 
     public int scanValueFromKeyboardWithCleaner() {
-        Scanner input = new Scanner(System.in);
-        int clientAnswerMenu = input.nextInt();
+        Scanner scanInput = new Scanner(System.in);
+        int clientAnswerMenu = Integer.valueOf(scanInput.nextLine());
         clearScreen();
         return clientAnswerMenu;
     }

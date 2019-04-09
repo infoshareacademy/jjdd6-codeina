@@ -8,8 +8,8 @@ public class Options {
             "csv/eth.csv", "csv/xem.csv", "csv/dcr.csv", "csv/zec.csv", "csv/dash.csv",
             "csv/doge.csv", "csv/etc.csv"};
 
-    public void Option1(int Crypto) throws FileNotFoundException {
-        Inteface.printLine();
+    public void option1(int Crypto) throws FileNotFoundException {
+        Interface.printLine();
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
@@ -43,12 +43,12 @@ public class Options {
                 loadingData.printInformationFromLastLineOfCSV(cryptoCurrencyFile[9]);
                 break;
         }
-        Inteface.printLine();
+        Interface.printLine();
 
     }
 
-    public void Option2(int Crypto) throws FileNotFoundException {
-        Inteface.printLine();
+    public void option2(int Crypto) throws FileNotFoundException {
+        Interface.printLine();
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
@@ -82,12 +82,12 @@ public class Options {
                 loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
                 break;
         }
-        Inteface.printLine();
+        Interface.printLine();
 
     }
 
-    public void Option3(int Crypto) throws FileNotFoundException {
-        Inteface.printLine();
+    public void option3(int Crypto) throws FileNotFoundException {
+        Interface.printLine();
         LoadingData loadingData = new LoadingData();
         switch (Crypto) {
             case 1:
@@ -121,6 +121,6 @@ public class Options {
                 loadingData.getCryptoCurrencyFromDateToDate(cryptoCurrencyFile[9]);
                 break;
         }
-        Inteface.printLine();
+        Interface.printLine();
     }
 }

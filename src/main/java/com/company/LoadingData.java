@@ -56,7 +56,7 @@ public class LoadingData {
             Scanner scanner = new Scanner(System.in);
             String string = scanner.nextLine();
             LocalDate date;
-            Inteface.printLine();
+            Interface.printLine();
 
             try {
                 date = LocalDate.parse(string);
@@ -90,14 +90,14 @@ public class LoadingData {
     }
 
     private void printCommunicateWrongDateFormat() {
-        Inteface.clearScreen();
+        Interface.clearScreen();
         System.out.println("----------------------------------------------------------------");
         System.out.println("             Incorrect date format. Try again!");
         System.out.println("----------------------------------------------------------------");
     }
 
     private void printCommunicateDateOutOfRange() {
-        Inteface.clearScreen();
+        Interface.clearScreen();
         System.out.println("----------------------------------------------------------------");
         System.out.println("                 Date out of range. Try again!");
         System.out.println("----------------------------------------------------------------");

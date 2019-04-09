@@ -9,37 +9,37 @@ public class Runner {
 
     public void run() throws FileNotFoundException, InterruptedException {
 
-        Inteface inteface = new Inteface();
+        Interface anInterface = new Interface();
         Options options = new Options();
         while (con != 0) {
             try {
                 if (con == 1) {
-                    crypto = inteface.menu();
+                    crypto = anInterface.menu();
                     if (crypto <= 10) {
                         Downloader.download(crypto);
-                        inteface.Logo(crypto);
+                        anInterface.logo(crypto);
                         con = 2;
                     } else {
                         con = 10;
                     }
                 }
                 if (con == 2) {
-                    option = inteface.Options();
+                    option = anInterface.options();
                     if (option == 1) {
-                        options.Option1(crypto);
+                        options.option1(crypto);
                         con = 9;
                     } else if (option == 2) {
-                        options.Option2(crypto);
+                        options.option2(crypto);
                         con = 9;
                     } else if (option == 3) {
-                        options.Option3(crypto);
+                        options.option3(crypto);
                         con = 9;
                     } else {
                         con = 10;
                     }
                 }
                 if (con == 9) {
-                    int Exit = inteface.Exit();
+                    int Exit = anInterface.exit();
                     if (Exit == 9) {
                         con = 0;
                     } else if (Exit == 1) {
@@ -51,7 +51,7 @@ public class Runner {
                     }
                 }
                 if (con == 10) {
-                    inteface.error();
+                    anInterface.error();
                     if (crypto == 0) {
                         con = 1;
                     } else {
