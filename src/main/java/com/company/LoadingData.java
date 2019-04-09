@@ -137,7 +137,7 @@ public class LoadingData {
         File file = new File(csv);
         Scanner inputStream = new Scanner(file);
         while (inputStream.hasNext()) {
-             String lineOfText = inputStream.next();
+            String lineOfText = inputStream.next();
             CryptoCurrency cryptoCurrency = sortingLineOfText(lineOfText);
             if ((cryptoCurrency.getDate()).equals(first.getDate())) {
                 startAddingToList = true;

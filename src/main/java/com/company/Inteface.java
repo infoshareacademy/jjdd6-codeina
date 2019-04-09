@@ -111,13 +111,15 @@ public class Inteface {
         System.out.println("                ERROR! You chose wrong option.");
         Inteface.printLine();
     }
-    public int scanValueFromKeyboardWithCleaner(){
+
+    public int scanValueFromKeyboardWithCleaner() {
         Scanner input = new Scanner(System.in);
         int clientAnswerMenu = input.nextInt();
         clearScreen();
         return clientAnswerMenu;
     }
-    public static void printLine(){
+
+    public static void printLine() {
         System.out.println("----------------------------------------------------------------");
     }
 }
