@@ -1,42 +1,45 @@
-package com.company;
+package com.infoshareacademy.jjdd6;
 
 import java.io.FileNotFoundException;
 
 public class Runner {
     private int con = 1;
-    private int Crypto = 0;
-    private int Option = 0;
+    private int crypto = 0;
+    private int option = 0;
 
-    public void Run() throws FileNotFoundException, InterruptedException {
+    public void run() throws FileNotFoundException, InterruptedException {
 
-        Inteface inteface = new Inteface();
+        Interface anInterface = new Interface();
         Options options = new Options();
         while (con != 0) {
             try {
                 if (con == 1) {
-                    Crypto = inteface.Menu();
-                    if (Crypto <= 10) {
-                        Downloader.download(Crypto);
-                        inteface.Logo(Crypto);
+                    crypto = anInterface.menu();
+                    if (crypto <= 10) {
+                        Downloader.download(crypto);
+                        anInterface.logo(crypto);
                         con = 2;
                     } else {
                         con = 10;
                     }
                 }
                 if (con == 2) {
-                    Option = inteface.Options();
-                    if (Option == 1) {
-                        options.Option1(Crypto);
+                    option = anInterface.options();
+                    if (option == 1) {
+                        options.option1(crypto);
                         con = 9;
-                    } else if (Option == 2) {
-                        options.Option2(Crypto);
+                    } else if (option == 2) {
+                        options.option2(crypto);
+                        con = 9;
+                    } else if (option == 3) {
+                        options.option3(crypto);
                         con = 9;
                     } else {
                         con = 10;
                     }
                 }
                 if (con == 9) {
-                    int Exit = inteface.Exit();
+                    int Exit = anInterface.exit();
                     if (Exit == 9) {
                         con = 0;
                     } else if (Exit == 1) {
@@ -48,8 +51,8 @@ public class Runner {
                     }
                 }
                 if (con == 10) {
-                    inteface.error();
-                    if (Crypto == 0) {
+                    anInterface.error();
+                    if (crypto == 0) {
                         con = 1;
                     } else {
                         con = 9;

@@ -1,4 +1,4 @@
-package com.calculations;
+package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -37,13 +37,13 @@ public class MathematicOperation {
 
         if (lengthOfArray % 2 == 0) {
             med = (lengthOfArray + 1) / 2;
-            System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + ".");
-            System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + ".");
+            System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + "");
+            System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + "");
             return med;
         }
 
-        System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + ".");
-        System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + ".");
+        System.out.println("50% of records are equal or smaller than " + arrayOfValues.get(med) + "");
+        System.out.println("50% of records are equal or bigger than " + arrayOfValues.get(med) + "");
         return med;
     }
 }

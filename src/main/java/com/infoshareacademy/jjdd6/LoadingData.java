@@ -1,4 +1,4 @@
-package com.company;
+package com.infoshareacademy.jjdd6;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,6 +56,7 @@ public class LoadingData {
             Scanner scanner = new Scanner(System.in);
             String string = scanner.nextLine();
             LocalDate date;
+            Interface.printLine();
 
             try {
                 date = LocalDate.parse(string);
@@ -89,14 +90,14 @@ public class LoadingData {
     }
 
     private void printCommunicateWrongDateFormat() {
-        Inteface.emptySpacer();
+        Interface.clearScreen();
         System.out.println("----------------------------------------------------------------");
         System.out.println("             Incorrect date format. Try again!");
         System.out.println("----------------------------------------------------------------");
     }
 
     private void printCommunicateDateOutOfRange() {
-        Inteface.emptySpacer();
+        Interface.clearScreen();
         System.out.println("----------------------------------------------------------------");
         System.out.println("                 Date out of range. Try again!");
         System.out.println("----------------------------------------------------------------");
@@ -136,7 +137,7 @@ public class LoadingData {
         File file = new File(csv);
         Scanner inputStream = new Scanner(file);
         while (inputStream.hasNext()) {
-             String lineOfText = inputStream.next();
+            String lineOfText = inputStream.next();
             CryptoCurrency cryptoCurrency = sortingLineOfText(lineOfText);
             if ((cryptoCurrency.getDate()).equals(first.getDate())) {
                 startAddingToList = true;
