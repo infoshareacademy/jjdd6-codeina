@@ -10,7 +10,8 @@ public class Test {
 //        LoadingData loadingData = new LoadingData();
 //        List<CryptoCurrency> myList = loadingData.getCryptoCurrencyFromDateToDate(csv);
 //        SortingData sortingData = new SortingData();
-//        myList = sortingData.sortCryptoCurrencyByPrice(myList);
+//        myList = SortingData.sortCryptoCurrencyByPrice(myList);
 //        myList.forEach(loadingData::printingInformation);
+//        sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMaxToMin(loadingData.getCryptoCurrencyFromDateToDate(csv)));
     }
 }

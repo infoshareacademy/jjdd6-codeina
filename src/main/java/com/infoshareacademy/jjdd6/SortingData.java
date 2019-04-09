@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -18,5 +19,15 @@ public class SortingData {
     public void printSortedData(List<CryptoCurrency> list){
         LoadingData loadingData = new LoadingData();
         list.forEach(loadingData::printingInformation);
+    }
+    public void printingSortedDateFromCsvMaxtoMin(String csv) throws FileNotFoundException {
+        SortingData sortingData = new SortingData() ;
+        LoadingData loadingData = new LoadingData() ;
+        sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMaxToMin(loadingData.getCryptoCurrencyFromDateToDate(csv)));
+    }
+    public void printingSortedDateFromCsvMintoMax(String csv) throws FileNotFoundException {
+        SortingData sortingData = new SortingData() ;
+        LoadingData loadingData = new LoadingData() ;
+        sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMinToMax(loadingData.getCryptoCurrencyFromDateToDate(csv)));
     }
 }

@@ -68,9 +68,12 @@ public class Interface {
         System.out.println("1) Show the last price");
         System.out.println("2) Show the price at given day");
         System.out.println("3) Show prices at given dates");
-
+//todo option4
         Interface.printLine();
         return scanValueFromKeyboardWithCleaner();
+    }
+    public int subOptions(){                //todo podopcje ddla opcji 4
+    return 1;
     }
 
     public int exit() {
