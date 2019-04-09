@@ -1,4 +1,4 @@
-package com.company;
+package com.infoshareacademy.jjdd6;
 
 import java.io.File;
 import java.io.FileNotFoundException;

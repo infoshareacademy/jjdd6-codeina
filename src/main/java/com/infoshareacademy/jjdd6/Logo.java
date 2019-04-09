@@ -1,4 +1,4 @@
-package com.company;
+package com.infoshareacademy.jjdd6;
 
 public class Logo {
     public void printLogo(String logo) throws InterruptedException {

@@ -1,4 +1,4 @@
-package calculations;
+package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
 import java.util.*;
