@@ -1,9 +1,9 @@
 package com.calculations;
-
 import com.company.CryptoCurrency;
 import com.company.LoadingData;
-
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ChooseOption {
@@ -12,10 +12,6 @@ public class ChooseOption {
 
         System.out.println("Choose analyse period");
         LoadingData loadingData = new LoadingData();
-
-        //TODO
-//        Tu bedzie przyjmowana mapa. Ponizej przykladowa
-        ExampleMapToBeRemoved exampleMapToBeRemoved = new ExampleMapToBeRemoved();
 
         System.out.println("What You want to see ?");
         System.out.println("1. Average price ");
@@ -27,30 +23,30 @@ public class ChooseOption {
 
         Scanner sc = new Scanner(System.in);
         Integer option = sc.nextInt();
-
-        switch (option) {
-            case 1:
-                option.equals(1);
-                matematicOperations.average(exampleMapToBeRemoved.exampleMap());
-                choose();
-
-            case 2:
-                option.equals(2);
-                matematicOperations.findExtremeValue(exampleMapToBeRemoved.exampleMap());
-                choose();
-
-            case 3:
-                option.equals(3);
-                matematicOperations.median(exampleMapToBeRemoved.exampleMap());
-                choose();
-
-            case 4:
-
-
-            default:
-                System.out.println("Choose again, wrong number!");
-                choose();
-        }
+//
+//        switch (option) {
+//            case 1:
+//                option.equals(1);
+//                matematicOperations.average();
+//                choose();
+//
+//            case 2:
+//                option.equals(2);
+//                matematicOperations.findExtremeValue();
+//                choose();
+//
+//            case 3:
+//                option.equals(3);
+//                matematicOperations.median();
+//                choose();
+//
+//            case 4:
+//
+//
+//            default:
+//                System.out.println("Choose again, wrong number!");
+//                choose();
+//        }
 
     }
 }
