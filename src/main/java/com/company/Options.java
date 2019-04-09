@@ -42,7 +42,7 @@ public class Options {
             case 10:
                 loadingData.printInformationFromLastLineOfCSV(cryptoCurrencyFile[9]);
                 break;
-        }
+        }System.out.println("----------------------------------------------------------------");
 
     }
     public void Option2(int Crypto) throws FileNotFoundException {
@@ -79,7 +79,7 @@ public class Options {
             case 10:
                 loadingData.printInformationFromHistoricalDate(cryptoCurrencyFile[9]);
                 break;
-        }
+        }System.out.println("----------------------------------------------------------------");
     }
         public void Option3(int Crypto) throws FileNotFoundException {
             System.out.println("----------------------------------------------------------------");
@@ -115,6 +115,6 @@ public class Options {
                 case 10:
                     loadingData.getCryptoCurrencyFromDateToDate(cryptoCurrencyFile[9]);
                     break;
-            }
+            }System.out.println("----------------------------------------------------------------");
     }
 }

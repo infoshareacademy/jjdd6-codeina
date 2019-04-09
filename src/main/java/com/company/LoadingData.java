@@ -55,6 +55,7 @@ public class LoadingData {
         Scanner scanner = new Scanner(System.in);
         String date = scanner.nextLine();
         Scanner inputStream = new Scanner(file);
+        System.out.println("----------------------------------------------------------------");
         try{
             while (inputStream.hasNext()) {
                 lineOfText = inputStream.next();
@@ -65,7 +66,7 @@ public class LoadingData {
                 }
             }
             if (!flag) {
-                Inteface.emptySpacer();
+                Inteface.clearScreen();
                 System.out.println("----------------------------------------------------------------");
                 System.out.println("    Incorrect date format, or date out of range. Try again!");
                 System.out.println("----------------------------------------------------------------");

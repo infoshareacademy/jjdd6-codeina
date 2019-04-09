@@ -20,13 +20,9 @@ public class Inteface {
         System.out.println("8) Dash");
         System.out.println("9) Dogecoin");
         System.out.println("10) Ethereum Classic");
-
         System.out.println("----------------------------------------------------------------");
 
-        Scanner input = new Scanner(System.in);
-        int clientAnswerMenu = input.nextInt();
-        emptySpacer();
-        return clientAnswerMenu;
+        return scanValueFromKeyboardWithCleaner();
     }
 
     public void Logo(int Crypto) throws InterruptedException {
@@ -76,11 +72,7 @@ public class Inteface {
 
 
         System.out.println("----------------------------------------------------------------");
-        Scanner input = new Scanner(System.in);
-        int clientAnswerOptions = input.nextInt();
-        emptySpacer();
-        return clientAnswerOptions;
-
+        return scanValueFromKeyboardWithCleaner();
     }
 
     public int Exit() {
@@ -93,10 +85,9 @@ public class Inteface {
 
 
         System.out.println("----------------------------------------------------------------");
-        Scanner input = new Scanner(System.in);
-        int clientAnswerExit = input.nextInt();
-        emptySpacer();
+        int clientAnswerExit = scanValueFromKeyboardWithCleaner();
         if (clientAnswerExit == 9) {
+            clearScreen();
             System.out.println("----------------------------------------------------------------");
             System.out.println("                        Have a nice day!");
             System.out.println("----------------------------------------------------------------");
@@ -104,20 +95,26 @@ public class Inteface {
         return clientAnswerExit;
     }
 
-    public static void emptySpacer() {
-        for (int i = 0; i <= 20; i++) {
-            System.out.println("\n");
-        }
-    }
-
-//    public static void clearScreen() {
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
+//    public static void emptySpacer() {
+//        for (int i = 0; i <= 20; i++) {
+//            System.out.println("\n");
+//        }
 //    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
     public void error() {
         System.out.println("----------------------------------------------------------------");
         System.out.println("                ERROR! You chose wrong option.");
         System.out.println("----------------------------------------------------------------");
+    }
+    public int scanValueFromKeyboardWithCleaner(){
+        Scanner input = new Scanner(System.in);
+        int clientAnswerMenu = input.nextInt();
+        clearScreen();
+        return clientAnswerMenu;
     }
 }
