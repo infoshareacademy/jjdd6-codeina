@@ -4,11 +4,10 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MatematicOperations {
+public class MathematicOperation {
 
     public Double average(Map<LocalDate, Double> fromCsv) {
-
-        Double sumOfElements = fromCsv.values().stream()
+                Double sumOfElements = fromCsv.values().stream()
                 .collect(Collectors.summingDouble(Double::doubleValue));
         System.out.println(sumOfElements / fromCsv.size());
 
