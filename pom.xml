@@ -36,7 +36,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main.main</mainClass>
+                            <mainClass>com.infoshareacademy.jjdd6.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
