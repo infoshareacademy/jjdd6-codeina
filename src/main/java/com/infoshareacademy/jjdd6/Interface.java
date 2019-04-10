@@ -27,7 +27,7 @@ public class Interface {
         System.out.println("7) ZCash");
         System.out.println("8) Dash");
         System.out.println("9) Dogecoin");
-        System.out.println("10) Ethereum Classic");
+        System.out.println("10) PIVX");
         Interface.printLine();
 
         return scanValueFromKeyboardWithCleaner();
@@ -64,7 +64,7 @@ public class Interface {
                 logo.printLogo(logo.dogeCoinLogo);
                 break;
             case 10:
-                logo.printLogo(logo.ethereumClassicLogo);
+                logo.printLogo(logo.pivxLogo);
                 break;
         }
     }
