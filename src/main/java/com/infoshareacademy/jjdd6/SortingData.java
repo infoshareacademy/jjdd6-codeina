@@ -11,23 +11,39 @@ public class SortingData {
                 .sorted((o1, o2) -> (int) (o2.getPrice() - o1.getPrice()))
                 .collect(toList());
     }
-    public List<CryptoCurrency> sortCryptoCurrencyFromMinToMax(List<CryptoCurrency> list){
+
+    public List<CryptoCurrency> sortCryptoCurrencyFromMinToMax(List<CryptoCurrency> list) {
         return list.stream()
-                .sorted((o1,o2)->(int)(o1.getPrice()-o2.getPrice()))
-                .collect(toList()) ;
+                .sorted((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()))
+                .collect(toList());
     }
-    public void printSortedData(List<CryptoCurrency> list){
+
+    public void printSortedData(List<CryptoCurrency> list) {
         LoadingData loadingData = new LoadingData();
         list.forEach(loadingData::printingInformation);
     }
-    public void printingSortedDateFromCsvMaxtoMin(String csv) throws FileNotFoundException {
-        SortingData sortingData = new SortingData() ;
-        LoadingData loadingData = new LoadingData() ;
+
+    public void printingSortedPriceFromCsvMaxtoMin(String csv) throws FileNotFoundException {
+        SortingData sortingData = new SortingData();
+        LoadingData loadingData = new LoadingData();
         sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMaxToMin(loadingData.getCryptoCurrencyFromDateToDate(csv)));
     }
-    public void printingSortedDateFromCsvMintoMax(String csv) throws FileNotFoundException {
-        SortingData sortingData = new SortingData() ;
-        LoadingData loadingData = new LoadingData() ;
+
+    public void printingSortedPriceFromCsvMintoMax(String csv) throws FileNotFoundException {
+        SortingData sortingData = new SortingData();
+        LoadingData loadingData = new LoadingData();
         sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMinToMax(loadingData.getCryptoCurrencyFromDateToDate(csv)));
+    }
+
+    public List<CryptoCurrency> sortingDatesFromNewestToOldest(List<CryptoCurrency> list) {
+        return list.stream()
+                .sorted(((o1, o2) -> o2.getDate().compareTo(o1.getDate())))
+                .collect(toList());
+    }
+
+    public void printSortedListFromNewestToOldestDate(String csv) throws FileNotFoundException {
+        LoadingData loadingData = new LoadingData();
+        List<CryptoCurrency> sortedList = sortingDatesFromNewestToOldest(loadingData.getCryptoCurrencyFromDateToDate(csv));
+        sortedList.forEach(o -> loadingData.printingInformation(o));
     }
 }

@@ -4,7 +4,16 @@ import java.util.Scanner;
 
 public class Interface {
 
-    public int menu() {
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void printLine() {
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public int printMenu() {
 
         Interface.printLine();
         System.out.println("                     Choose Cryptocurrency:");
@@ -24,7 +33,7 @@ public class Interface {
         return scanValueFromKeyboardWithCleaner();
     }
 
-    public void logo(int Crypto) throws InterruptedException {
+    public void printLogo(int Crypto) throws InterruptedException {
         Logo logo = new Logo();
         switch (Crypto) {
             case 1:
@@ -68,12 +77,33 @@ public class Interface {
         System.out.println("1) Show the last price");
         System.out.println("2) Show the price at given day");
         System.out.println("3) Show prices at given dates");
-//todo option4
+        System.out.println("4) Show sorted dates or prices");
+        System.out.println("5) Show statistic data");
         Interface.printLine();
         return scanValueFromKeyboardWithCleaner();
     }
-    public int subOptions(){                //todo podopcje ddla opcji 4
-    return 1;
+
+    public int subOptionsFor4() {
+        Interface.printLine();
+        System.out.println("                      What you want to do:");
+        Interface.printLine();
+        System.out.println("1) Show sorted by prices ascending");
+        System.out.println("2) Show sorted by prices descending");
+        System.out.println("3) Show sorted by dates ascending");
+        System.out.println("4) Show sorted by dates descending");
+        Interface.printLine();
+        return scanValueFromKeyboardWithCleaner();
+    }
+
+    public int subOptionsFor5() {
+        Interface.printLine();
+        System.out.println("                      What you want to do:");
+        Interface.printLine();
+        System.out.println("1) Show wanted average");
+        System.out.println("2) Show wanted extreme value");
+        System.out.println("3) Show wanted median");
+        Interface.printLine();
+        return scanValueFromKeyboardWithCleaner();
     }
 
     public int exit() {
@@ -96,11 +126,6 @@ public class Interface {
         return clientAnswerExit;
     }
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     public void error() {
         clearScreen();
         Interface.printLine();
@@ -113,9 +138,5 @@ public class Interface {
         int clientAnswerMenu = Integer.valueOf(scanInput.nextLine());
         clearScreen();
         return clientAnswerMenu;
-    }
-
-    public static void printLine() {
-        System.out.println("----------------------------------------------------------------");
     }
 }

@@ -15,7 +15,7 @@ public class Downloader {
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
 
-    public static void download(int Crypto) throws IOException {
+    public static void downloadCryptocurrency(int Crypto) throws IOException {
         switch (Crypto) {
             case 1:
                 downloader("https://coinmetrics.io/data/btc.csv", "btc");
