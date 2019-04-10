@@ -1,38 +1,40 @@
 package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MathematicOperation {
 
-    public Double average(Map<LocalDate, Double> fromCsv) {
-                Double sumOfElements = fromCsv.values().stream()
-                .collect(Collectors.summingDouble(Double::doubleValue));
+    public Double average(Map<LocalDate, CryptoCurrency> fromCsv) {
+        double sumOfElements = fromCsv.values().stream().mapToDouble(CryptoCurrency::getPrice).sum();
         System.out.println(sumOfElements / fromCsv.size());
 
         return sumOfElements / fromCsv.size();
     }
 
-    public Map.Entry<LocalDate, Double> findExtremeValue(Map<LocalDate, Double> fromCsv) {
+    public Map.Entry<LocalDate, CryptoCurrency> findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
 
-        Map.Entry<LocalDate, Double> highestValue = fromCsv.entrySet().stream()
-                .max(Map.Entry.comparingByValue(Comparator.comparingDouble(Double::doubleValue)))
+        Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
+                .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
 
-        System.out.println(highestValue);
+        System.out.println("Price: "+highestValue);
         return highestValue;
     }
 
-    public double median(Map<LocalDate, Double> fromCsv) {
+    public double median(Map<LocalDate, CryptoCurrency> fromCsv) {
 
-        List<Double> arrayOfValues = new ArrayList<>(fromCsv.values());
+        List<CryptoCurrency> arrayOfValues = new ArrayList<>(fromCsv.values());
 
         int lengthOfArray = arrayOfValues.size();
         int med = lengthOfArray / 2;
 
         arrayOfValues = arrayOfValues.stream()
-                .sorted((o1, o2) -> (int) (o1 - o2))
+                .sorted((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()))
                 .collect(Collectors.toList());
 
         if (lengthOfArray % 2 == 0) {

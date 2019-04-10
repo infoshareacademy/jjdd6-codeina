@@ -23,11 +23,12 @@ public class LoadingData {
 
     public CryptoCurrency sortingLineOfText(String lineOfText) {
         String[] parts = lineOfText.split(",");
-        Double price = 0.0;
+        Double price;
         LocalDate date;
         try {
             price = Double.parseDouble(parts[5]);
         } catch (Exception e) {
+            price = 0.0;
         }
         try {
             date = LocalDate.parse(parts[0]);
@@ -91,16 +92,16 @@ public class LoadingData {
 
     private void printCommunicateWrongDateFormat() {
         Interface.clearScreen();
-        System.out.println("----------------------------------------------------------------");
+        Interface.printLine();
         System.out.println("             Incorrect date format. Try again!");
-        System.out.println("----------------------------------------------------------------");
+        Interface.printLine();
     }
 
     private void printCommunicateDateOutOfRange() {
         Interface.clearScreen();
-        System.out.println("----------------------------------------------------------------");
+        Interface.printLine();
         System.out.println("                 Date out of range. Try again!");
-        System.out.println("----------------------------------------------------------------");
+        Interface.printLine();
     }
 
     public void printInformationFromHistoricalDate(String csv) throws FileNotFoundException {
@@ -124,9 +125,9 @@ public class LoadingData {
         List<CryptoCurrency> listOfCryptoCurrencies = loadingCrypotoCurrencyIntoMyList(csv, firstCryptoCurrency, lastCryptoCurrency);
 
 
-        for (CryptoCurrency currency : listOfCryptoCurrencies) {
-            printingInformation(currency);
-        }
+//        for (CryptoCurrency currency : listOfCryptoCurrencies) {
+//            printingInformation(currency);
+//        }
 
         return listOfCryptoCurrencies;
     }
@@ -156,5 +157,10 @@ public class LoadingData {
         Map<LocalDate, CryptoCurrency> map = new HashMap<LocalDate, CryptoCurrency>();
         list.forEach(o -> map.put(o.getDate(), o));
         return map;
+    }
+
+    public void printAllCryptoCurrencies(String csv) throws FileNotFoundException {
+        List<CryptoCurrency> list = getCryptoCurrencyFromDateToDate(csv);
+        list.forEach(this::printingInformation);
     }
 }
