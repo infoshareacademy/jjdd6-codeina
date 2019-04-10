@@ -80,7 +80,7 @@ public class LoadingData {
                 }
             }
             if (!flag) {
-                printCommunicateDateOutOfRange();
+                printCommunicateDateOutOfRange(csv);
             }
 
         } catch (FileNotFoundException e) {
@@ -94,13 +94,17 @@ public class LoadingData {
         Interface.clearScreen();
         Interface.printLine();
         System.out.println("             Incorrect date format. Try again!");
+        System.out.printf("                        (\"yyyy-MM-dd\") ");
         Interface.printLine();
     }
 
-    private void printCommunicateDateOutOfRange() {
+    private void printCommunicateDateOutOfRange(String csv) throws FileNotFoundException {
+       LocalDate firstDate =  (getFirstDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
+       LocalDate lastDate =  (getLastDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
         Interface.clearScreen();
         Interface.printLine();
         System.out.println("                 Date out of range. Try again!");
+        System.out.println(String.format("Range for this cryptocurrency is from %s to %s",firstDate,lastDate));
         Interface.printLine();
     }
 
@@ -123,11 +127,6 @@ public class LoadingData {
             lastCryptoCurrency = temporary;
         }
         List<CryptoCurrency> listOfCryptoCurrencies = loadingCrypotoCurrencyIntoMyList(csv, firstCryptoCurrency, lastCryptoCurrency);
-
-
-//        for (CryptoCurrency currency : listOfCryptoCurrencies) {
-//            printingInformation(currency);
-//        }
 
         return listOfCryptoCurrencies;
     }
@@ -162,5 +161,24 @@ public class LoadingData {
     public void printAllCryptoCurrencies(String csv) throws FileNotFoundException {
         List<CryptoCurrency> list = getCryptoCurrencyFromDateToDate(csv);
         list.forEach(this::printingInformation);
+    }
+    public List<CryptoCurrency> loadAllCryptoCurrenciesFromCsv(String csv) throws FileNotFoundException {
+        List<CryptoCurrency> cryptoCurrencyList =new ArrayList<CryptoCurrency>() ;
+        File file = new File(csv) ;
+        Scanner scanner= new Scanner(file) ;
+        while(scanner.hasNext()){
+            String line = scanner.next() ;
+            String[] parts = line.split(",");
+            if(!parts[0].equals("date")){
+                cryptoCurrencyList.add(sortingLineOfText(line)) ;
+            }
+        }
+        return cryptoCurrencyList ;
+    }
+    public CryptoCurrency getFirstDate(List<CryptoCurrency>list){
+        return list.get(0) ;
+    }
+    public CryptoCurrency getLastDate(List<CryptoCurrency>list){
+        return list.get(list.size()-1) ;
     }
 }
