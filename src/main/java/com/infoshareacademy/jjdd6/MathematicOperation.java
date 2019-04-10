@@ -44,7 +44,7 @@ public class MathematicOperation {
             loadingData.printingInformation(arrayOfValues.get(med));
             return med;
         }
-        System.out.print("50% of records are equal or smaller than ");
+        System.out.println("50% of records are equal or smaller than ");
         loadingData.printingInformation(arrayOfValues.get(med));
         return med;
     }
