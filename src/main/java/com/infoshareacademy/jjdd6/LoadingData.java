@@ -99,12 +99,12 @@ public class LoadingData {
     }
 
     private void printCommunicateDateOutOfRange(String csv) throws FileNotFoundException {
-       LocalDate firstDate =  (getFirstDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
-       LocalDate lastDate =  (getLastDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
+        LocalDate firstDate = (getFirstDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
+        LocalDate lastDate = (getLastDate(loadAllCryptoCurrenciesFromCsv(csv))).getDate();
         Interface.clearScreen();
         Interface.printLine();
         System.out.println("                 Date out of range. Try again!");
-        System.out.println(String.format("Range for this cryptocurrency is from %s to %s",firstDate,lastDate));
+        System.out.println(String.format("Range for this cryptocurrency is from %s to %s", firstDate, lastDate));
         Interface.printLine();
     }
 
@@ -162,23 +162,26 @@ public class LoadingData {
         List<CryptoCurrency> list = getCryptoCurrencyFromDateToDate(csv);
         list.forEach(this::printingInformation);
     }
+
     public List<CryptoCurrency> loadAllCryptoCurrenciesFromCsv(String csv) throws FileNotFoundException {
-        List<CryptoCurrency> cryptoCurrencyList =new ArrayList<CryptoCurrency>() ;
-        File file = new File(csv) ;
-        Scanner scanner= new Scanner(file) ;
-        while(scanner.hasNext()){
-            String line = scanner.next() ;
+        List<CryptoCurrency> cryptoCurrencyList = new ArrayList<CryptoCurrency>();
+        File file = new File(csv);
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNext()) {
+            String line = scanner.next();
             String[] parts = line.split(",");
-            if(!parts[0].equals("date")){
-                cryptoCurrencyList.add(sortingLineOfText(line)) ;
+            if (!parts[0].equals("date")) {
+                cryptoCurrencyList.add(sortingLineOfText(line));
             }
         }
-        return cryptoCurrencyList ;
+        return cryptoCurrencyList;
     }
-    public CryptoCurrency getFirstDate(List<CryptoCurrency>list){
-        return list.get(0) ;
+
+    public CryptoCurrency getFirstDate(List<CryptoCurrency> list) {
+        return list.get(0);
     }
-    public CryptoCurrency getLastDate(List<CryptoCurrency>list){
-        return list.get(list.size()-1) ;
+
+    public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
+        return list.get(list.size() - 1);
     }
 }
