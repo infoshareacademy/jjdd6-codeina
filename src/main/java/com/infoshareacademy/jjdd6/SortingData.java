@@ -44,6 +44,6 @@ public class SortingData {
     public void printSortedListFromNewestToOldestDate(String csv) throws FileNotFoundException {
         LoadingData loadingData = new LoadingData();
         List<CryptoCurrency> sortedList = sortingDatesFromNewestToOldest(loadingData.getCryptoCurrencyFromDateToDate(csv));
-        sortedList.forEach(o -> loadingData.printingInformation(o));
+        sortedList.forEach(loadingData::printingInformation);
     }
 }
