@@ -22,7 +22,7 @@ public class MathematicOperation {
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
 
-        System.out.println("Price: ");
+        System.out.println("Highest value at given range is in");
         loadingData.printingInformation(highestValue.getValue());
         return highestValue;
     }
