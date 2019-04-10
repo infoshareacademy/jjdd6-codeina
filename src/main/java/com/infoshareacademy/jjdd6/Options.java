@@ -6,7 +6,7 @@ public class Options {
 
     private String[] cryptoCurrencyFile = {"csv/btc.csv", "csv/bch.csv", "csv/ltc.csv",
             "csv/eth.csv", "csv/xem.csv", "csv/dcr.csv", "csv/zec.csv", "csv/dash.csv",
-            "csv/doge.csv", "csv/etc.csv"};
+            "csv/doge.csv", "csv/pivx.csv"};
 
     public void optionShowLastPrice(int Crypto) throws FileNotFoundException {
         Interface.printLine();

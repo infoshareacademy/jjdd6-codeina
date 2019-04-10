@@ -181,33 +181,48 @@ public class Logo {
                     "MMMMMMMMMMMMMMMMMMMMMMWX0Oxolc::;;;;;;;::;;;:;;;::cldxO0XWMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "MMMMMMMMMMMMMMMMMMMMMMMMMMWNX0kxolcc::::::::ccloxO0XWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "--------------------------------------------------------------------------------\n";
-    public String ethereumClassicLogo =
+    public String pivxLogo =
             "--------------------------------------------------------------------------------\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxc;cONMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdl:;,:dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoll:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dolll:;;,,,ckNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdlllllc;;,,,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxollodxOOkxl:;,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dooxO0KX0OkO00Odl:,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMXOxk0KXKOxdoc;;:ldO00kdldKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXKXK0kdollllc;,,,,;:oxO00KNMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOdllcllllll:;,,,,,,,,;cxKWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWX0kdl:;;;;;;;,,''''',:ok0KWMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMWXOOKK0koc;,,,''',;lxO00kx0NMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKxodk0KKOxoc:cdO00kdc:lOWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolooxk0KK00Odl:,,;dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0dllllodol:;,,,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkollll:;,,,,;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOdlll:;,,,;dXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxol:;,,:kNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc;;l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNOolxXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
-                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMWNXK0kxdol:;,'',;:clodxkO0XXNWMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMWWXK0Okxolc:;,'......',,::::;;,,,,,;:clodxkO0KXNWWMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMWNXK0kxdol:;,'....',;;:clodxkO0KXXXXK00Okxxdolcc:;;,,;;:clodxkO0KXNWMMMMMM\n" +
+                    "MMMMMMKl,,''',;:cloddxkO0KXNNWWWWNNXK00OO00KXNNWWWWWNXXK0Okkxdollc::;;::oKMMMMMM\n" +
+                    "MMMMMMO;'ck0KKXNWWWWWNXXK0Okkxdollc:;;;,,;;;:cllodxkkO0KXXNWWWWWNNXK0Oo;c0MMMMMM\n" +
+                    "MMMMMMO;'xWWKOkxdddolc::;;,,,,,,,,,,,,,,,,,,,,,,,,,,,,;;::cloddxkO0XWWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXl....',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;dXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc....',,,,,,,,,,,,,,,;;,,,,,,,,,,;,,,,,,,,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc....',,,,,,,,,,:xOOOOOOOOOOOOOOOOOkkxoc;,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc.....',,,,,,,,,l0WWWWWWWWWWWWWWWWWMMMWN0xc;,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc......,,,,,,,,,;cooooolllllolllllodxOXWMWXxc,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc......',,,,,,,,,,,,,,,,,,,,,,,,,,,,,;:dKWMW0c,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc.......',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,l0WMWk:,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc........,,,,;:cccccccccccccccc;,,,,,,,,,oXMMXo,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc.........,,,:kNNNNNNNNNNNNNNNKo,,,,,,,,,lKMMNd,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc..........',;okkkkkkkkkkkkkkkxc,,,,,,,,,lKMMXo,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc...........',,,,,,,,,,,,,,,,,,,,,,,,,,,:kWMM0c,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc............',,,,,,,,,,,,,,,,,,,,,,,,;ckNMMXo;,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc.............',,,;;;;;;;;;;;;;;;;;:cokXWMWKo;,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc...............'ck000000000000000KKNWMMWKxc,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc................lNMMWWWWNNNWWWWWWNNXKOxo:,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc................lNMMKdllllllllllllc:;;,,,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc................lNMM0:',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc................lNMMO;..'',,,,,,,,,,,,,,,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXc................lNMMO;......'',,,,,,,,,,,,,,,,,,,,,,,,oXWk;c0MMMMMM\n" +
+                    "MMMMMMO;'xWXl................lNMMO;...........''',,,,,,,,,,,,,,,,,,dNWk;c0MMMMMM\n" +
+                    "MMMMMM0:.oNWk,...............lNMMO;................''''',,,,,,,,,,cOWNd;lKMMMMMM\n" +
+                    "MMMMMMNd';kWNk;..............lNMMO;...........................''':OWWO:;xNMMMMMM\n" +
+                    "MMMMMMMXo';xNW0l,............lNMMO;............................,oKWNk:;dXMMMMMMM\n" +
+                    "MMMMMMMMNd,'l0WN0l,..........;oddc'..........................,o0NW0o;:xNMMMMMMMM\n" +
+                    "MMMMMMMMMW0l',l0NWKd:'....................................':dKWN0o:;o0WMMMMMMMMM\n" +
+                    "MMMMMMMMMMMNOc''ckKWNOo;'..............................';oONWXkl;;lONMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMNOo,';oOXWXOo:'........................,:dOXWXOd:;:o0NMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMWKxc,';oOXWN0xl;'................';lx0NWXOdc;;cxKWMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMN0d:,';lx0NWXOxl;'........';lx0XWNKko:;;cd0NMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMN0xc,.,:okKNWX0xoc;;cok0NWNKOdc;,;cdONWMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMWKkl;'.,:ok0NWWNNNWNKkdl:;;:ox0NMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc,..';ldkkxoc;;,:ldOXWMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKkdc,..',,;:ldkKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+                    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0o;,;cd0NWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
                     "--------------------------------------------------------------------------------\n";
     public String nemLogo = "--------------------------------------------------------------------------------\n" +
             "MMMMMMMMMMMMMMMMMMMMMMMMMWNNXK00OkkkxxxxxxxxkkOO0KKXNWWMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
