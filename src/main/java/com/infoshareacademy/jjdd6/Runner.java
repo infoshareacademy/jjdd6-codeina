@@ -72,6 +72,9 @@ public class Runner {
                         options.subOptionExtreme(crypto);
                         con = 9;
                     } else if (subOption5 == 3) {
+                        options.subOptionSmallestValue(crypto);
+                        con = 9;
+                    } else if (subOption5 == 4) {
                         options.subOptionMedian(crypto);
                         con = 9;
                     } else {

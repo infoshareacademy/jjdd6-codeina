@@ -101,7 +101,8 @@ public class Interface {
         Interface.printLine();
         System.out.println("1) Show wanted average");
         System.out.println("2) Show wanted extreme value");
-        System.out.println("3) Show wanted median");
+        System.out.println("3) Show wanted smallest value");
+        System.out.println("4) Show wanted median");
         Interface.printLine();
         return scanValueFromKeyboardWithCleaner();
     }
