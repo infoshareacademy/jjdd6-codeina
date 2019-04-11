@@ -79,7 +79,6 @@ public class LoadingData {
         Interface.clearScreen();
         Interface.printLine();
         System.out.println("             Incorrect date format. Try again!");
-        System.out.printf("                        (\"yyyy-MM-dd\") ");
         Interface.printLine();
     }
 
