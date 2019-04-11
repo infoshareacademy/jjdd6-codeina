@@ -7,20 +7,6 @@ import java.util.*;
 
 public class LoadingData {
 
-    public String readingLastLineOFFile(String fileName) throws FileNotFoundException {
-        File file = new File(fileName);
-        String data = null;
-        try {
-            Scanner inputStream = new Scanner(file);
-            while (inputStream.hasNext()) {
-                data = inputStream.next();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-
     public CryptoCurrency sortingLineOfText(String lineOfText) {
         String[] parts = lineOfText.split(",");
         Double price;
@@ -44,7 +30,7 @@ public class LoadingData {
     }
 
     public void printInformationFromLastLineOfCSV(String csv) throws FileNotFoundException {
-        printingInformation(sortingLineOfText(readingLastLineOFFile(csv)));
+        printingInformation(getLastDate(loadAllCryptoCurrenciesFromCsv(csv)));
     }
 
     public CryptoCurrency scanningDateFromUser(String csv) throws FileNotFoundException {
@@ -66,7 +52,6 @@ public class LoadingData {
                 continue;
             }
             Scanner inputStream = new Scanner(file);
-//            lineOfText = inputStream.next();
             while (inputStream.hasNext()) {
                 lineOfText = inputStream.next();
                 String[] parts = lineOfText.split(",");
