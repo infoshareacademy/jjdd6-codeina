@@ -48,6 +48,8 @@ public class MathematicOperation {
         loadingData.printingInformation(arrayOfValues.get(med));
         return med;
     }
+
+    public double findHighestValueEver(LI)
 }
 
 
