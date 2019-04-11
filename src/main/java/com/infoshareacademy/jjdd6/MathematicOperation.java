@@ -1,10 +1,7 @@
 package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MathematicOperation {
@@ -25,6 +22,16 @@ public class MathematicOperation {
         System.out.println("Highest value at given range is in");
         loadingData.printingInformation(highestValue.getValue());
         return highestValue;
+    }
+    public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
+        LoadingData loadingData = new LoadingData();
+
+        Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
+                .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
+                .get();
+        System.out.println("Highest value at given range is in");
+        loadingData.printingInformation(lowestValue.getValue());
+        return lowestValue;
     }
 
     public double median(Map<LocalDate, CryptoCurrency> fromCsv) {
@@ -49,7 +56,6 @@ public class MathematicOperation {
         return med;
     }
 
-    public double findHighestValueEver(LI)
 }
 
 
