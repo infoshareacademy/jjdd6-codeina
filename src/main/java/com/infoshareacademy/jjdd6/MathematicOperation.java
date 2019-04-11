@@ -29,7 +29,7 @@ public class MathematicOperation {
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
-        System.out.println("Highest value at given range is in");
+        System.out.println("Smallest value at given range is in");
         loadingData.printingInformation(lowestValue.getValue());
         return lowestValue;
     }
