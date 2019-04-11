@@ -14,6 +14,7 @@ public class MathematicOperation {
     }
 
     public Map.Entry<LocalDate, CryptoCurrency> findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
+
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
