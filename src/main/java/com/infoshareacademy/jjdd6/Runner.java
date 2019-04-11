@@ -13,6 +13,7 @@ public class Runner {
 
         Interface anInterface = new Interface();
         Options options = new Options();
+        Logo.printLogo(new Logo().applicationLogo);
         while (con != 0) {
             try {
                 if (con == 1) {
