@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Runner {
@@ -11,6 +12,7 @@ public class Runner {
 
     public void run() throws FileNotFoundException, InterruptedException {
 
+        new File("csv").mkdirs();
         Interface anInterface = new Interface();
         Options options = new Options();
         Logo.printLogo(new Logo().applicationLogo);
