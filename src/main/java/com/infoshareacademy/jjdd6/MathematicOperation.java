@@ -2,16 +2,14 @@ package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.*;
 import java.util.logging.Logger;
 
 import java.util.stream.Collectors;
 
 public class MathematicOperation {
 
-
     public Double average(Map<LocalDate, CryptoCurrency> fromCsv) {
-
-
         double sumOfElements = fromCsv.values().stream().mapToDouble(CryptoCurrency::getPrice).sum();
         System.out.println(String.format("Average price = %s (USD)", (sumOfElements / fromCsv.size())));
 
@@ -19,8 +17,6 @@ public class MathematicOperation {
     }
 
     public Map.Entry<LocalDate, CryptoCurrency> findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
-
-
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
@@ -30,8 +26,8 @@ public class MathematicOperation {
         loadingData.printingInformation(highestValue.getValue());
         return highestValue;
     }
-    public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
 
+    public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
@@ -62,7 +58,6 @@ public class MathematicOperation {
         loadingData.printingInformation(arrayOfValues.get(med));
         return med;
     }
-
 }
 
 

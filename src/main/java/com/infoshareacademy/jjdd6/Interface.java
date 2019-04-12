@@ -13,6 +13,23 @@ public class Interface {
         System.out.println("----------------------------------------------------------------");
     }
 
+    public static int whereAreYouFrom() {
+        Interface.printLine();
+        System.out.println("                     Choose region of origin:");
+        Interface.printLine();
+        System.out.println("1) US");
+        System.out.println("2) Europe");
+        Interface.printLine();
+        return scanValueFromKeyboardWithCleaner();
+    }
+
+    public static int scanValueFromKeyboardWithCleaner() {
+        Scanner scanInput = new Scanner(System.in);
+        int clientAnswerMenu = Integer.valueOf(scanInput.nextLine());
+        clearScreen();
+        return clientAnswerMenu;
+    }
+
     public int printMenu() {
 
         Interface.printLine();
@@ -83,7 +100,7 @@ public class Interface {
         return scanValueFromKeyboardWithCleaner();
     }
 
-    public int subOptionsFor4() {
+    public int subOptionsForDatesAndPricesSort() {
         Interface.printLine();
         System.out.println("                      What you want to do:");
         Interface.printLine();
@@ -95,13 +112,14 @@ public class Interface {
         return scanValueFromKeyboardWithCleaner();
     }
 
-    public int subOptionsFor5() {
+    public int subOptionsForMathOperations() {
         Interface.printLine();
         System.out.println("                      What you want to do:");
         Interface.printLine();
         System.out.println("1) Show wanted average");
         System.out.println("2) Show wanted extreme value");
-        System.out.println("3) Show wanted median");
+        System.out.println("3) Show wanted smallest value");
+        System.out.println("4) Show wanted median");
         Interface.printLine();
         return scanValueFromKeyboardWithCleaner();
     }
@@ -131,12 +149,5 @@ public class Interface {
         Interface.printLine();
         System.out.println("!!!!!             ERROR! You chose wrong option!           !!!!!");
         Interface.printLine();
-    }
-
-    public int scanValueFromKeyboardWithCleaner() {
-        Scanner scanInput = new Scanner(System.in);
-        int clientAnswerMenu = Integer.valueOf(scanInput.nextLine());
-        clearScreen();
-        return clientAnswerMenu;
     }
 }
