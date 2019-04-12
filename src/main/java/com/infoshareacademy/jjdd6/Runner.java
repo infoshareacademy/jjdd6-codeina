@@ -99,7 +99,8 @@ public class Runner {
                         con = 9;
                     }
                 }
-            } catch (Exception InputMismatchException) {
+            } catch (Exception inputMismatchException) {
+
                 con = 10;
             }
         }

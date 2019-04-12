@@ -1,11 +1,16 @@
 package com.infoshareacademy.jjdd6;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.*;
 
 public class LoadingData {
+
+    private static final Logger LOGGER = LogManager.getLogger(LoadingData.class.getName());
 
     public CryptoCurrency sortingLineOfText(String lineOfText) {
         String[] parts = lineOfText.split(",");
@@ -14,11 +19,13 @@ public class LoadingData {
         try {
             price = Double.parseDouble(parts[5]);
         } catch (Exception e) {
+            LOGGER.error("Method throw exception");
             price = 0.0;
         }
         try {
             date = LocalDate.parse(parts[0]);
         } catch (Exception e) {
+            LOGGER.error("Method throw exception");
             date = LocalDate.now();
         }
         return new CryptoCurrency(price, date);
@@ -48,6 +55,7 @@ public class LoadingData {
             try {
                 date = LocalDate.parse(string);
             } catch (Exception e) {
+                LOGGER.error("Method throw exception");
                 printCommunicateWrongDateFormat();
                 continue;
             }
@@ -69,6 +77,7 @@ public class LoadingData {
             }
 
         } catch (FileNotFoundException e) {
+            LOGGER.error("Method throw exception");
             e.printStackTrace();
         }
 

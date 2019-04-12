@@ -32,8 +32,6 @@ public class MathematicOperation {
     }
     public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
 
-
-
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
