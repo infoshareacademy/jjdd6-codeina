@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class LoadingData {
@@ -39,14 +40,16 @@ public class LoadingData {
         File file = new File(csv);
         while (!flag) try {
             String lineOfText = null;
-            System.out.println("Choose date (date format :\"yyyy-MM-dd\" ):");
+            Runner runner = Runner.getInstance();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ConfigProperties.originRegionSet(runner.getOriginRegion()));
+            System.out.println(String.format("Choose date (date format: %s):", ConfigProperties.originRegionSet(runner.getOriginRegion())));
             Scanner scanner = new Scanner(System.in);
             String string = scanner.nextLine();
             LocalDate date;
             Interface.printLine();
 
             try {
-                date = LocalDate.parse(string);
+                date = LocalDate.parse(string, formatter);
             } catch (Exception e) {
                 printCommunicateWrongDateFormat();
                 continue;
