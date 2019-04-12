@@ -17,5 +17,6 @@ public class Test {
             prop.load(input);
 
         System.out.println(prop.getProperty("dateFormatEU"));
+        System.out.println(prop.getProperty("dateFormatUS"));
     }
 }

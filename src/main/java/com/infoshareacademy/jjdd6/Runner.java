@@ -11,6 +11,17 @@ public class Runner {
     private int subOptionForMathOperations = 0;
     private int originRegion = 0;
 
+
+    static Runner instance;
+
+    static Runner getInstance(){
+        if(instance == null){
+            instance = new Runner();
+        }
+
+        return instance;
+    }
+
     public void run() throws FileNotFoundException, InterruptedException {
 
         new File("csv").mkdirs();
@@ -18,10 +29,12 @@ public class Runner {
         Options options = new Options();
         Logo.printLogo(new Logo().applicationLogo);
 
+
         while (runningCondition != -1) {
             try {
                 if (runningCondition == 0) {
                     originRegion = Interface.whereAreYouFrom();
+                    ConfigProperties.originRegionSet(originRegion);
                     runningCondition = 1;
                 }
                 if (runningCondition == 1) {
@@ -114,5 +127,9 @@ public class Runner {
                 runningCondition = 10;
             }
         }
+    }
+
+    public int getOriginRegion() {
+        return originRegion;
     }
 }
