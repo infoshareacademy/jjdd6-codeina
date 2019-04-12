@@ -4,11 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Runner {
-    private int con = 1;
-    private int crypto = 0;
+    private int runningCondition = 0;
+    private int chosenCryptoC = 0;
     private int option = 0;
-    private int subOption4 = 0;
-    private int subOption5 = 0;
+    private int subOptionMintoMaxPrices = 0;
+    private int subOptionForMathOperations = 0;
+    private int originRegion = 0;
 
     public void run() throws FileNotFoundException, InterruptedException {
 
@@ -16,96 +17,101 @@ public class Runner {
         Interface anInterface = new Interface();
         Options options = new Options();
         Logo.printLogo(new Logo().applicationLogo);
-        while (con != 0) {
+
+        while (runningCondition != -1) {
             try {
-                if (con == 1) {
-                    crypto = anInterface.printMenu();
-                    if (crypto <= 10) {
-                        Downloader.downloadCryptocurrency(crypto);
-                        anInterface.printLogo(crypto);
-                        con = 2;
+                if (runningCondition == 0) {
+                    originRegion = Interface.whereAreYouFrom();
+                    runningCondition = 1;
+                }
+                if (runningCondition == 1) {
+                    chosenCryptoC = anInterface.printMenu();
+                    if (chosenCryptoC <= 10) {
+                        Downloader.downloadCryptocurrency(chosenCryptoC);
+                        anInterface.printLogo(chosenCryptoC);
+                        runningCondition = 2;
                     } else {
-                        con = 10;
+                        runningCondition = 10;
                     }
                 }
-                if (con == 2) {
+                if (runningCondition == 2) {
                     option = anInterface.options();
                     if (option == 1) {
-                        options.optionShowLastPrice(crypto);
-                        con = 9;
+                        options.optionShowLastPrice(chosenCryptoC);
+                        runningCondition = 9;
                     } else if (option == 2) {
-                        options.optionPriceAtGivenDay(crypto);
-                        con = 9;
+                        options.optionPriceAtGivenDay(chosenCryptoC);
+                        runningCondition = 9;
                     } else if (option == 3) {
-                        options.optionPricesAtGivenDates(crypto);
-                        con = 9;
+                        options.optionPricesAtGivenDates(chosenCryptoC);
+                        runningCondition = 9;
                     } else if (option == 4) {
-                        con = 7;
+                        runningCondition = 7;
                     } else if (option == 5) {
-                        con = 8;
+                        runningCondition = 8;
                     } else {
-                        con = 10;
+                        runningCondition = 10;
                     }
                 }
-                if (con == 7) {
-                    subOption4 = anInterface.subOptionsFor4();
-                    if (subOption4 == 1) {
-                        options.subOptionMintoMaxPrices(crypto);
-                        con = 9;
-                    } else if (subOption4 == 2) {
-                        options.subOptionMaxtoMinPrices(crypto);
-                        con = 9;
-                    } else if (subOption4 == 3) {
-                        options.subOptionMintoMaxDates(crypto);
-                        con = 9;
-                    } else if (subOption4 == 4) {
-                        options.subOptionMaxtoMinDates(crypto);
-                        con = 9;
+                if (runningCondition == 7) {
+                    subOptionMintoMaxPrices = anInterface.subOptionsForDatesAndPricesSort();
+                    if (subOptionMintoMaxPrices == 1) {
+                        options.subOptionMintoMaxPrices(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionMintoMaxPrices == 2) {
+                        options.subOptionMaxtoMinPrices(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionMintoMaxPrices == 3) {
+                        options.subOptionMintoMaxDates(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionMintoMaxPrices == 4) {
+                        options.subOptionMaxtoMinDates(chosenCryptoC);
+                        runningCondition = 9;
                     } else {
-                        con = 10;
+                        runningCondition = 10;
                     }
                 }
-                if (con == 8) {
-                    subOption5 = anInterface.subOptionsFor5();
-                    if (subOption5 == 1) {
-                        options.subOptionAverage(crypto);
-                        con = 9;
-                    } else if (subOption5 == 2) {
-                        options.subOptionExtreme(crypto);
-                        con = 9;
-                    } else if (subOption5 == 3) {
-                        options.subOptionSmallestValue(crypto);
-                        con = 9;
-                    } else if (subOption5 == 4) {
-                        options.subOptionMedian(crypto);
-                        con = 9;
+                if (runningCondition == 8) {
+                    subOptionForMathOperations = anInterface.subOptionsForMathOperations();
+                    if (subOptionForMathOperations == 1) {
+                        options.subOptionAverage(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionForMathOperations == 2) {
+                        options.subOptionExtreme(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionForMathOperations == 3) {
+                        options.subOptionSmallestValue(chosenCryptoC);
+                        runningCondition = 9;
+                    } else if (subOptionForMathOperations == 4) {
+                        options.subOptionMedian(chosenCryptoC);
+                        runningCondition = 9;
                     } else {
-                        con = 10;
+                        runningCondition = 10;
                     }
                 }
 
-                if (con == 9) {
+                if (runningCondition == 9) {
                     int Exit = anInterface.exit();
                     if (Exit == 9) {
-                        con = 0;
+                        runningCondition = -1;
                     } else if (Exit == 1) {
-                        con = 1;
+                        runningCondition = 1;
                     } else if (Exit == 2) {
-                        con = 2;
+                        runningCondition = 2;
                     } else {
-                        con = 10;
+                        runningCondition = 10;
                     }
                 }
-                if (con == 10) {
+                if (runningCondition == 10) {
                     anInterface.error();
-                    if (crypto == 0) {
-                        con = 1;
+                    if (chosenCryptoC == 0) {
+                        runningCondition = 1;
                     } else {
-                        con = 9;
+                        runningCondition = 9;
                     }
                 }
             } catch (Exception InputMismatchException) {
-                con = 10;
+                runningCondition = 10;
             }
         }
     }
