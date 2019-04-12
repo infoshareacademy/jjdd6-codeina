@@ -76,6 +76,7 @@ public class Options {
         Interface.printLine();
 
     }
+
     public void subOptionSmallestValue(int Crypto) throws FileNotFoundException {
         MathematicOperation mathematicOperation = new MathematicOperation();
         LoadingData loadingData = new LoadingData();

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Runner {
+    static Runner instance;
     private int runningCondition = 0;
     private int chosenCryptoC = 0;
     private int option = 0;
@@ -11,11 +12,8 @@ public class Runner {
     private int subOptionForMathOperations = 0;
     private int originRegion = 0;
 
-
-    static Runner instance;
-
-    static Runner getInstance(){
-        if(instance == null){
+    static Runner getInstance() {
+        if (instance == null) {
             instance = new Runner();
         }
 
