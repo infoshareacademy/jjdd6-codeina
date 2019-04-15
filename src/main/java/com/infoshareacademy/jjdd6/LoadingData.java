@@ -20,13 +20,13 @@ public class LoadingData {
         try {
             price = Double.parseDouble(parts[5]);
         } catch (Exception e) {
-            LOGGER.error("Method throw exception");
+            LOGGER.error("Method throw InputMismatchException ");
             price = 0.0;
         }
         try {
             date = LocalDate.parse(parts[0]);
         } catch (Exception e) {
-            LOGGER.error("Method throw exception");
+            LOGGER.error("Method throw InputMismatchException");
             date = LocalDate.now();
         }
         return new CryptoCurrency(price, date);
@@ -58,7 +58,7 @@ public class LoadingData {
             try {
                 date = LocalDate.parse(string, formatter);
             } catch (Exception e) {
-                LOGGER.error("Method throw exception");
+                LOGGER.error("Method throw InputMismatchException");
                 printCommunicateWrongDateFormat();
                 continue;
             }
@@ -80,7 +80,7 @@ public class LoadingData {
             }
 
         } catch (FileNotFoundException e) {
-            LOGGER.error("Method throw exception");
+            LOGGER.error("Method throw InputMismatchException");
             e.printStackTrace();
         }
 
