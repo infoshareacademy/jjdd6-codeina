@@ -25,6 +25,7 @@ public class Runner {
         new File("csv").mkdirs();
         Interface anInterface = new Interface();
         Options options = new Options();
+        Interface.clearScreen();
         Logo.printLogo(new Logo().applicationLogo);
 
 
@@ -37,7 +38,7 @@ public class Runner {
                 }
                 if (runningCondition == 1) {
                     chosenCryptoC = anInterface.printMenu();
-                    if (chosenCryptoC <= 10) {
+                    if (chosenCryptoC <= 10 || chosenCryptoC > 10) {
                         Downloader.downloadCryptocurrency(chosenCryptoC);
                         anInterface.printLogo(chosenCryptoC);
                         runningCondition = 2;
