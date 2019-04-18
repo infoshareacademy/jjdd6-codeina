@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Test {
-    private static final Logger LOGGER = LogManager.getLogger(Test.class.getName());
+//    private static final Logger LOGGER = LogManager.getLogger(Test.class.getName());
 
     public static void main(String[] args) {
 
