@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<#if choice??>
+
 <ul>
-    <li> Price: ${choice.price}</li>
-    <li> Date: ${choice.date}</li>
+    <li> Price: ${price}</li>
+    <li> Date: ${date}</li>
 </ul>
-</#if>
+
 </body>
 </html>

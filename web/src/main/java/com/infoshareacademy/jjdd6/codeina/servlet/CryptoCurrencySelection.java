@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,15 +26,21 @@ public class CryptoCurrencySelection extends HttpServlet {
     @Inject
     CryptoService cryptoService ;
 
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String choice =req.getParameter("choice") ;
 
         Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
-        Map<String, CryptoCurrency> model = new HashMap<>();
+        Map<String, String> model = new HashMap<>();
 
         CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(choice);
-        model.put("choice",cryptoCurrency);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+
+        LocalDate localDate = cryptoCurrency.getDate() ;
+        model.put("price",String.valueOf(cryptoCurrency.getPrice()));
+        model.put("date", localDate.format(formatter));
 
         try {
             template.process(model,resp.getWriter());
