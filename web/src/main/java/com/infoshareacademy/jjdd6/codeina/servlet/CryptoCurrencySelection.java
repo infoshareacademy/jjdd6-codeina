@@ -32,7 +32,7 @@ public class CryptoCurrencySelection extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String choice =req.getParameter("choice") ;
 
-        Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(),"fm-templates\\index.ftlh");
         Map<String, String> model = new HashMap<>();
 
         CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(choice);
