@@ -48,7 +48,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.infoshareacademy.jjdd6-codeina</mainClass>
+                            <mainClass>com.infoshareacademy.jjdd6</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
