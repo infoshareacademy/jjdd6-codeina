@@ -13,34 +13,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/selection")
 public class CryptoCurrencySelection extends HttpServlet {
+
     @Inject
     TemplateProvider templateProvider ;
 
     @Inject
     CryptoService cryptoService ;
 
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String choice =req.getParameter("choice") ;
 
-        Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
-        Map<String, String> model = new HashMap<>();
+       String path = req.getParameter("outFilePath");
 
-        CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(choice);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+       String choice = req.getParameter("choice");
 
-        LocalDate localDate = cryptoCurrency.getDate() ;
-        model.put("price",String.valueOf(cryptoCurrency.getPrice()));
-        model.put("date", localDate.format(formatter));
+       StringBuilder sb = new StringBuilder();
+       sb.append(path).append(choice).append(".csv") ;
+
+       String filePath = sb.toString();
+
+       Map<String, Object> model = new HashMap<>();
+
+       CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(filePath);
+
+//       resp.getWriter().println(cryptoCurrency.getPrice());
+//       resp.getWriter().println(cryptoCurrency.getDate());
+       model.put("choice",cryptoCurrency);
+
+       Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
 
         try {
             template.process(model,resp.getWriter());
@@ -48,5 +53,8 @@ public class CryptoCurrencySelection extends HttpServlet {
             e.printStackTrace();
         }
 
+
     }
+
+
 }
