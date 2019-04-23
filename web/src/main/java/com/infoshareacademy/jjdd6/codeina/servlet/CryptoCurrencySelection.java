@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,20 +33,21 @@ public class CryptoCurrencySelection extends HttpServlet {
 
        String choice = req.getParameter("choice");
 
-       StringBuilder sb = new StringBuilder();
-       sb.append(path).append(choice).append(".csv") ;
+        LocalDate fistDate = LocalDate.parse(req.getParameter("firsDate"));
+        LocalDate lastDate = LocalDate.parse(req.getParameter("lastDate"));
 
-       String filePath = sb.toString();
+        String filePath = path + choice + ".csv";
 
        Map<String, Object> model = new HashMap<>();
 
        CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(filePath);
+       Double median = cryptoService.getMedian(filePath,fistDate,lastDate );
+       resp.getWriter().println(cryptoCurrency.getPrice());
+       resp.getWriter().println(cryptoCurrency.getDate());
+       model.put("selected",cryptoCurrency);
+       model.put("median",median) ;
 
-//       resp.getWriter().println(cryptoCurrency.getPrice());
-//       resp.getWriter().println(cryptoCurrency.getDate());
-       model.put("choice",cryptoCurrency);
-
-       Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
+       Template template = templateProvider.getTemplate(getServletContext(),"template.ftlh");
 
         try {
             template.process(model,resp.getWriter());

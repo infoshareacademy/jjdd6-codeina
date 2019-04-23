@@ -10,8 +10,21 @@
      <input type="text" name = "outFilePath"><br>
      Choice:
      <input type="text" name = "choice"><br>
+     FirstDate:
+     <input type="text" name = "firstDate"><br>
+     LastDate:
+     <input type="text" name = "lastDate"><br>
+
+
      <input type="submit" value="Wyslij">
  </form>
+
+ <ul>
+     <li> Price: ${selected.price}</li>
+     <li> Date: ${selected.date}</li>
+     <#--<li> Median:${median} </li>-->
+
+ </ul>
 
 
 </body>

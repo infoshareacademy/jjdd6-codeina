@@ -13,24 +13,24 @@ public class MathematicOperation {
         return sumOfElements / fromCsv.size();
     }
 
-    public Map.Entry<LocalDate, CryptoCurrency> findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
+    public CryptoCurrency findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
         LoadingData loadingData = new LoadingData();
-        Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
+        CryptoCurrency highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
-                .get();
+                .map(o ->o.getValue()).orElse(new  CryptoCurrency(0.0 , LocalDate.now()));
 
         System.out.println("Highest value at given range is in");
-        loadingData.printingInformation(highestValue.getValue());
+        loadingData.printingInformation(highestValue);
         return highestValue;
     }
-    public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
+    public CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
         LoadingData loadingData = new LoadingData();
 
-        Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
+        CryptoCurrency lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
-                .get();
+                .map(o ->o.getValue()).orElse(new  CryptoCurrency(0.0 , LocalDate.now()));
         System.out.println("Smallest value at given range is in");
-        loadingData.printingInformation(lowestValue.getValue());
+        loadingData.printingInformation(lowestValue);
         return lowestValue;
     }
 
