@@ -1,8 +1,5 @@
 package com.infoshareacademy.jjdd6;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -10,20 +7,13 @@ import static java.util.stream.Collectors.toList;
 
 public class SortingData {
 
-    private static final Logger LOGGER = LogManager.getLogger(SortingData.class.getName());
-
     public List<CryptoCurrency> sortCryptoCurrencyFromMaxToMin(List<CryptoCurrency> list) {
-
-        LOGGER.debug( " Sorted cryptocurrency form max to min. size {}", list.size());
         return list.stream()
                 .sorted((o1, o2) -> (int) (o2.getPrice() - o1.getPrice()))
                 .collect(toList());
     }
 
     public List<CryptoCurrency> sortCryptoCurrencyFromMinToMax(List<CryptoCurrency> list) {
-
-        LOGGER.debug( " Sorted cryptocurrency form min to max. size {}", list.size());
-
         return list.stream()
                 .sorted((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()))
                 .collect(toList());
