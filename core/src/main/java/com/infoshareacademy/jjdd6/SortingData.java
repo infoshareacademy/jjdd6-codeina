@@ -6,6 +6,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class SortingData {
+
     public List<CryptoCurrency> sortCryptoCurrencyFromMaxToMin(List<CryptoCurrency> list) {
         return list.stream()
                 .sorted((o1, o2) -> (int) (o2.getPrice() - o1.getPrice()))
@@ -24,6 +25,8 @@ public class SortingData {
     }
 
     public void printingSortedPriceFromCsvMaxtoMin(String csv) throws FileNotFoundException {
+
+
         SortingData sortingData = new SortingData();
         LoadingData loadingData = new LoadingData();
         sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMaxToMin(loadingData.getCryptoCurrencyFromDateToDate(csv)));

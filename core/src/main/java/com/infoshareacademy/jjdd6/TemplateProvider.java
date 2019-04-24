@@ -10,17 +10,17 @@ import java.io.IOException;
 
 @RequestScoped
 public class TemplateProvider {
-    private final String TEMPLATES_DIRECTORY_PATH = "WEB-INF/fm-templates" ;
+    private final String TEMPLATES_DIRECTORY_PATH = "WEB-INF/fm-templates";
 
-    private Configuration configuration ;
+    private Configuration configuration;
 
     @Inject
-    private ConfigProvider configProvider ;
+    private ConfigProvider configProvider;
 
-    public Template getTemplate(ServletContext servletContext , String templateName) throws IOException {
+    public Template getTemplate(ServletContext servletContext, String templateName) throws IOException {
 
         configuration = configProvider.getConfiguration();
-        configuration.setServletContextForTemplateLoading(servletContext,TEMPLATES_DIRECTORY_PATH);
+        configuration.setServletContextForTemplateLoading(servletContext, TEMPLATES_DIRECTORY_PATH);
         return configuration.getTemplate(templateName);
     }
 }

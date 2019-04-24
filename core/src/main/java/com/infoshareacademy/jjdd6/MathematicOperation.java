@@ -54,7 +54,6 @@ public class MathematicOperation {
         loadingData.printingInformation(arrayOfValues.get(med));
         return arrayOfValues.get(med).getPrice();
     }
-
 }
 
 
