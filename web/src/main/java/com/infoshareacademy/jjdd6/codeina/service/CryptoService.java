@@ -8,10 +8,13 @@ import javax.enterprise.context.RequestScoped;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+
 import java.util.stream.Collectors;
 
 @RequestScoped
 public class CryptoService {
+
 
 private LoadingData loadingData = new LoadingData() ;
 private MathematicOperation mathematicOperation = new MathematicOperation();
@@ -41,10 +44,14 @@ private MathematicOperation mathematicOperation = new MathematicOperation();
         return mathematicOperation.average(loadingData.getMapFromList(getAllCryptoCurrenciesInRange(csv,firstDate,lastDate))) ;
     }
     public CryptoCurrency getHighestValue(String csv,LocalDate firstDate ,LocalDate lastDate) throws FileNotFoundException {
-        return mathematicOperation.findExtremeValue(loadingData.getMapFromList(getAllCryptoCurrenciesInRange(csv,firstDate,lastDate))) ;
+        List<CryptoCurrency> list =getAllCryptoCurrenciesInRange(csv,firstDate,lastDate);
+        Map<LocalDate , CryptoCurrency> map = loadingData.getMapFromList(list) ;
+        return mathematicOperation.findExtremeValue(map) ;
     }
     public CryptoCurrency getLowestValue(String csv,LocalDate firstDate ,LocalDate lastDate) throws FileNotFoundException {
-        return mathematicOperation.findSmallestValue(loadingData.getMapFromList(getAllCryptoCurrenciesInRange(csv,firstDate,lastDate))) ;
+        List<CryptoCurrency> list =getAllCryptoCurrenciesInRange(csv,firstDate,lastDate);
+        Map<LocalDate , CryptoCurrency> map = loadingData.getMapFromList(list) ;
+        return mathematicOperation.findSmallestValue(map) ;
     }
 
 }

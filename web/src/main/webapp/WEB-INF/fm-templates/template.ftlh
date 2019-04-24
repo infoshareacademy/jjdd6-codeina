@@ -19,12 +19,6 @@
      <input type="submit" value="Wyslij">
  </form>
 
- <ul>
-     <li> Price: ${selected.price}</li>
-     <li> Date: ${selected.date}</li>
-     <#--<li> Median:${median} </li>-->
-
- </ul>
 
 
 </body>

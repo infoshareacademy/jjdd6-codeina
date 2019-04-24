@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,12 @@ public class CryptoCurrencySelection extends HttpServlet {
 
        String choice = req.getParameter("choice");
 
-        LocalDate fistDate = LocalDate.parse(req.getParameter("firsDate"));
-        LocalDate lastDate = LocalDate.parse(req.getParameter("lastDate"));
+       String firstDateStr =req.getParameter("firstDate");
+       String lastDateStr =req.getParameter("lastDate");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fistDate = LocalDate.parse(firstDateStr ,formatter);
+        LocalDate lastDate = LocalDate.parse(lastDateStr,formatter);
 
         String filePath = path + choice + ".csv";
 
@@ -42,12 +47,16 @@ public class CryptoCurrencySelection extends HttpServlet {
 
        CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(filePath);
        Double median = cryptoService.getMedian(filePath,fistDate,lastDate );
-       resp.getWriter().println(cryptoCurrency.getPrice());
-       resp.getWriter().println(cryptoCurrency.getDate());
+       Double average = cryptoService.getAverage(filePath,fistDate,lastDate );
+       CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath,fistDate,lastDate );
+       CryptoCurrency highestValue = cryptoService.getHighestValue(filePath,fistDate,lastDate );
        model.put("selected",cryptoCurrency);
        model.put("median",median) ;
+       model.put("average",average);
+       model.put("lowest",lowestValue);
+       model.put("highest",highestValue);
 
-       Template template = templateProvider.getTemplate(getServletContext(),"template.ftlh");
+       Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
 
         try {
             template.process(model,resp.getWriter());

@@ -3,7 +3,6 @@ package com.infoshareacademy.jjdd6;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
-
 public class MathematicOperation {
 
     public Double average(Map<LocalDate, CryptoCurrency> fromCsv) {
@@ -15,25 +14,25 @@ public class MathematicOperation {
 
     public CryptoCurrency findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
         LoadingData loadingData = new LoadingData();
-        CryptoCurrency highestValue = fromCsv.entrySet().stream()
+        Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
-                .map(o ->o.getValue()).orElse(new  CryptoCurrency(0.0 , LocalDate.now()));
+                .get();
 
         System.out.println("Highest value at given range is in");
-        loadingData.printingInformation(highestValue);
-        return highestValue;
+        loadingData.printingInformation(highestValue.getValue());
+        return highestValue.getValue();
     }
-    public CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies){
+
+    public  CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
         LoadingData loadingData = new LoadingData();
-
-        CryptoCurrency lowestValue = cryptoCurrencies.entrySet().stream()
+        Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
-                .map(o ->o.getValue()).orElse(new  CryptoCurrency(0.0 , LocalDate.now()));
+                .get();
         System.out.println("Smallest value at given range is in");
-        loadingData.printingInformation(lowestValue);
-        return lowestValue;
-    }
+        loadingData.printingInformation(lowestValue.getValue());
 
+        return lowestValue.getValue();
+    }
     public double median(Map<LocalDate, CryptoCurrency> fromCsv) {
         LoadingData loadingData = new LoadingData();
         List<CryptoCurrency> arrayOfValues = new ArrayList<>(fromCsv.values());
@@ -49,11 +48,11 @@ public class MathematicOperation {
             med = (lengthOfArray + 1) / 2;
             System.out.println("50% of records are equal or smaller than ");
             loadingData.printingInformation(arrayOfValues.get(med));
-            return med;
+            return arrayOfValues.get(med).getPrice();
         }
         System.out.println("50% of records are equal or smaller than ");
         loadingData.printingInformation(arrayOfValues.get(med));
-        return med;
+        return arrayOfValues.get(med).getPrice();
     }
 
 }
