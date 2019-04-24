@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>CRYPTOPOL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -76,24 +76,23 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <form>
+            <form method="get">
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
 
                         <h3>Options</h3>
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <#--<option selected>Choose Cryptocurrency</option>-->
-                            <option selected value="1">Bitcoin</option>
-                            <option value="2">Bitcoin Cash</option>
-                            <option value="3">Litecoin</option>
-                            <option value="4">Ethereum</option>
-                            <option value="5">NEM</option>
-                            <option value="6">Decred</option>
-                            <option value="7">ZCash</option>
-                            <option value="8">Dash</option>
-                            <option value="9">Dogecoin</option>
-                            <option value="10">PIVX</option>
+                            <option name="crypto" value="btc" selected>Bitcoin</option>
+                            <option name="crypto" value="bch">Bitcoin Cash</option>
+                            <option name="crypto" value="ltc">Litecoin</option>
+                            <option name="crypto" value="eth">Ethereum</option>
+                            <option name="crypto" value="xem">NEM</option>
+                            <option name="crypto" value="dcr">Decred</option>
+                            <option name="crypto" value="zec">ZCash</option>
+                            <option name="crypto" value="dash">Dash</option>
+                            <option name="crypto" value="doge">Dogecoin</option>
+                            <option name="crypto" value="pivx">PIVX</option>
                         </select>
                     </div>
 
@@ -114,9 +113,14 @@
                                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                             }
 
+                            var today = moment();
+
                             $('#reportrange').daterangepicker({
+                                maxDate: today,
+                                showDropdowns: true,
                                 startDate: start,
                                 endDate: end,
+                                constrainInput: false,
                                 ranges: {
                                     'Today': [moment(), moment()],
                                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -149,24 +153,24 @@
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>Latest price</p>
-                <input class="form-control" type="text" placeholder="Choose cryptocurrency ${price}" readonly>
-                <p>Price at given day</p>
-                <input class="form-control" type="text" placeholder="Choose date ${givenPrice}" readonly>
-                <p>Average</p>
-                <input class="form-control" type="text" placeholder="Choose both dates ${average}" readonly>
-                <p>Extreme value</p>
-                <input class="form-control" type="text" placeholder="Choose both dates ${extreme}" readonly>
-                <p>Minimal value</p>
-                <input class="form-control" type="text" placeholder="Choose both dates ${minimal}" readonly>
-                <p>Median</p>
-                <input class="form-control" type="text" placeholder="Choose both dates ${median}" readonly>
+                <#--<span class="form-control">${lastPrice}</span>-->
+                <#--<p>Price at given day</p>-->
+                <#--<span class="form-control">${givenPrice}</span>-->
+                <#--<p>Average</p>-->
+                <#--<span class="form-control">${average}</span>-->
+                <#--<p>Extreme value</p>-->
+                <#--<span class="form-control">${extreme}</span>-->
+                <#--<p>Minimal value</p>-->
+                <#--<span class="form-control">${minimal}</span>-->
+                <#--<p>Median</p>-->
+                <#--<span class="form-control">${median}</span>-->
             </div>
         </div>
     </div>
 </div>
 
 <footer class="container-fluid text-center">
-    <p><div>Copyright© ${.now?string.yyyy}</div></p>
+    <p><div>Copyright&copy; CRYPTOPOL ${.now?string.yyyy}</div></p>
 </footer>
 
 </body>
@@ -185,8 +189,8 @@
 
 
 <!--<ul>-->
-    <!--<li> Price: ${price}</li>-->
-    <!--<li> Date: ${date}</li>-->
+    <#--<!--<li> Price: ${price}</li>&ndash;&gt;-->
+    <#--<!--<li> Date: ${date}</li>&ndash;&gt;-->
 <!--</ul>-->
 
 
