@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+
 public class MathematicOperation {
 
     public Double average(Map<LocalDate, CryptoCurrency> fromCsv) {
@@ -23,7 +24,7 @@ public class MathematicOperation {
         return highestValue.getValue();
     }
 
-    public  CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
+    public CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
@@ -33,6 +34,7 @@ public class MathematicOperation {
 
         return lowestValue.getValue();
     }
+
     public double median(Map<LocalDate, CryptoCurrency> fromCsv) {
         LoadingData loadingData = new LoadingData();
         List<CryptoCurrency> arrayOfValues = new ArrayList<>(fromCsv.values());

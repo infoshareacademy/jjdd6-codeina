@@ -17,51 +17,54 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @WebServlet("/selection")
 public class CryptoCurrencySelection extends HttpServlet {
 
-    @Inject
-    TemplateProvider templateProvider ;
+    private static final Logger logger = Logger.getLogger(CryptoCurrencySelection.class.getName());
 
     @Inject
-    CryptoService cryptoService ;
+    private TemplateProvider templateProvider;
+
+    @Inject
+    private CryptoService cryptoService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       String path = req.getParameter("outFilePath");
+        String path = req.getParameter("outFilePath");
 
-       String choice = req.getParameter("choice");
+        String choice = req.getParameter("choice");
 
-       String firstDateStr =req.getParameter("firstDate");
-       String lastDateStr =req.getParameter("lastDate");
+        String firstDateStr = req.getParameter("firstDate");
+        String lastDateStr = req.getParameter("lastDate");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fistDate = LocalDate.parse(firstDateStr ,formatter);
-        LocalDate lastDate = LocalDate.parse(lastDateStr,formatter);
+        LocalDate fistDate = LocalDate.parse(firstDateStr, formatter);
+        LocalDate lastDate = LocalDate.parse(lastDateStr, formatter);
 
         String filePath = path + choice + ".csv";
 
-       Map<String, Object> model = new HashMap<>();
+        Map<String, Object> model = new HashMap<>();
 
-       CryptoCurrency cryptoCurrency=  cryptoService.getNewestDate(filePath);
-       Double median = cryptoService.getMedian(filePath,fistDate,lastDate );
-       Double average = cryptoService.getAverage(filePath,fistDate,lastDate );
-       CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath,fistDate,lastDate );
-       CryptoCurrency highestValue = cryptoService.getHighestValue(filePath,fistDate,lastDate );
-       model.put("selected",cryptoCurrency);
-       model.put("median",median) ;
-       model.put("average",average);
-       model.put("lowest",lowestValue);
-       model.put("highest",highestValue);
+        CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(filePath);
+        Double median = cryptoService.getMedian(filePath, fistDate, lastDate);
+        Double average = cryptoService.getAverage(filePath, fistDate, lastDate);
+        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, fistDate, lastDate);
+        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, fistDate, lastDate);
+        model.put("selected", cryptoCurrency);
+        model.put("median", median);
+        model.put("average", average);
+        model.put("lowest", lowestValue);
+        model.put("highest", highestValue);
 
-       Template template = templateProvider.getTemplate(getServletContext(),"test.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
 
         try {
-            template.process(model,resp.getWriter());
+            template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());
         }
 
 
