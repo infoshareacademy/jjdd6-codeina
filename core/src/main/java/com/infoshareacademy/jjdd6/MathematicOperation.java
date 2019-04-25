@@ -2,9 +2,6 @@ package com.infoshareacademy.jjdd6;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.*;
-import java.util.logging.Logger;
-
 import java.util.stream.Collectors;
 
 public class MathematicOperation {
@@ -16,7 +13,7 @@ public class MathematicOperation {
         return sumOfElements / fromCsv.size();
     }
 
-    public Map.Entry<LocalDate, CryptoCurrency> findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
+    public CryptoCurrency findExtremeValue(Map<LocalDate, CryptoCurrency> fromCsv) {
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> highestValue = fromCsv.entrySet().stream()
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
@@ -24,17 +21,18 @@ public class MathematicOperation {
 
         System.out.println("Highest value at given range is in");
         loadingData.printingInformation(highestValue.getValue());
-        return highestValue;
+        return highestValue.getValue();
     }
 
-    public Map.Entry<LocalDate, CryptoCurrency> findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
+    public CryptoCurrency findSmallestValue(Map<LocalDate, CryptoCurrency> cryptoCurrencies) {
         LoadingData loadingData = new LoadingData();
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
         System.out.println("Smallest value at given range is in");
         loadingData.printingInformation(lowestValue.getValue());
-        return lowestValue;
+
+        return lowestValue.getValue();
     }
 
     public double median(Map<LocalDate, CryptoCurrency> fromCsv) {
@@ -52,11 +50,11 @@ public class MathematicOperation {
             med = (lengthOfArray + 1) / 2;
             System.out.println("50% of records are equal or smaller than ");
             loadingData.printingInformation(arrayOfValues.get(med));
-            return med;
+            return arrayOfValues.get(med).getPrice();
         }
         System.out.println("50% of records are equal or smaller than ");
         loadingData.printingInformation(arrayOfValues.get(med));
-        return med;
+        return arrayOfValues.get(med).getPrice();
     }
 }
 

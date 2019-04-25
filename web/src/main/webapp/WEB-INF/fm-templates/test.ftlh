@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
 
 
 <ul>
-    <li> Price: ${price}</li>
-    <li> Date: ${date}</li>
+    <li>Current Price: ${(selected.price)}</li>
+    <li> Date: ${selected.date}</li>
+    <li> Median: ${median} </li>
+    <li> Average: ${average} </li>
+    <li> Lowest Value: ${lowest.price} in ${lowest.date} </li>
+    <li> Highest Value: ${highest.price} in ${highest.date} </li>
+
 </ul>
 
 </body>
