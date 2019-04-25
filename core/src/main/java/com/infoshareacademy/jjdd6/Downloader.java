@@ -8,6 +8,12 @@ import java.nio.channels.ReadableByteChannel;
 
 public class Downloader {
 
+    public static void downloadAll() throws IOException {
+        for (int i = 1; i <= 10; i++) {
+            downloadCryptocurrency(i);
+        }
+    }
+
     public static void downloader(String urlCsvFile, String fileName) throws IOException {
         URL website = new URL(urlCsvFile);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());

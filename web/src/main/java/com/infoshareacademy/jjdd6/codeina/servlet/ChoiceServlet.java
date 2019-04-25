@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
+import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -18,6 +19,7 @@ public class ChoiceServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
 
+
     @Inject
     private TemplateProvider templateProvider;
 
@@ -30,6 +32,7 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
+        Downloader.downloadAll();
     }
 }
 
