@@ -2,6 +2,8 @@ package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
+import com.infoshareacademy.jjdd6.codeina.cdi.StatisticDataDao;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -31,6 +33,9 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     CryptoService cryptoService;
 
+    @Inject
+    StatisticData statisticData ;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -47,21 +52,15 @@ public class ChoiceServlet extends HttpServlet {
 
 
         String path = req.getParameter("outFilePath");
-
         String choice = req.getParameter("crypto");
-
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
 
-        LocalDate fistDate =
-                Instant.ofEpochMilli(Long.valueOf(firstDateStr))
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
+        LocalDate fistDate = getLocalDateFromString(firstDateStr);
+        LocalDate lastDate =getLocalDateFromString(lastDateStr);
 
-        LocalDate lastDate =
-                Instant.ofEpochMilli(Long.valueOf(lastDateStr))
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
+        statisticData.setStatisticDataMap(statisticData.addValue(choice ,statisticData.getStatisticDataMap()));
+
 
 
         String filePath = path + choice + ".csv";
@@ -73,6 +72,7 @@ public class ChoiceServlet extends HttpServlet {
         Double average = cryptoService.getAverage(filePath, fistDate, lastDate);
         CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, fistDate, lastDate);
         CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, fistDate, lastDate);
+        model.put("statisticBTC",statisticData.getStatisticDataMap().get("btc"));
         model.put("lastPrice", cryptoCurrency);
         model.put("median", median);
         model.put("average", average);
@@ -88,6 +88,11 @@ public class ChoiceServlet extends HttpServlet {
         }
 
 
+    }
+    private LocalDate getLocalDateFromString(String localDateStr){
+        return Instant.ofEpochMilli(Long.valueOf(localDateStr))
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
     }
 }
 
