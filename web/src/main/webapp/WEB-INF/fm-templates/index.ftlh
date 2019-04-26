@@ -187,9 +187,6 @@
                 <#if median??>
                     <span class="form-control">${median}</span>
                 </#if>
-                <#if statisticBTC??>
-                    <span class="form-control">${statisticBTC}</span>
-                </#if>
             </div>
         </div>
     </div>

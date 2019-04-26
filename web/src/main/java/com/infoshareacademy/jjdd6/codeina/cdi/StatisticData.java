@@ -2,22 +2,13 @@ package com.infoshareacademy.jjdd6.codeina.cdi;
 
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.HashMap;
 import java.util.Map;
 
 @ApplicationScoped
 public class StatisticData implements StatisticDataDao {
 
-    private Map<String, Integer> statisticDataMap =
-            Map.of("btc", 0,
-                    "bch", 0,
-                    "ltc", 0,
-                    "eth", 0,
-                    "xem", 0,
-                    "dcr", 0,
-                    "zec", 0,
-                    "dash", 0,
-                    "doge", 0,
-                    "pivx", 0);
+    private Map<String, Integer> statisticDataMap ;
 
     public Map<String, Integer> getStatisticDataMap() {
         return statisticDataMap;
@@ -29,13 +20,19 @@ public class StatisticData implements StatisticDataDao {
 
     @Override
     public Map<String, Integer> addValue(String cryptoName, Map<String, Integer> map) {
-        if (map.containsKey(cryptoName)) {
-            int oldValue = map.get(cryptoName);
-            map.put(cryptoName, oldValue + 1);
-        } else {
-            map.put(cryptoName, 1);
+        if(map!=null){
+            if (map.containsKey(cryptoName)) {
+                int oldValue = map.get(cryptoName);
+                map.put(cryptoName, oldValue + 1);
+            } else {
+                map.put(cryptoName, 1);
+            }
+            return map;
+        }else{
+            Map<String, Integer> newMap= new HashMap<>();
+            newMap.put(cryptoName, 1);
+            return newMap;
         }
-        return map;
     }
 }
 
