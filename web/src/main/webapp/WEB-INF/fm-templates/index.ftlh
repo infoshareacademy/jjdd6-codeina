@@ -168,10 +168,22 @@
             <hr>
             <h3>Chart</h3>
 
-            <#if list??>
+            <#if dates??>
             <script type="text/javascript">
-                window.onload = function(${list}) {
-                function(list) {
+
+
+                let dates = "${dates}"
+                let prices = "${prices}"
+
+                let prices_arr = prices.split(",")
+                let dates_arr = dates.split(",")
+                let result = []
+                for (let i = 0; i < dates_arr.length; i++) {
+                    result.push( { x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i]) } )
+                }
+
+
+                window.onload = function() {
 
                     var chart = new CanvasJS.Chart("chartContainer", {
                         animationEnabled: true,
@@ -185,19 +197,21 @@
                             title: "Price",
                             suffix: "$"
                         },
-                        data: [{
-                            type: "line",
-                            name: "Cryptovalue",
-                            connectNullData: true,
-                            //nullDataLineDashType: "solid",
-                            xValueType: "dateTime",
-                            xValueFormatString: "DD MMM hh:mm TT",
-                            yValueFormatString: "#,##0.##\"%\"",
-                            dataPoints: list
-                        }]
+                        data: [
+                            {
+                                type: "line",
+                                name: "Cryptovalue",
+                                connectNullData: true,
+                                //nullDataLineDashType: "solid",
+                                xValueType: "dateTime",
+                                xValueFormatString: "YYYY-MM-DD",
+                                yValueFormatString: "#,##0.##",
+                                dataPoints: result
+                            }
+                        ]
                     });
-                    chart.render();
 
+                    chart.render();
                 }
             </script></#if>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>

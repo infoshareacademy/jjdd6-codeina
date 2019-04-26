@@ -18,8 +18,11 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import static java.util.stream.Collectors.joining;
 
 @WebServlet("choice")
 public class ChoiceServlet extends HttpServlet {
@@ -79,7 +82,26 @@ public class ChoiceServlet extends HttpServlet {
         model.put("average", average);
         model.put("lowest", lowestValue);
         model.put("highest", highestValue);
-        model.put("list", new int[][]{{2,2}, {2,2}, {2,2}});
+
+        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath,firstDate,lastDate);
+
+        // TAK SIE NIE ROBI XD
+        String dummyJson = "[ " + list.stream()
+                .map(c -> "{ x: " + c.getDate() + ", y: " + c.getPrice() + "}")
+                .collect(joining(",\n")) + " ]";
+
+        String dates = list.stream()
+                .map(CryptoCurrency::getDate)
+                .map(LocalDate::toString)
+                .collect(joining(","));
+
+        String prices = list.stream()
+                .map(CryptoCurrency::getPrice)
+                .map(String::valueOf)
+                .collect(joining(","));
+
+        model.put("dates", dates);
+        model.put("prices", prices);
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
 
