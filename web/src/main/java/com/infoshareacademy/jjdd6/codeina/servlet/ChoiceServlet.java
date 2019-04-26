@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
+import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import freemarker.template.Template;
@@ -53,7 +54,7 @@ public class ChoiceServlet extends HttpServlet {
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
 
-        LocalDate fistDate =
+        LocalDate firstDate =
                 Instant.ofEpochMilli(Long.valueOf(firstDateStr))
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
@@ -69,15 +70,16 @@ public class ChoiceServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(filePath);
-        Double median = cryptoService.getMedian(filePath, fistDate, lastDate);
-        Double average = cryptoService.getAverage(filePath, fistDate, lastDate);
-        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, fistDate, lastDate);
-        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, fistDate, lastDate);
+        Double median = cryptoService.getMedian(filePath, firstDate, lastDate);
+        Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
+        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
+        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
         model.put("lastPrice", cryptoCurrency);
         model.put("median", median);
         model.put("average", average);
         model.put("lowest", lowestValue);
         model.put("highest", highestValue);
+        model.put("list", new int[][]{{2,2}, {2,2}, {2,2}});
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
 
@@ -88,7 +90,9 @@ public class ChoiceServlet extends HttpServlet {
         }
                                 // TODO wyswietlic akt krypto i zasieg
                                 // TODO wykres
-                                // TODO poprawic kalkulator - usunac dzisiaj z max date i start date
+
+                                //TODO USUNAC NEMA!!!!!!! (xem)
+
     }
 }
 
