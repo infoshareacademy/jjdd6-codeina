@@ -86,8 +86,6 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
-                                // TODO dodac dolara do wartosci
                                 // TODO wyswietlic akt krypto i zasieg
                                 // TODO wykres
                                 // TODO poprawic kalkulator - usunac dzisiaj z max date i start date

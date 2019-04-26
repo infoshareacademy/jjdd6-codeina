@@ -168,25 +168,15 @@
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>Latest price</p>
-                <#if lastPrice??>
-                    <span class="form-control">${lastPrice.price}</span>
-                </#if>
+                <span class="form-control"><#if lastPrice??>${lastPrice.price}$</#if></span>
                 <p>Average</p>
-                <#if average??>
-                    <span class="form-control">${average}</span>
-                </#if>
+                <span class="form-control"><#if average??>${average}$</#if></span>
                 <p>Extreme value</p>
-                <#if highest??>
-                    <span class="form-control">${highest.price}</span>
-                </#if>
+                <span class="form-control"><#if highest??>${highest.price}$</#if></span>
                 <p>Minimal value</p>
-                <#if lowest??>
-                    <span class="form-control">${lowest.price}</span>
-                </#if>
+                <span class="form-control"><#if lowest??>${lowest.price}$</#if></span>
                 <p>Median</p>
-                <#if median??>
-                    <span class="form-control">${median}</span>
-                </#if>
+                <span class="form-control"><#if median??>${median}$</#if></span>
             </div>
         </div>
     </div>
