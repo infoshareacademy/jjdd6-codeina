@@ -30,10 +30,10 @@ public class ChoiceServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Inject
-    CryptoService cryptoService;
+    private CryptoService cryptoService;
 
     @Inject
-    StatisticData statisticData;
+    private StatisticData statisticData;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

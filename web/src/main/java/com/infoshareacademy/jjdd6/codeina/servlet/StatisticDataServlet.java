@@ -14,9 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @WebServlet("/statistics")
 public class StatisticDataServlet extends HttpServlet {
+
+    private static final Logger logger = Logger.getLogger(StatisticDataServlet.class.getName());
 
     @Inject
     private StatisticData statisticData;
@@ -44,7 +47,7 @@ public class StatisticDataServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            e.printStackTrace();
+            logger.severe(e.getMessage());;
         }
     }
 }
