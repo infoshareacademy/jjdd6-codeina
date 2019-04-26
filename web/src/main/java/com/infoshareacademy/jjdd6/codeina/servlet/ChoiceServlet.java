@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.codeina.servlet;
 import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -33,7 +34,10 @@ public class ChoiceServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Inject
-    CryptoService cryptoService;
+    private CryptoService cryptoService;
+
+    @Inject
+    private StatisticData statisticData;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,21 +55,14 @@ public class ChoiceServlet extends HttpServlet {
 
 
         String path = req.getParameter("outFilePath");
-
         String choice = req.getParameter("crypto");
-
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
 
-        LocalDate firstDate =
-                Instant.ofEpochMilli(Long.valueOf(firstDateStr))
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
+        LocalDate firstDate = getLocalDateFromString(firstDateStr);
+        LocalDate lastDate = getLocalDateFromString(lastDateStr);
 
-        LocalDate lastDate =
-                Instant.ofEpochMilli(Long.valueOf(lastDateStr))
-                        .atZone(ZoneId.systemDefault())
-                        .toLocalDate();
+        statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
 
         String filePath = path + choice + ".csv";
@@ -115,6 +112,12 @@ public class ChoiceServlet extends HttpServlet {
 
                                 //TODO USUNAC NEMA!!!!!!! (xem)
 
+    }
+
+    private LocalDate getLocalDateFromString(String localDateStr) {
+        return Instant.ofEpochMilli(Long.valueOf(localDateStr))
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 }
 

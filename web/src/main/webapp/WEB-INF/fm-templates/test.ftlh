@@ -6,14 +6,33 @@
 <body>
 
 
-<ul>
-    <li>Current Price: ${(selected.price)}</li>
-    <li> Date: ${selected.date}</li>
-    <li> Median: ${median} </li>
-    <li> Average: ${average} </li>
-    <li> Lowest Value: ${lowest.price} in ${lowest.date} </li>
-    <li> Highest Value: ${highest.price} in ${highest.date} </li>
-
+<ul><#if BTC??>
+        <li>Bitcoin: ${BTC}</li>
+    </#if>
+    <#if BCH??>
+        <li>Bitcoin Cash: ${BCH}</li>
+    </#if>
+    <#if DASH??>
+        <li>Dashcoin: ${DASH}</li>
+    </#if>
+    <#if LTC??>
+        <li>Litecoin: ${LTC}</li>
+    </#if>
+    <#if ETH??>
+        <li>Ethereum: ${ETH}</li>
+    </#if>
+    <#if DCR??>
+        <li>Decred: ${DCR}</li>
+    </#if>
+    <#if PIVX??>
+        <li>PIVX: ${PIVX}</li>
+    </#if>
+    <#if ZEC??>
+        <li>Z Cash: ${ZEC}</li>
+    </#if>
+    <#if DOGE??>
+        <li>Dogecoin: ${DOGE}</li>
+    </#if>
 </ul>
 
 </body>
