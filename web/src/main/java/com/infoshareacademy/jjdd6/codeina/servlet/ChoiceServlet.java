@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
+import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
@@ -18,8 +19,11 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import static java.util.stream.Collectors.joining;
 
 @WebServlet("choice")
 public class ChoiceServlet extends HttpServlet {
@@ -55,7 +59,7 @@ public class ChoiceServlet extends HttpServlet {
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
 
-        LocalDate fistDate = getLocalDateFromString(firstDateStr);
+        LocalDate firstDate = getLocalDateFromString(firstDateStr);
         LocalDate lastDate = getLocalDateFromString(lastDateStr);
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
@@ -66,15 +70,31 @@ public class ChoiceServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(filePath);
-        Double median = cryptoService.getMedian(filePath, fistDate, lastDate);
-        Double average = cryptoService.getAverage(filePath, fistDate, lastDate);
-        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, fistDate, lastDate);
-        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, fistDate, lastDate);
+        Double median = cryptoService.getMedian(filePath, firstDate, lastDate);
+        Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
+        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
+        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
         model.put("lastPrice", cryptoCurrency);
         model.put("median", median);
         model.put("average", average);
         model.put("lowest", lowestValue);
         model.put("highest", highestValue);
+
+        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
+
+
+        String dates = list.stream()
+                .map(CryptoCurrency::getDate)
+                .map(LocalDate::toString)
+                .collect(joining(","));
+
+        String prices = list.stream()
+                .map(CryptoCurrency::getPrice)
+                .map(String::valueOf)
+                .collect(joining(","));
+
+        model.put("dates", dates);
+        model.put("prices", prices);
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
 
@@ -83,7 +103,8 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
+        // TODO wyswietlic akt krypto i zasieg
+        //TODO USUNAC NEMA!!!!!!! (xem)
 
     }
 

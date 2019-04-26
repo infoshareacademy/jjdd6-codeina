@@ -47,7 +47,7 @@ public class StatisticDataServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());;
+            logger.severe(e.getMessage());
         }
     }
 }

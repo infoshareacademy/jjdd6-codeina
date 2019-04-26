@@ -15,6 +15,9 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -118,8 +121,8 @@
                     <script type="text/javascript">
                         $(function () {
 
-                            var start = moment().subtract(29, 'days');
-                            var end = moment();
+                            var start = moment().subtract(30, 'days');
+                            var end = moment().subtract(1, 'days');
 
                             function cb(start, end) {
                                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -127,19 +130,19 @@
                                 $('#lastDate').attr('value', end);
                             }
 
-                            var today = moment();
+                            var yesterday = moment().subtract(1, 'days');
 
                             $('#reportrange').daterangepicker({
-                                maxDate: today,
+                                maxDate: yesterday,
+                                minDate: "01/01/2009",
                                 showDropdowns: true,
                                 startDate: start,
                                 endDate: end,
                                 constrainInput: false,
                                 ranges: {
-                                    'Today': [moment(), moment()],
                                     'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                    'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
+                                    'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
                                     'This Month': [moment().startOf('month'), moment().endOf('month')],
                                     'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                                 }
@@ -154,6 +157,7 @@
 
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary">Submit</button>
+
                     </div>
                 </div>
             </form>
@@ -163,30 +167,68 @@
             <p>Opisik dzialania Apki</p>
             <hr>
             <h3>Chart</h3>
-            <p> tutaj wykres.</p>
+
+            <#if dates??>
+            <script type="text/javascript">
+
+
+                let dates = "${dates}"
+                let prices = "${prices}"
+
+                let prices_arr = prices.split(",")
+                let dates_arr = dates.split(",")
+                let result = []
+                for (let i = 0; i < dates_arr.length; i++) {
+                    result.push( { x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i]) } )
+                }
+
+
+                window.onload = function() {
+
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        title: {
+                            text: "Cryptovalue"
+                        },
+                        axisX: {
+                            title: "Date"
+                        },
+                        axisY: {
+                            title: "Price",
+                            suffix: "$"
+                        },
+                        data: [
+                            {
+                                type: "line",
+                                name: "Cryptovalue",
+                                connectNullData: true,
+                                xValueType: "dateTime",
+                                xValueFormatString: "YYYY-MM-DD",
+                                yValueFormatString: "#,##0.##",
+                                dataPoints: result
+                            }
+                        ]
+                    });
+
+                    chart.render();
+                }
+            </script></#if>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>Latest price</p>
-                <#if lastPrice??>
-                    <span class="form-control">${lastPrice.price}</span>
-                </#if>
+                <span class="form-control"><#if lastPrice??>${lastPrice.price}$</#if></span>
                 <p>Average</p>
-                <#if average??>
-                    <span class="form-control">${average}</span>
-                </#if>
+                <span class="form-control"><#if average??>${average}$</#if></span>
                 <p>Extreme value</p>
-                <#if highest??>
-                    <span class="form-control">${highest.price}</span>
-                </#if>
+                <span class="form-control"><#if highest??>${highest.price}$</#if></span>
                 <p>Minimal value</p>
-                <#if lowest??>
-                    <span class="form-control">${lowest.price}</span>
-                </#if>
+                <span class="form-control"><#if lowest??>${lowest.price}$</#if></span>
                 <p>Median</p>
-                <#if median??>
-                    <span class="form-control">${median}</span>
-                </#if>
+                <span class="form-control"><#if median??>${median}$</#if></span>
             </div>
         </div>
     </div>
