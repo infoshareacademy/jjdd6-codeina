@@ -80,12 +80,8 @@ public class ChoiceServlet extends HttpServlet {
         model.put("lowest", lowestValue);
         model.put("highest", highestValue);
 
-        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath,firstDate,lastDate);
+        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
 
-        // TAK SIE NIE ROBI XD
-        String dummyJson = "[ " + list.stream()
-                .map(c -> "{ x: " + c.getDate() + ", y: " + c.getPrice() + "}")
-                .collect(joining(",\n")) + " ]";
 
         String dates = list.stream()
                 .map(CryptoCurrency::getDate)
@@ -107,10 +103,8 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-                                // TODO wyswietlic akt krypto i zasieg
-                                // TODO wykres
-
-                                //TODO USUNAC NEMA!!!!!!! (xem)
+        // TODO wyswietlic akt krypto i zasieg
+        //TODO USUNAC NEMA!!!!!!! (xem)
 
     }
 

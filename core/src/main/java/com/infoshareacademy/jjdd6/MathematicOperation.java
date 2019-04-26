@@ -8,7 +8,7 @@ public class MathematicOperation {
 
     public Double average(Map<LocalDate, CryptoCurrency> fromCsv) {
         double sumOfElements = fromCsv.values().stream().mapToDouble(CryptoCurrency::getPrice).sum();
-//        System.out.println(String.format("Average price = %s (USD)", (sumOfElements / fromCsv.size())));
+        System.out.println(String.format("Average price = %s (USD)", (sumOfElements / fromCsv.size())));
 
         return sumOfElements / fromCsv.size();
     }
@@ -19,8 +19,8 @@ public class MathematicOperation {
                 .max(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
 
-//        System.out.println("Highest value at given range is in");
-//        loadingData.printingInformation(highestValue.getValue());
+        System.out.println("Highest value at given range is in");
+        loadingData.printingInformation(highestValue.getValue());
         return highestValue.getValue();
     }
 
@@ -29,8 +29,8 @@ public class MathematicOperation {
         Map.Entry<LocalDate, CryptoCurrency> lowestValue = cryptoCurrencies.entrySet().stream()
                 .min(Map.Entry.comparingByValue(Comparator.comparingDouble(CryptoCurrency::getPrice)))
                 .get();
-//        System.out.println("Smallest value at given range is in");
-//        loadingData.printingInformation(lowestValue.getValue());
+        System.out.println("Smallest value at given range is in");
+        loadingData.printingInformation(lowestValue.getValue());
 
         return lowestValue.getValue();
     }
@@ -48,12 +48,12 @@ public class MathematicOperation {
 
         if (lengthOfArray % 2 == 0) {
             med = (lengthOfArray + 1) / 2;
-//            System.out.println("50% of records are equal or smaller than ");
-//            loadingData.printingInformation(arrayOfValues.get(med));
+            System.out.println("50% of records are equal or smaller than ");
+            loadingData.printingInformation(arrayOfValues.get(med));
             return arrayOfValues.get(med).getPrice();
         }
-//        System.out.println("50% of records are equal or smaller than ");
-//        loadingData.printingInformation(arrayOfValues.get(med));
+        System.out.println("50% of records are equal or smaller than ");
+        loadingData.printingInformation(arrayOfValues.get(med));
         return arrayOfValues.get(med).getPrice();
     }
 }

@@ -202,7 +202,6 @@
                                 type: "line",
                                 name: "Cryptovalue",
                                 connectNullData: true,
-                                //nullDataLineDashType: "solid",
                                 xValueType: "dateTime",
                                 xValueFormatString: "YYYY-MM-DD",
                                 yValueFormatString: "#,##0.##",
