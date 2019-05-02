@@ -86,7 +86,7 @@ public class ChoiceServlet extends HttpServlet {
         model.put("average", priceFormatter(average));
         model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
         model.put("highestPrice", priceFormatter(highestValue.getPrice()));
-        model.put("changeOverNight",changeOverNight);
+        model.put("changeOverNight",priceFormatter(changeOverNight*100)+"%");
 
 
         List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
