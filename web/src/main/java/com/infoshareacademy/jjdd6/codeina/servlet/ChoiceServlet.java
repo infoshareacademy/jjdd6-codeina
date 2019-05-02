@@ -1,7 +1,6 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
-import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -57,8 +57,6 @@ public class ChoiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        String path = req.getParameter("outFilePath");
         String choice = req.getParameter("crypto");
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
@@ -68,7 +66,7 @@ public class ChoiceServlet extends HttpServlet {
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
-        path = loadProperties.getSettingsFile();
+       String path = loadProperties.getSettingsFile();
 
 
         String filePath = path + choice + ".csv";
@@ -80,14 +78,18 @@ public class ChoiceServlet extends HttpServlet {
         Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
         CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
         CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
-        model.put("lastPrice", cryptoCurrency);
-        model.put("median", median);
-        model.put("average", average);
-        model.put("lowest", lowestValue);
-        model.put("highest", highestValue);
+
+        Double changeOverNight = cryptoService.changeOverNight(filePath);
+
+        model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
+        model.put("median", priceFormatter(median));
+        model.put("average", priceFormatter(average));
+        model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
+        model.put("highestPrice", priceFormatter(highestValue.getPrice()));
+        model.put("changeOverNight",changeOverNight);
+
 
         List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
-
 
         String dates = list.stream()
                 .map(CryptoCurrency::getDate)
@@ -118,6 +120,11 @@ public class ChoiceServlet extends HttpServlet {
         return Instant.ofEpochMilli(Long.valueOf(localDateStr))
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
+    }
+    private String priceFormatter(Double price){
+        final DecimalFormat df = new DecimalFormat("0.000000");
+        String str = df.format(price) + " USD";
+        return str.replace(',','.');
     }
 }
 

@@ -90,11 +90,7 @@
                 <input type="hidden" id="lastDate" name="lastDate" value=""/>
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
-
-                        <h3>Path:</h3>
-                        <input type="text" name="outFilePath"><br>
-
-                        <h3>Options</h3>
+                        <h3>Choose cryptocurrency</h3>
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="crypto">
                             <option value="btc" selected>Bitcoin</option>
@@ -220,15 +216,17 @@
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>Latest price</p>
-                <span class="form-control"><#if lastPrice??>${lastPrice.price}$</#if></span>
+                <span class="form-control"><#if lastPrice??>${lastPrice}</#if></span>
                 <p>Average</p>
-                <span class="form-control"><#if average??>${average}$</#if></span>
+                <span class="form-control"><#if average??>${average}</#if></span>
                 <p>Extreme value</p>
-                <span class="form-control"><#if highest??>${highest.price}$</#if></span>
+                <span class="form-control"><#if highestPrice??>${highestPrice}</#if></span>
                 <p>Minimal value</p>
-                <span class="form-control"><#if lowest??>${lowest.price}$</#if></span>
+                <span class="form-control"><#if lowestPrice??>${lowestPrice}</#if></span>
                 <p>Median</p>
-                <span class="form-control"><#if median??>${median}$</#if></span>
+                <span class="form-control"><#if median??>${median}</#if></span>
+                <p>changeOverNight</p>
+                <span class="form-control"><#if changeOverNight??>${changeOverNight}</#if></span>
             </div>
         </div>
     </div>

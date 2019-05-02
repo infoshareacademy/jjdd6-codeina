@@ -60,4 +60,12 @@ public class CryptoService {
         return mathematicOperation.findSmallestValue(map);
     }
 
+    public Double changeOverNight(String csv) throws FileNotFoundException {
+        List<CryptoCurrency> list = getAllCryptoCurrencies(csv);
+        Double todayPrice = list.get(list.size() - 1).getPrice();
+        Double yesterdaysPrice = list.get(list.size() - 2).getPrice();
+
+        return todayPrice / yesterdaysPrice - 1;
+    }
+
 }
