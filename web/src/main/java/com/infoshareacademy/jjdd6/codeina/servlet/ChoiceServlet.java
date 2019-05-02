@@ -5,6 +5,7 @@ import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
+import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -39,6 +40,9 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     private StatisticData statisticData;
 
+    @Inject
+    private LoadProperties loadProperties;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -63,6 +67,8 @@ public class ChoiceServlet extends HttpServlet {
         LocalDate lastDate = getLocalDateFromString(lastDateStr);
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
+
+        path = loadProperties.getSettingsFile();
 
 
         String filePath = path + choice + ".csv";
