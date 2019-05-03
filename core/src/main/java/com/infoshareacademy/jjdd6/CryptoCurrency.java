@@ -38,4 +38,23 @@ public class CryptoCurrency {
                 ", date=" + date +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + price.hashCode();
+        result = 31 * result + date.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof CryptoCurrency))
+            return false;
+        CryptoCurrency cryptoCurrency = (CryptoCurrency) obj;
+        return cryptoCurrency.getDate() == this.getDate()
+                && cryptoCurrency.getPrice().equals(this.getPrice());
+    }
 }

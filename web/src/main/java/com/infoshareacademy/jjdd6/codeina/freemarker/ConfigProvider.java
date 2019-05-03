@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6;
+package com.infoshareacademy.jjdd6.codeina.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;

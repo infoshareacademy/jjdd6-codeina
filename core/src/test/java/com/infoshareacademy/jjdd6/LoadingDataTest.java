@@ -4,22 +4,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoadingDataTest {
-    private LoadingData loadingData ;
-    private LocalDate date1 = LocalDate.of(2019,4,30);
-    private LocalDate date2 = LocalDate.of(2019,5,3);
-    private List<CryptoCurrency> cryptoList = Arrays.asList(new CryptoCurrency(2.0,date1),new CryptoCurrency(3.0,date2));
+    private LoadingData loadingData;
+    private LocalDate date1 = LocalDate.of(2019, 4, 30);
+    private LocalDate date2 = LocalDate.of(2019, 5, 3);
+    private LocalDate date3 = LocalDate.of(2019, 5, 5);
+    private CryptoCurrency c1 = new CryptoCurrency(25.5, date1);
+    private CryptoCurrency c2 = new CryptoCurrency(13.0, date2);
+    private CryptoCurrency c3 = new CryptoCurrency(50.0, date3);
+    private List<CryptoCurrency> cryptoList = Arrays.asList(c1, c2, c3);
+
     @BeforeEach
-    void prep(){
-        loadingData = new LoadingData() ;
+    void prep() {
+        loadingData = new LoadingData();
     }
 
     @Test
@@ -29,34 +32,47 @@ class LoadingDataTest {
                 "3916,38.0124093594692,3206,11.09550283636454,0.001,1337727,596";
         CryptoCurrency cryptoCurrency = loadingData.sortingLineOfText(s);
         //when
-        CryptoCurrency expected = new CryptoCurrency(0.331111, LocalDate.parse( "2014-02-15"));
+        CryptoCurrency expected = new CryptoCurrency(0.331111, LocalDate.parse("2014-02-15"));
         //then
-        assertThat(expected.equals(cryptoCurrency));
+        assertEquals(expected.getPrice(), cryptoCurrency.getPrice());
+        assertEquals(expected.getDate(), cryptoCurrency.getDate());
 
     }
+
     @Test
-    void testGetMapFromList(){
-        List<CryptoCurrency> list = cryptoList ;
+    void testGetMapFromList() {
+        List<CryptoCurrency> list = cryptoList;
         //when
-        Map<LocalDate,CryptoCurrency> map= loadingData.getMapFromList(list);
+        Map<LocalDate, CryptoCurrency> map = loadingData.getMapFromList(list);
         //then
-        assertThat(map.keySet().contains(date1));
-        assertThat(map.keySet().contains(date2));
-        assertThat(map.keySet().size()==2);
+        assertTrue(map.keySet().contains(date1));
+        assertTrue(map.keySet().contains(date2));
+        assertEquals(3, map.keySet().size());
     }
+
     @Test
-    void testNewerDate(){
-        boolean result =  loadingData.newerDate(date1,date2);
-        assertThat(!result);
+    void testNewerDate() {
+        boolean result = loadingData.newerDate(date1, date2);
+        assertFalse(result);
     }
+
     @Test
-    void testFirstDate(){
+    void testFirstDate() {
         //given
-        List<CryptoCurrency> list =cryptoList;
+        CryptoCurrency cryptoCurrency = loadingData.getFirstDate(cryptoList);
         //when
-        CryptoCurrency expected = new CryptoCurrency(2.0,date1);
+        CryptoCurrency expected = c1;
         //then
-        assertThat(loadingData.getFirstDate(list).equals(expected));
+        assertEquals(cryptoCurrency, expected);
     }
 
+    @Test
+    void testLastDate() {
+        //given
+        CryptoCurrency cryptoCurrency = loadingData.getLastDate(cryptoList);
+        //when
+        CryptoCurrency expected = c3;
+        //then
+        assertEquals(cryptoCurrency, expected);
+    }
 }

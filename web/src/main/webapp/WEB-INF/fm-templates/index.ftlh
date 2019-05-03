@@ -17,7 +17,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -165,50 +164,50 @@
             <h3>Chart</h3>
 
             <#if dates??>
-            <script type="text/javascript">
+                <script type="text/javascript">
 
 
-                let dates = "${dates}"
-                let prices = "${prices}"
+                    let dates = "${dates}"
+                    let prices = "${prices}"
 
-                let prices_arr = prices.split(",")
-                let dates_arr = dates.split(",")
-                let result = []
-                for (let i = 0; i < dates_arr.length; i++) {
-                    result.push( { x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i]) } )
-                }
+                    let prices_arr = prices.split(",")
+                    let dates_arr = dates.split(",")
+                    let result = []
+                    for (let i = 0; i < dates_arr.length; i++) {
+                        result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
+                    }
 
 
-                window.onload = function() {
+                    window.onload = function () {
 
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        animationEnabled: true,
-                        title: {
-                            text: "Cryptovalue"
-                        },
-                        axisX: {
-                            title: "Date"
-                        },
-                        axisY: {
-                            title: "Price",
-                            suffix: "$"
-                        },
-                        data: [
-                            {
-                                type: "line",
-                                name: "Cryptovalue",
-                                connectNullData: true,
-                                xValueType: "dateTime",
-                                xValueFormatString: "YYYY-MM-DD",
-                                yValueFormatString: "#,##0.##",
-                                dataPoints: result
-                            }
-                        ]
-                    });
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            title: {
+                                text: "Cryptovalue"
+                            },
+                            axisX: {
+                                title: "Date"
+                            },
+                            axisY: {
+                                title: "Price",
+                                suffix: "$"
+                            },
+                            data: [
+                                {
+                                    type: "line",
+                                    name: "Cryptovalue",
+                                    connectNullData: true,
+                                    xValueType: "dateTime",
+                                    xValueFormatString: "YYYY-MM-DD",
+                                    yValueFormatString: "#,##0.##",
+                                    dataPoints: result
+                                }
+                            ]
+                        });
 
-                    chart.render();
-                }
-            </script></#if>
+                        chart.render();
+                    }
+                </script></#if>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -226,7 +225,7 @@
                 <p>Median</p>
                 <span class="form-control"><#if median??>${median}</#if></span>
                 <p>changeOverNight</p>
-                <span class="form-control"><#if changeOverNight??>${changeOverNight}</#if></span>
+                <span class="form-control" <#if positive??>  style="color: green" <#else >style="color: red" </#if> > <#if changeOverNight??>${changeOverNight}</#if></span>
             </div>
         </div>
     </div>

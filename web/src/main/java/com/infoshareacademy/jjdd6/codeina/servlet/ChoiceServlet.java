@@ -1,8 +1,8 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
-import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
+import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
 import freemarker.template.Template;
@@ -66,7 +66,7 @@ public class ChoiceServlet extends HttpServlet {
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
-       String path = loadProperties.getSettingsFile();
+        String path = loadProperties.getSettingsFile();
 
 
         String filePath = path + choice + ".csv";
@@ -86,7 +86,10 @@ public class ChoiceServlet extends HttpServlet {
         model.put("average", priceFormatter(average));
         model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
         model.put("highestPrice", priceFormatter(highestValue.getPrice()));
-        model.put("changeOverNight",priceFormatter(changeOverNight*100)+"%");
+        if (changeOverNight >= 0) {
+            model.put("positive", 1);
+            model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
+        } else model.put("changeOverNight", percentageFormatter(changeOverNight));
 
 
         List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
@@ -121,10 +124,17 @@ public class ChoiceServlet extends HttpServlet {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-    private String priceFormatter(Double price){
+
+    private String priceFormatter(Double price) {
         final DecimalFormat df = new DecimalFormat("0.000000");
-        String str = df.format(price) + " USD";
-        return str.replace(',','.');
+        return (df.format(price) + " USD")
+                .replace(',', '.');
+    }
+
+    private String percentageFormatter(Double number) {
+        final DecimalFormat df = new DecimalFormat("0.00");
+        return (df.format(number * 100) + " %")
+                .replace(',', '.');
     }
 }
 

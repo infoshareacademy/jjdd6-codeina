@@ -25,8 +25,6 @@ public class SortingData {
     }
 
     public void printingSortedPriceFromCsvMaxtoMin(String csv) throws FileNotFoundException {
-
-
         SortingData sortingData = new SortingData();
         LoadingData loadingData = new LoadingData();
         sortingData.printSortedData(sortingData.sortCryptoCurrencyFromMaxToMin(loadingData.getCryptoCurrencyFromDateToDate(csv)));
