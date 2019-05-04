@@ -17,7 +17,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -90,11 +89,7 @@
                 <input type="hidden" id="lastDate" name="lastDate" value=""/>
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
-
-                        <h3>Path:</h3>
-                        <input type="text" name="outFilePath"><br>
-
-                        <h3>Options</h3>
+                        <h3>Choose cryptocurrency</h3>
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="crypto">
                             <option value="btc" selected>Bitcoin</option>
@@ -169,50 +164,50 @@
             <h3>Chart</h3>
 
             <#if dates??>
-            <script type="text/javascript">
+                <script type="text/javascript">
 
 
-                let dates = "${dates}"
-                let prices = "${prices}"
+                    let dates = "${dates}"
+                    let prices = "${prices}"
 
-                let prices_arr = prices.split(",")
-                let dates_arr = dates.split(",")
-                let result = []
-                for (let i = 0; i < dates_arr.length; i++) {
-                    result.push( { x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i]) } )
-                }
+                    let prices_arr = prices.split(",")
+                    let dates_arr = dates.split(",")
+                    let result = []
+                    for (let i = 0; i < dates_arr.length; i++) {
+                        result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
+                    }
 
 
-                window.onload = function() {
+                    window.onload = function () {
 
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        animationEnabled: true,
-                        title: {
-                            text: "Cryptovalue"
-                        },
-                        axisX: {
-                            title: "Date"
-                        },
-                        axisY: {
-                            title: "Price",
-                            suffix: "$"
-                        },
-                        data: [
-                            {
-                                type: "line",
-                                name: "Cryptovalue",
-                                connectNullData: true,
-                                xValueType: "dateTime",
-                                xValueFormatString: "YYYY-MM-DD",
-                                yValueFormatString: "#,##0.##",
-                                dataPoints: result
-                            }
-                        ]
-                    });
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            title: {
+                                text: "Cryptovalue"
+                            },
+                            axisX: {
+                                title: "Date"
+                            },
+                            axisY: {
+                                title: "Price",
+                                suffix: "$"
+                            },
+                            data: [
+                                {
+                                    type: "line",
+                                    name: "Cryptovalue",
+                                    connectNullData: true,
+                                    xValueType: "dateTime",
+                                    xValueFormatString: "YYYY-MM-DD",
+                                    yValueFormatString: "#,##0.##",
+                                    dataPoints: result
+                                }
+                            ]
+                        });
 
-                    chart.render();
-                }
-            </script></#if>
+                        chart.render();
+                    }
+                </script></#if>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -220,15 +215,17 @@
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p>Latest price</p>
-                <span class="form-control"><#if lastPrice??>${lastPrice.price}$</#if></span>
+                <span class="form-control"><#if lastPrice??>${lastPrice}</#if></span>
                 <p>Average</p>
-                <span class="form-control"><#if average??>${average}$</#if></span>
+                <span class="form-control"><#if average??>${average}</#if></span>
                 <p>Extreme value</p>
-                <span class="form-control"><#if highest??>${highest.price}$</#if></span>
+                <span class="form-control"><#if highestPrice??>${highestPrice}</#if></span>
                 <p>Minimal value</p>
-                <span class="form-control"><#if lowest??>${lowest.price}$</#if></span>
+                <span class="form-control"><#if lowestPrice??>${lowestPrice}</#if></span>
                 <p>Median</p>
-                <span class="form-control"><#if median??>${median}$</#if></span>
+                <span class="form-control"><#if median??>${median}</#if></span>
+                <p>changeOverNight</p>
+                <span class="form-control" <#if positive??>  style="color: green" <#else >style="color: red" </#if> > <#if changeOverNight??>${changeOverNight}</#if></span>
             </div>
         </div>
     </div>

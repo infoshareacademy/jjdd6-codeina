@@ -1,10 +1,10 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
-import com.infoshareacademy.jjdd6.Downloader;
-import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
+import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
+import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -39,6 +40,9 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     private StatisticData statisticData;
 
+    @Inject
+    private LoadProperties loadProperties;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -53,8 +57,6 @@ public class ChoiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        String path = req.getParameter("outFilePath");
         String choice = req.getParameter("crypto");
         String firstDateStr = req.getParameter("firstDate");
         String lastDateStr = req.getParameter("lastDate");
@@ -63,6 +65,8 @@ public class ChoiceServlet extends HttpServlet {
         LocalDate lastDate = getLocalDateFromString(lastDateStr);
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
+
+        String path = loadProperties.getSettingsFile();
 
 
         String filePath = path + choice + ".csv";
@@ -74,14 +78,21 @@ public class ChoiceServlet extends HttpServlet {
         Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
         CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
         CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
-        model.put("lastPrice", cryptoCurrency);
-        model.put("median", median);
-        model.put("average", average);
-        model.put("lowest", lowestValue);
-        model.put("highest", highestValue);
+
+        Double changeOverNight = cryptoService.changeOverNight(filePath);
+
+        model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
+        model.put("median", priceFormatter(median));
+        model.put("average", priceFormatter(average));
+        model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
+        model.put("highestPrice", priceFormatter(highestValue.getPrice()));
+        if (changeOverNight >= 0) {
+            model.put("positive", 1);
+            model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
+        } else model.put("changeOverNight", percentageFormatter(changeOverNight));
+
 
         List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
-
 
         String dates = list.stream()
                 .map(CryptoCurrency::getDate)
@@ -112,6 +123,18 @@ public class ChoiceServlet extends HttpServlet {
         return Instant.ofEpochMilli(Long.valueOf(localDateStr))
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
+    }
+
+    private String priceFormatter(Double price) {
+        final DecimalFormat df = new DecimalFormat("0.000000");
+        return (df.format(price) + " USD")
+                .replace(',', '.');
+    }
+
+    private String percentageFormatter(Double number) {
+        final DecimalFormat df = new DecimalFormat("0.00");
+        return (df.format(number * 100) + " %")
+                .replace(',', '.');
     }
 }
 

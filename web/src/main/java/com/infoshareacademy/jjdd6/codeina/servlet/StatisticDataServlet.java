@@ -1,7 +1,7 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
-import com.infoshareacademy.jjdd6.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
+import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 

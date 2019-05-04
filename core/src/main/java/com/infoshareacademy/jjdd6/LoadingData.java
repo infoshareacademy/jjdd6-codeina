@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -79,7 +80,7 @@ public class LoadingData {
                 printCommunicateDateOutOfRange(csv);
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             LOGGER.error("Method throw InputMismatchException");
             e.printStackTrace();
         }
