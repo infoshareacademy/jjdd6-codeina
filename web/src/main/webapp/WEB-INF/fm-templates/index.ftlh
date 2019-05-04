@@ -34,7 +34,7 @@
         .sidenav {
             padding-top: 20px;
             background-color: #f1f1f1;
-            height: 100%;
+            height: 150%;
         }
 
         /* Set black background color, white text and some padding */
@@ -158,10 +158,11 @@
             </form>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome</h1>
-            <p>Opisik dzialania Apki</p>
+            <h1>Welcome User!</h1>
+            <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy yourself. :)</p>
             <hr>
             <h3>Chart</h3>
+
 
             <#if dates??>
                 <script type="text/javascript">
@@ -183,7 +184,7 @@
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
-                                text: "Cryptovalue"
+                                text: "Cryptocurrency"
                             },
                             axisX: {
                                 title: "Date"
@@ -210,6 +211,20 @@
                 </script></#if>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+            <div class="col-sm-4 text-left">
+                <p>Starting date</p>
+                <span class="form-control"><#if firstDate??>${firstDate}</#if></span>
+            </div>
+            <div class="col-sm-4 text-left">
+                <p>Chosen Cryptocurrency</p>
+                <span class="form-control"><#if choice??>${choice}</#if></span>
+            </div>
+            <div class="col-sm-4 text-left">
+                <p>Ending date</p>
+                <span class="form-control"><#if lastDate??>${lastDate}</#if></span>
+            </div>
 
         </div>
         <div class="col-sm-2 sidenav">
