@@ -39,7 +39,7 @@ public class Interface {
         System.out.println("2) Bitcoin Cash");
         System.out.println("3) Litecoin");
         System.out.println("4) Ethereum");
-        System.out.println("5) NEM");
+        System.out.println("5) Vertcoin");
         System.out.println("6) Decred");
         System.out.println("7) ZCash");
         System.out.println("8) Dash");

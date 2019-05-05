@@ -117,9 +117,6 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
-        //TODO USUNAC NEMA!!!!!!! (xem)
-
     }
 
     private LocalDate getLocalDateFromString(String localDateStr) {

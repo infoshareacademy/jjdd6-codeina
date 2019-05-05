@@ -95,7 +95,7 @@
                             <option value="bch">Bitcoin Cash</option>
                             <option value="ltc">Litecoin</option>
                             <option value="eth">Ethereum</option>
-                            <option value="xem">NEM</option>
+                            <option value="vtc">Vertcoin</option>
                             <option value="dcr">Decred</option>
                             <option value="zec">ZCash</option>
                             <option value="dash">Dash</option>

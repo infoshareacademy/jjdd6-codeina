@@ -12,6 +12,5 @@ import java.io.IOException;
 public class DownloaderForOurWildfly {
     public static void main(String[] args) throws IOException {
         Downloader.downloadAll();
-
-    }       //TODO activate @Schedule(hour = "*", minute = "*", second = "*/10")
+    }
 }
