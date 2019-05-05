@@ -36,7 +36,7 @@ public class Downloader {
                 downloader("https://coinmetrics.io/data/eth.csv", "eth");
                 break;
             case 5:
-                downloader("https://coinmetrics.io/data/xem.csv", "xem");
+                downloader("https://coinmetrics.io/data/vtc.csv", "vtc");
                 break;
             case 6:
                 downloader("https://coinmetrics.io/data/dcr.csv", "dcr");

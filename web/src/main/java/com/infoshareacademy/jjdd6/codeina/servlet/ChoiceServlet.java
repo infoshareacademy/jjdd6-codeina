@@ -5,6 +5,7 @@ import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
+import freemarker.template.SimpleDate;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -16,12 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
@@ -91,6 +91,9 @@ public class ChoiceServlet extends HttpServlet {
             model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
         } else model.put("changeOverNight", percentageFormatter(changeOverNight));
 
+        model.put("choice", choice);
+        model.put("firstDate", simpleDateDisplay(firstDateStr));
+        model.put("lastDate", simpleDateDisplay(lastDateStr));
 
         List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
 
@@ -114,9 +117,6 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-        // TODO wyswietlic akt krypto i zasieg
-        //TODO USUNAC NEMA!!!!!!! (xem)
-
     }
 
     private LocalDate getLocalDateFromString(String localDateStr) {
@@ -135,6 +135,13 @@ public class ChoiceServlet extends HttpServlet {
         final DecimalFormat df = new DecimalFormat("0.00");
         return (df.format(number * 100) + " %")
                 .replace(',', '.');
+    }
+
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
+        Date dateEpoch = new Date(dateLong);
+        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
+        return jdf.format(dateEpoch);
     }
 }
 

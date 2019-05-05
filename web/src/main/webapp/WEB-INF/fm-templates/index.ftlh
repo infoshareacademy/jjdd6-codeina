@@ -34,7 +34,7 @@
         .sidenav {
             padding-top: 20px;
             background-color: #f1f1f1;
-            height: 100%;
+            height: 150%;
         }
 
         /* Set black background color, white text and some padding */
@@ -72,7 +72,6 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home </a></li>
-                <li><a href="#">ELSE </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -96,7 +95,7 @@
                             <option value="bch">Bitcoin Cash</option>
                             <option value="ltc">Litecoin</option>
                             <option value="eth">Ethereum</option>
-                            <option value="xem">NEM</option>
+                            <option value="vtc">Vertcoin</option>
                             <option value="dcr">Decred</option>
                             <option value="zec">ZCash</option>
                             <option value="dash">Dash</option>
@@ -158,10 +157,11 @@
             </form>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome</h1>
-            <p>Opisik dzialania Apki</p>
+            <h1>Welcome User!</h1>
+            <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy yourself. :)</p>
             <hr>
             <h3>Chart</h3>
+
 
             <#if dates??>
                 <script type="text/javascript">
@@ -183,7 +183,7 @@
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
-                                text: "Cryptovalue"
+                                text: "Cryptocurrency"
                             },
                             axisX: {
                                 title: "Date"
@@ -210,6 +210,20 @@
                 </script></#if>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+            <div class="col-sm-4 text-left">
+                <p>Starting date</p>
+                <span class="form-control"><#if firstDate??>${firstDate}</#if></span>
+            </div>
+            <div class="col-sm-4 text-left">
+                <p>Chosen Cryptocurrency</p>
+                <span class="form-control"><#if choice??>${choice}</#if></span>
+            </div>
+            <div class="col-sm-4 text-left">
+                <p>Ending date</p>
+                <span class="form-control"><#if lastDate??>${lastDate}</#if></span>
+            </div>
 
         </div>
         <div class="col-sm-2 sidenav">
