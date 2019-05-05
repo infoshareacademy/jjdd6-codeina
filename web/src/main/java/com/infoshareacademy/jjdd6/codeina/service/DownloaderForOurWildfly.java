@@ -9,15 +9,9 @@ import javax.ejb.*;
 import javax.inject.Inject;
 import java.io.IOException;
 
-@Startup
-@Stateless
 public class DownloaderForOurWildfly {
-
-    static Logger logger = LogManager.getLogger(DownloaderForOurWildfly.class.getName());
-
-    @Schedule(hour = "16", minute = "32")
     public static void main(String[] args) throws IOException {
         Downloader.downloadAll();
-        logger.info("The files were downloaded");
-    }       //TODO activate
+
+    }       //TODO activate @Schedule(hour = "*", minute = "*", second = "*/10")
 }
