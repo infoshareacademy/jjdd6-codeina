@@ -139,8 +139,9 @@ public class ChoiceServlet extends HttpServlet {
         return (df.format(number * 100) + " %")
                 .replace(',', '.');
     }
-    private static String simpleDateDisplay(String date){
-        long dateLong = Long.parseLong( date );
+
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
         Date dateEpoch = new Date(dateLong);
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
