@@ -43,6 +43,7 @@ public class StatisticDataServlet extends HttpServlet {
         model.put("ZEC", statisticData.getStatisticDataMap().get("zec"));
         model.put("DOGE", statisticData.getStatisticDataMap().get("doge"));
         model.put("ETH", statisticData.getStatisticDataMap().get("eth"));
+        model.put("VTC", statisticData.getStatisticDataMap().get("vtc"));
 
         try {
             template.process(model, resp.getWriter());
