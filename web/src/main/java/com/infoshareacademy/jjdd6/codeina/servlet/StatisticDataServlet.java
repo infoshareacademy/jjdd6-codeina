@@ -32,18 +32,38 @@ public class StatisticDataServlet extends HttpServlet {
 
         Map<String, Object> model = new HashMap<>();
         Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
+        int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
+        if (statisticData.getStatisticDataMap().get("btc") != null) {
+            model.put("BTC", statisticData.getStatisticDataMap().get("btc") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("bch") != null) {
+            model.put("BCH", statisticData.getStatisticDataMap().get("bch") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("dash") != null) {
+            model.put("DASH", statisticData.getStatisticDataMap().get("dash") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("dcr") != null) {
+            model.put("DCR", statisticData.getStatisticDataMap().get("dcr") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("ltc") != null) {
+            model.put("LTC", statisticData.getStatisticDataMap().get("ltc") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("pivx") != null) {
+            model.put("PIVX", statisticData.getStatisticDataMap().get("pivx") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("zec") != null) {
+            model.put("ZEC", statisticData.getStatisticDataMap().get("zec") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("doge") != null) {
+            model.put("DOGE", statisticData.getStatisticDataMap().get("doge") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("eth") != null) {
+            model.put("ETH", statisticData.getStatisticDataMap().get("eth") * 100 / sumOfAll);
+        }
+        if (statisticData.getStatisticDataMap().get("vtc") != null) {
+            model.put("VTC", statisticData.getStatisticDataMap().get("vtc") * 100 / sumOfAll);
+        }
 
-        model.put("BTC", statisticData.getStatisticDataMap().get("btc"));
-        model.put("BCH", statisticData.getStatisticDataMap().get("bch"));
-        model.put("DASH", statisticData.getStatisticDataMap().get("dash"));
-        model.put("DCR", statisticData.getStatisticDataMap().get("dcr"));
-        model.put("LTC", statisticData.getStatisticDataMap().get("ltc"));
-        model.put("PIVX", statisticData.getStatisticDataMap().get("pivx"));
-        model.put("XEM", statisticData.getStatisticDataMap().get("xem"));
-        model.put("ZEC", statisticData.getStatisticDataMap().get("zec"));
-        model.put("DOGE", statisticData.getStatisticDataMap().get("doge"));
-        model.put("ETH", statisticData.getStatisticDataMap().get("eth"));
-        model.put("VTC", statisticData.getStatisticDataMap().get("vtc"));
 
         try {
             template.process(model, resp.getWriter());
