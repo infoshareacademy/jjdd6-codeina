@@ -24,6 +24,7 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.Logger;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.joining;
 
 @WebServlet("choice")
@@ -91,7 +92,9 @@ public class ChoiceServlet extends HttpServlet {
             model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
         } else model.put("changeOverNight", percentageFormatter(changeOverNight));
 
-        model.put("choice", choice);
+        String choiceName = shortNameToFullCryptocurrencyName(choice);
+
+        model.put("choice", choiceName);
         model.put("firstDate", simpleDateDisplay(firstDateStr));
         model.put("lastDate", simpleDateDisplay(lastDateStr));
 
@@ -142,6 +145,22 @@ public class ChoiceServlet extends HttpServlet {
         Date dateEpoch = new Date(dateLong);
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
+    }
+    private static String shortNameToFullCryptocurrencyName(String name){
+
+        switch (name){
+            case "btc": return "Bitcoin";
+            case "bch": return "Bitcoin Cash";
+            case "ltc": return "Litecoin";
+            case "eth": return "Ethereum";
+            case "vtc": return "Vertcoin";
+            case "dcr": return "Decred";
+            case "zec": return "ZCash";
+            case "dash": return "Dash";
+            case "doge": return "Dogecoin";
+            case "pivx": return "PIVX";
+            default: return "Cryptocurrency";
+        }
     }
 }
 

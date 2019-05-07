@@ -183,7 +183,7 @@
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
-                                text: "Cryptocurrency"
+                                text: "<#if choice??>${choice}</#if>"
                             },
                             axisX: {
                                 title: "Date"
@@ -195,7 +195,7 @@
                             data: [
                                 {
                                     type: "line",
-                                    name: "Cryptovalue",
+                                    name: "Cryptocurrency",
                                     connectNullData: true,
                                     xValueType: "dateTime",
                                     xValueFormatString: "YYYY-MM-DD",
@@ -217,8 +217,6 @@
                 <span class="form-control"><#if firstDate??>${firstDate}</#if></span>
             </div>
             <div class="col-sm-4 text-left">
-                <p>Chosen Cryptocurrency</p>
-                <span class="form-control"><#if choice??>${choice}</#if></span>
             </div>
             <div class="col-sm-4 text-left">
                 <p>Ending date</p>
