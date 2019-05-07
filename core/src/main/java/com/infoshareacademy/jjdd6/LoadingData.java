@@ -21,13 +21,13 @@ public class LoadingData {
         try {
             price = Double.parseDouble(parts[5]);
         } catch (Exception e) {
-            LOGGER.error("Method throw InputMismatchException ");
+            LOGGER.info("Empty csv line ");
             price = 0.0;
         }
         try {
             date = LocalDate.parse(parts[0]);
         } catch (Exception e) {
-            LOGGER.error("Method throw InputMismatchException");
+            LOGGER.error("No such date");
             date = LocalDate.now();
         }
         return new CryptoCurrency(price, date);
