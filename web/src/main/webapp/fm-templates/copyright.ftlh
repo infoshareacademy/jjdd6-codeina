@@ -1,1 +1,0 @@
-<div>Copyright© ${.now?string.yyyy}</div>
