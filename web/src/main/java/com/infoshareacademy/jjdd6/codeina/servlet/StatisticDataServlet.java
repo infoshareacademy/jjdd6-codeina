@@ -29,46 +29,31 @@ public class StatisticDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
+        if (statisticData.getStatisticDataMap() == null) {
+            resp.sendRedirect("error");
+            return;
+        }
         Map<String, Object> model = new HashMap<>();
         Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
         int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
-        if (statisticData.getStatisticDataMap().get("btc") != null) {
-            model.put("BTC", statisticData.getStatisticDataMap().get("btc") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("bch") != null) {
-            model.put("BCH", statisticData.getStatisticDataMap().get("bch") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("dash") != null) {
-            model.put("DASH", statisticData.getStatisticDataMap().get("dash") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("dcr") != null) {
-            model.put("DCR", statisticData.getStatisticDataMap().get("dcr") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("ltc") != null) {
-            model.put("LTC", statisticData.getStatisticDataMap().get("ltc") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("pivx") != null) {
-            model.put("PIVX", statisticData.getStatisticDataMap().get("pivx") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("zec") != null) {
-            model.put("ZEC", statisticData.getStatisticDataMap().get("zec") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("doge") != null) {
-            model.put("DOGE", statisticData.getStatisticDataMap().get("doge") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("eth") != null) {
-            model.put("ETH", statisticData.getStatisticDataMap().get("eth") * 100 / sumOfAll);
-        }
-        if (statisticData.getStatisticDataMap().get("vtc") != null) {
-            model.put("VTC", statisticData.getStatisticDataMap().get("vtc") * 100 / sumOfAll);
-        }
 
+        statisticData.getStatisticDataMap().keySet().forEach((o -> putPercentageStatisticsIntoModel(o, sumOfAll, model)));
+        statisticData.getStatisticDataMap().keySet().forEach((o -> putStatisticsIntoModel(o, model)));
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
+    }
+
+    private Map<String, Object> putPercentageStatisticsIntoModel(String cryptoName, int sumOfAll, Map<String, Object> model) {
+        model.put(cryptoName, statisticData.getStatisticDataMap().get(cryptoName) * 100 / sumOfAll);
+        return model;
+    }
+
+    private Map<String, Object> putStatisticsIntoModel(String cryptoName, Map<String, Object> model) {
+        model.put(cryptoName + "Number", statisticData.getStatisticDataMap().get(cryptoName));
+        return model;
     }
 }

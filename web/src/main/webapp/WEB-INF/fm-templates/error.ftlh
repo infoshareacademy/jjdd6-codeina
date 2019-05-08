@@ -14,42 +14,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script>
-        window.onload = function () {
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                theme: "light2", // "light1", "light2", "dark1", "dark2"
-                exportEnabled: true,
-                animationEnabled: true,
-                title: {
-                    text: "Cryptocurrencies checked recently :"
-                },
-                data: [{
-                    type: "pie",
-                    startAngle: 25,
-                    toolTipContent: "<b>{label}</b>: {y}%",
-                    showInLegend: "true",
-                    legendText: "{label}",
-                    indexLabelFontSize: 16,
-                    indexLabel: "{label} - {y}%",
-                    dataPoints: [
-                        <#if btc??> {y: " ${btc}" , label: "Bitcoin"}, </#if>
-                        <#if bch??> {y: " ${bch}" , label: "Bitcoin Cash"}, </#if>
-                        <#if dash??> {y: " ${dash}" , label: "Dash"}, </#if>
-                        <#if drc??> {y: " ${drc}" , label: "Decred"}, </#if>
-                        <#if ltc??> {y: " ${ltc}" , label: "Litecoin"}, </#if>
-                        <#if pivx??> {y: " ${pivx}" , label: "PIVX"}, </#if>
-                        <#if zec??> {y: " ${zec}" , label: "Z Cash"}, </#if>
-                        <#if doge??> {y: " ${doge}" , label: "Dogecoin"}, </#if>
-                        <#if eth??> {y: " ${eth}" , label: "Etherium"}, </#if>
-                        <#if vtc??> {y: " ${vtc}" , label: "Vertcoin"}</#if>
-                    ]
-                }]
-            });
-            chart.render();
-
-        }
-    </script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -100,7 +64,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CRYPTOPOL</a>
+            <a class="navbar-brand" href="http://localhost:8080/choice">CRYPTOPOL</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -116,10 +80,8 @@
         <div class="col-sm-2 sidenav">
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Statistic data</h1>
+            <h1 style="text-align: center" >${message}</h1>
 
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
         </div>
 
