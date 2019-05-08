@@ -135,6 +135,7 @@ public class LoadingData {
         Scanner inputStream = new Scanner(file);
         while (inputStream.hasNext()) {
             String lineOfText = inputStream.next();
+
             CryptoCurrency cryptoCurrency = sortingLineOfText(lineOfText);
             if ((cryptoCurrency.getDate()).equals(first.getDate())) {
                 startAddingToList = true;
@@ -165,12 +166,14 @@ public class LoadingData {
         File file = new File(csv);
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
+
             String line = scanner.next();
+            if(checkIfDataIsAviable(line)){
             String[] parts = line.split(",");
             if (!parts[0].equals("date")) {
                 cryptoCurrencyList.add(sortingLineOfText(line));
             }
-        }
+        }}
         return cryptoCurrencyList;
     }
 
@@ -180,5 +183,11 @@ public class LoadingData {
 
     public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
         return list.get(list.size() - 1);
+    }
+    private boolean checkIfDataIsAviable(String lineOfText){
+        String[] parts = lineOfText.split(",");
+        if(parts[5]==null){
+            return false;
+        }else return true;
     }
 }

@@ -36,7 +36,7 @@
                         <#if btc??> {y: " ${btc}" , label: "Bitcoin"}, </#if>
                         <#if bch??> {y: " ${bch}" , label: "Bitcoin Cash"}, </#if>
                         <#if dash??> {y: " ${dash}" , label: "Dash"}, </#if>
-                        <#if drc??> {y: " ${drc}" , label: "Decred"}, </#if>
+                        <#if dcr??> {y: " ${dcr}" , label: "Decred"}, </#if>
                         <#if ltc??> {y: " ${ltc}" , label: "Litecoin"}, </#if>
                         <#if pivx??> {y: " ${pivx}" , label: "PIVX"}, </#if>
                         <#if zec??> {y: " ${zec}" , label: "Z Cash"}, </#if>
