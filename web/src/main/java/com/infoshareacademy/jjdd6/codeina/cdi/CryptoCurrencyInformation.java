@@ -6,9 +6,10 @@ import com.infoshareacademy.jjdd6.CryptoCurrency;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CryptoCurrencyInformations {
+public class CryptoCurrencyInformation {
     private List<CryptoCurrency> cryptoCurrencies;
-    private String name;
+    private String shortName;
+    private String fullName;
     private LocalDate firstDate;
     private LocalDate lastDate;
 
@@ -16,16 +17,32 @@ public class CryptoCurrencyInformations {
         return cryptoCurrencies;
     }
 
+    public CryptoCurrencyInformation(List<CryptoCurrency> cryptoCurrencies, String shortName, String fullName, LocalDate firstDate, LocalDate lastDate) {
+        this.cryptoCurrencies = cryptoCurrencies;
+        this.shortName = shortName;
+        this.fullName = fullName;
+        this.firstDate = firstDate;
+        this.lastDate = lastDate;
+    }
+
     public void setCryptoCurrencies(List<CryptoCurrency> cryptoCurrencies) {
         this.cryptoCurrencies = cryptoCurrencies;
     }
 
-    public String getName() {
-        return name;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public LocalDate getFirstDate() {
@@ -43,6 +60,4 @@ public class CryptoCurrencyInformations {
     public void setLastDate(LocalDate lastDate) {
         this.lastDate = lastDate;
     }
-
-
 }

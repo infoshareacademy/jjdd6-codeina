@@ -1,11 +1,13 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
+import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
-import freemarker.template.SimpleDate;
+import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -24,13 +26,21 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.Logger;
 
-import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.joining;
 
 @WebServlet("choice")
 public class ChoiceServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
+
+    @Inject
+    private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
+
+    @Inject
+    private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
+
+    @Inject
+    private CryptoInformationService cryptoInformationService;
 
     @Inject
     private TemplateProvider templateProvider;
@@ -46,6 +56,8 @@ public class ChoiceServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
         try {
@@ -67,20 +79,15 @@ public class ChoiceServlet extends HttpServlet {
 
         statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
-        String path = loadProperties.getSettingsFile();
-
-
-        String filePath = path + choice + ".csv";
-
         Map<String, Object> model = new HashMap<>();
 
-        CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(filePath);
-        Double median = cryptoService.getMedian(filePath, firstDate, lastDate);
-        Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
-        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
-        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
+        CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(choice);
+        Double median = cryptoService.getMedian(choice, firstDate, lastDate);
+        Double average = cryptoService.getAverage(choice, firstDate, lastDate);
+        CryptoCurrency lowestValue = cryptoService.getLowestValue(choice, firstDate, lastDate);
+        CryptoCurrency highestValue = cryptoService.getHighestValue(choice, firstDate, lastDate);
 
-        Double changeOverNight = cryptoService.changeOverNight(filePath);
+        Double changeOverNight = cryptoService.changeOverNight(choice);
 
         model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
         model.put("median", priceFormatter(median));
@@ -98,7 +105,7 @@ public class ChoiceServlet extends HttpServlet {
         model.put("firstDate", simpleDateDisplay(firstDateStr));
         model.put("lastDate", simpleDateDisplay(lastDateStr));
 
-        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
+        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
 
         String dates = list.stream()
                 .map(CryptoCurrency::getDate)
@@ -146,7 +153,7 @@ public class ChoiceServlet extends HttpServlet {
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
     }
-    private static String shortNameToFullCryptocurrencyName(String name){
+    public String shortNameToFullCryptocurrencyName(String name){
 
         switch (name){
             case "btc": return "Bitcoin";
