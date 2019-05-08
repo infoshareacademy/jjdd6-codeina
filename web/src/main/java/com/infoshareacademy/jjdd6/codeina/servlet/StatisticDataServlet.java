@@ -29,26 +29,31 @@ public class StatisticDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
+        if (statisticData.getStatisticDataMap() == null) {
+            resp.sendRedirect("error");
+            return;
+        }
         Map<String, Object> model = new HashMap<>();
         Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
+        int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
 
-        model.put("BTC", statisticData.getStatisticDataMap().get("btc"));
-        model.put("BCH", statisticData.getStatisticDataMap().get("bch"));
-        model.put("DASH", statisticData.getStatisticDataMap().get("dash"));
-        model.put("DCR", statisticData.getStatisticDataMap().get("dcr"));
-        model.put("LTC", statisticData.getStatisticDataMap().get("ltc"));
-        model.put("PIVX", statisticData.getStatisticDataMap().get("pivx"));
-        model.put("XEM", statisticData.getStatisticDataMap().get("xem"));
-        model.put("ZEC", statisticData.getStatisticDataMap().get("zec"));
-        model.put("DOGE", statisticData.getStatisticDataMap().get("doge"));
-        model.put("ETH", statisticData.getStatisticDataMap().get("eth"));
-        model.put("VTC", statisticData.getStatisticDataMap().get("vtc"));
+        statisticData.getStatisticDataMap().keySet().forEach((o -> putPercentageStatisticsIntoModel(o, sumOfAll, model)));
+        statisticData.getStatisticDataMap().keySet().forEach((o -> putStatisticsIntoModel(o, model)));
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
+    }
+
+    private Map<String, Object> putPercentageStatisticsIntoModel(String cryptoName, int sumOfAll, Map<String, Object> model) {
+        model.put(cryptoName, statisticData.getStatisticDataMap().get(cryptoName) * 100 / sumOfAll);
+        return model;
+    }
+
+    private Map<String, Object> putStatisticsIntoModel(String cryptoName, Map<String, Object> model) {
+        model.put(cryptoName + "Number", statisticData.getStatisticDataMap().get(cryptoName));
+        return model;
     }
 }
