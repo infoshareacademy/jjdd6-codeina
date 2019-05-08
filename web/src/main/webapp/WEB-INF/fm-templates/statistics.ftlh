@@ -105,7 +105,8 @@
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
         </div>
-
+        <div class="col-sm-2 sidenav">
+        </div>
     </div>
 </div>
 

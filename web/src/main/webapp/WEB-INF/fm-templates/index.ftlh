@@ -144,10 +144,10 @@
             <h3>Chart</h3>
 
 
-            <#if dates??>
+
                 <script type="text/javascript">
 
-
+                    <#if choice??>
                     let dates = "${dates}"
                     let prices = "${prices}"
 
@@ -158,13 +158,13 @@
                         result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
                     }
 
-
+                    </#if>
                     window.onload = function () {
 
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
-                                text: "<#if choice??>${choice}</#if>"
+                                text: "<#if choice??>${choice}<#else>Cryptocurrencies</#if>"
                             },
                             axisX: {
                                 title: "Date"
@@ -181,14 +181,14 @@
                                     xValueType: "dateTime",
                                     xValueFormatString: "YYYY-MM-DD",
                                     yValueFormatString: "#,##0.###",
-                                    dataPoints: result
+                                    dataPoints: <#if choice??>result<#else>[]</#if>
                                 }
                             ]
                         });
 
                         chart.render();
                     }
-                </script></#if>
+                </script>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
