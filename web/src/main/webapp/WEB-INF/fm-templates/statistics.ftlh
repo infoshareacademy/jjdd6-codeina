@@ -33,16 +33,16 @@
                     indexLabelFontSize: 16,
                     indexLabel: "{label} - {y}%",
                     dataPoints: [
-                        <#if btc??> {y: " ${btc}" , label: "Bitcoin"}, </#if>
-                        <#if bch??> {y: " ${bch}" , label: "Bitcoin Cash"}, </#if>
-                        <#if dash??> {y: " ${dash}" , label: "Dash"}, </#if>
-                        <#if drc??> {y: " ${drc}" , label: "Decred"}, </#if>
-                        <#if ltc??> {y: " ${ltc}" , label: "Litecoin"}, </#if>
-                        <#if pivx??> {y: " ${pivx}" , label: "PIVX"}, </#if>
-                        <#if zec??> {y: " ${zec}" , label: "Z Cash"}, </#if>
-                        <#if doge??> {y: " ${doge}" , label: "Dogecoin"}, </#if>
-                        <#if eth??> {y: " ${eth}" , label: "Etherium"}, </#if>
-                        <#if vtc??> {y: " ${vtc}" , label: "Vertcoin"}</#if>
+                        <#if btc??> {y: " ${btc}" , label: "Bitcoin - ${btcN}"}, </#if>
+                        <#if bch??> {y: " ${bch}" , label: "Bitcoin Cash - ${bchN}"}, </#if>
+                        <#if dash??> {y: " ${dash}" , label: "Dash - ${dashN}"}, </#if>
+                        <#if dcr??> {y: " ${dcr}" , label: "Decred - ${dcrN}"}, </#if>
+                        <#if ltc??> {y: " ${ltc}" , label: "Litecoin - ${ltcN}"}, </#if>
+                        <#if pivx??> {y: " ${pivx}" , label: "PIVX - ${pivxN}"}, </#if>
+                        <#if zec??> {y: " ${zec}" , label: "Z Cash - ${zecN}"}, </#if>
+                        <#if doge??> {y: " ${doge}" , label: "Dogecoin - ${dogeN}"}, </#if>
+                        <#if eth??> {y: " ${eth}" , label: "Etherium - ${ethN}"}, </#if>
+                        <#if vtc??> {y: " ${vtc}" , label: "Vertcoin - ${vtcN}"}</#if>
                     ]
                 }]
             });
@@ -92,24 +92,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">CRYPTOPOL</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8080/choice"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<#include "navbar.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -126,11 +109,7 @@
     </div>
 </div>
 
-<footer class="container-fluid text-center">
-    <p>
-    <div>Copyright © ${.now?string.yyyy}</div>
-    </p>
-</footer>
+<#include "footer.ftlh">
 
 </body>
 </html>

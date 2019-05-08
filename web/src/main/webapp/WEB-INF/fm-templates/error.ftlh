@@ -56,24 +56,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://localhost:8080/choice">CRYPTOPOL</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8080/choice"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<#include "navbar.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -88,11 +71,7 @@
     </div>
 </div>
 
-<footer class="container-fluid text-center">
-    <p>
-    <div>Copyright © ${.now?string.yyyy}</div>
-    </p>
-</footer>
+<#include "footer.ftlh">
 
 </body>
 </html>
