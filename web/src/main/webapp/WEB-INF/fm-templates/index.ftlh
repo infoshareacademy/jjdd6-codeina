@@ -199,7 +199,7 @@
                                     connectNullData: true,
                                     xValueType: "dateTime",
                                     xValueFormatString: "YYYY-MM-DD",
-                                    yValueFormatString: "#,##0.##",
+                                    yValueFormatString: "#,##0.###",
                                     dataPoints: result
                                 }
                             ]
