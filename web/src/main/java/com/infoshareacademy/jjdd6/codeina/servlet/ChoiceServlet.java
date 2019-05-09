@@ -75,7 +75,7 @@ public class ChoiceServlet extends HttpServlet {
 
         CryptoCurrency cryptoCurrencyFirst = cryptoInformationService.getFirstDate(cryptoCurrencies);
         CryptoCurrency cryptoCurrencyLast = cryptoInformationService.getLastDate(cryptoCurrencies);
-        if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0 || lastDate.compareTo(cryptoCurrencyLast.getDate()) > 0) {
+        if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
             model.put("badRequest", String.format("Dane z poza zakresu : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else {
 
