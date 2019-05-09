@@ -36,10 +36,11 @@ public class StatisticDataServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
         Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
         int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
+        logger.info("SumOfAll=" + sumOfAll);
 
         statisticData.getStatisticDataMap().keySet().forEach((o -> putPercentageStatisticsIntoModel(o, sumOfAll, model)));
         statisticData.getStatisticDataMap().keySet().forEach((o -> putStatisticsIntoModel(o, model)));
-
+        logger.info("statisticData.size=" + statisticData.getStatisticDataMap().size());
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {

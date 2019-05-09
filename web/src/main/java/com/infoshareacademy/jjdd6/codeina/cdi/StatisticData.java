@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ApplicationScoped
-public class StatisticData implements StatisticDataDao {
+public class StatisticData {
 
     private Map<String, Integer> statisticDataMap ;
 
@@ -18,7 +18,6 @@ public class StatisticData implements StatisticDataDao {
         this.statisticDataMap = statisticDataMap;
     }
 
-    @Override
     public Map<String, Integer> addValue(String cryptoName, Map<String, Integer> map) {
         if(map!=null){
             if (map.containsKey(cryptoName)) {
