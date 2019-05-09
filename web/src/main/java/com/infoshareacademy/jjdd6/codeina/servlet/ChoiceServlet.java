@@ -110,6 +110,8 @@ public class ChoiceServlet extends HttpServlet {
                 .map(String::valueOf)
                 .collect(joining(","));
 
+        model.put("lowestValueDate", lowestValue.getDate());
+
         model.put("dates", dates);
         model.put("prices", prices);
 
