@@ -5,12 +5,15 @@ import com.infoshareacademy.jjdd6.LoadingData;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyInformation;
 import com.infoshareacademy.jjdd6.codeina.servlet.ChoiceServlet;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@RequestScoped
 public class LoadingAllCryptocurrenciesService {
 
    @Inject
