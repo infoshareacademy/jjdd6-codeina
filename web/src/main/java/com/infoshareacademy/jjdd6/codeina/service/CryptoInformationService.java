@@ -15,11 +15,10 @@ import java.util.stream.Collectors;
 @RequestScoped
 public class CryptoInformationService {
 
-    private LoadingData loadingData = new LoadingData();
-    private MathematicOperation mathematicOperation = new MathematicOperation();
-
     @Inject
     CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
+    private LoadingData loadingData = new LoadingData();
+    private MathematicOperation mathematicOperation = new MathematicOperation();
 
     public CryptoCurrency getNewestDate(String shortName) {
         return cryptoCurrencyAllInformations.findByShortName(shortName).getCryptoCurrencies().get(cryptoCurrencyAllInformations.findByShortName(shortName).getCryptoCurrencies().size() - 1);
@@ -60,10 +59,12 @@ public class CryptoInformationService {
         Double todayPrice = list.get(list.size() - 1).getPrice();
         return todayPrice / yesterdaysPrice - 1;
     }
-    public CryptoCurrency getFirstDate(List<CryptoCurrency> list){
-      return list.get(0);
+
+    public CryptoCurrency getFirstDate(List<CryptoCurrency> list) {
+        return list.get(0);
     }
-    public CryptoCurrency getLastDate(List<CryptoCurrency> list){
-        return list.get(list.size()-1);
+
+    public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
+        return list.get(list.size() - 1);
     }
 }

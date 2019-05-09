@@ -181,8 +181,10 @@ public class LoadingData {
     public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
         return list.get(list.size() - 1);
     }
-    private boolean isInformationAvailable(String[] parts ){
-        if(parts[0].equals("date")|| parts[5].equals("")){return false;}
-        else return true;
+
+    private boolean isInformationAvailable(String[] parts) {
+        if (parts[0].equals("date") || parts[5].equals("")) {
+            return false;
+        } else return true;
     }
 }
