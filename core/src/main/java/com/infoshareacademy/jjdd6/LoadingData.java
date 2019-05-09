@@ -183,8 +183,6 @@ public class LoadingData {
     }
 
     private boolean isInformationAvailable(String[] parts) {
-        if (parts[0].equals("date") || parts[5].equals("")) {
-            return false;
-        } else return true;
+        return !(parts[0].equals("date") || parts[5].equals(""));
     }
 }
