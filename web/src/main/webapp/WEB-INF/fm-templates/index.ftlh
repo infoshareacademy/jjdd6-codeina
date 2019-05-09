@@ -115,7 +115,6 @@
                                 endDate: end,
                                 constrainInput: false,
                                 ranges: {
-                                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                                     'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
                                     'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
                                     'This Month': [moment().startOf('month'), moment().endOf('month')],
@@ -134,9 +133,11 @@
                     <p></p>
 
                     <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
-
+                        <button type="submit" class="btn btn-primary" <#if badRequest??>onclick="myFunction()"</#if>>
+                            Submit
+                        </button>
                     </div>
+
                 </div>
             </form>
         </div>
@@ -264,20 +265,21 @@
     </div>
 </div>
 
-<p id="demo"></p>
+<#if badRequest??>
+    <p id="demo"></p>
+    <script>
+        function myFunction() {
+            var txt;
 
-<script>
-    function myFunction() {
-        var txt;
-
-        if (confirm("Press a button!")) {
-            txt = "You pressed OK!";
-        } else {
-            txt = "You pressed Cancel!";
+            if (confirm("${badRequest}")) {
+                txt = "";
+            } else {
+                txt = "";
+            }
+            document.getElementById("demo").innerHTML = txt;
         }
-        document.getElementById("demo").innerHTML = txt;
-    }
-</script>
+    </script>
+</#if>
 
 <#include "footer.ftlh">
 

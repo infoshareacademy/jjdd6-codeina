@@ -1,11 +1,11 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
+import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.codeina.service.CryptoService;
-import com.infoshareacademy.jjdd6.codeina.service.LoadProperties;
-import freemarker.template.SimpleDate;
+import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
+import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -21,10 +21,12 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
-import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.joining;
 
 @WebServlet("choice")
@@ -33,19 +35,31 @@ public class ChoiceServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
 
     @Inject
+    private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
+
+    @Inject
+    private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
+
+    @Inject
     private TemplateProvider templateProvider;
 
     @Inject
-    private CryptoService cryptoService;
+    private CryptoInformationService cryptoInformationService;
 
     @Inject
     private StatisticData statisticData;
 
-    @Inject
-    private LoadProperties loadProperties;
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
+        Date dateEpoch = new Date(dateLong);
+        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
+        return jdf.format(dateEpoch);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
         try {
@@ -65,58 +79,63 @@ public class ChoiceServlet extends HttpServlet {
         LocalDate firstDate = getLocalDateFromString(firstDateStr);
         LocalDate lastDate = getLocalDateFromString(lastDateStr);
 
-        statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
-
-        String path = loadProperties.getSettingsFile();
-
-
-        String filePath = path + choice + ".csv";
-
         Map<String, Object> model = new HashMap<>();
 
-        CryptoCurrency cryptoCurrency = cryptoService.getNewestDate(filePath);
-        Double median = cryptoService.getMedian(filePath, firstDate, lastDate);
-        Double average = cryptoService.getAverage(filePath, firstDate, lastDate);
-        CryptoCurrency lowestValue = cryptoService.getLowestValue(filePath, firstDate, lastDate);
-        CryptoCurrency highestValue = cryptoService.getHighestValue(filePath, firstDate, lastDate);
+        List<CryptoCurrency> cryptoCurrencies = cryptoInformationService.getAllCryptoCurrencies(choice);
 
-        Double changeOverNight = cryptoService.changeOverNight(filePath);
+        CryptoCurrency cryptoCurrencyFirst = cryptoInformationService.getFirstDate(cryptoCurrencies);
+        CryptoCurrency cryptoCurrencyLast = cryptoInformationService.getLastDate(cryptoCurrencies);
+        if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
+            model.put("badRequest", String.format("Data out of range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+        } else if (firstDate.equals(lastDate)  || cryptoCurrencyLast.getDate().equals(firstDate)) {
+            model.put("badRequest", String.format("Choose more data in range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+        } else {
 
-        model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
-        model.put("median", priceFormatter(median));
-        model.put("average", priceFormatter(average));
-        model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
-        model.put("highestPrice", priceFormatter(highestValue.getPrice()));
-        if (changeOverNight >= 0) {
-            model.put("positive", 1);
-            model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
-        } else model.put("changeOverNight", percentageFormatter(changeOverNight));
 
-        String choiceName = shortNameToFullCryptocurrencyName(choice);
+            statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
-        model.put("choice", choiceName);
-        model.put("firstDate", simpleDateDisplay(firstDateStr));
-        model.put("lastDate", simpleDateDisplay(lastDateStr));
+            CryptoCurrency cryptoCurrency = cryptoInformationService.getNewestDate(choice);
+            Double median = cryptoInformationService.getMedian(choice, firstDate, lastDate);
+            Double average = cryptoInformationService.getAverage(choice, firstDate, lastDate);
+            CryptoCurrency lowestValue = cryptoInformationService.getLowestValue(choice, firstDate, lastDate);
+            CryptoCurrency highestValue = cryptoInformationService.getHighestValue(choice, firstDate, lastDate);
 
-        List<CryptoCurrency> list = cryptoService.getAllCryptoCurrenciesInRange(filePath, firstDate, lastDate);
+            Double changeOverNight = cryptoInformationService.changeOverNight(choice);
 
-        String dates = list.stream()
-                .map(CryptoCurrency::getDate)
-                .map(LocalDate::toString)
-                .collect(joining(","));
+            model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
+            model.put("median", priceFormatter(median));
+            model.put("average", priceFormatter(average));
+            model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
+            model.put("highestPrice", priceFormatter(highestValue.getPrice()));
+            if (changeOverNight >= 0) {
+                model.put("positive", 1);
+                model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
+            } else model.put("changeOverNight", percentageFormatter(changeOverNight));
 
-        String prices = list.stream()
-                .map(CryptoCurrency::getPrice)
-                .map(String::valueOf)
-                .collect(joining(","));
+            String choiceName = shortNameToFullCryptocurrencyName(choice);
 
-        model.put("lowestValueDate", lowestValue.getDate());
+            model.put("choice", choiceName);
+            model.put("firstDate", simpleDateDisplay(firstDateStr));
+            model.put("lastDate", simpleDateDisplay(lastDateStr));
 
-        model.put("dates", dates);
-        model.put("prices", prices);
+            List<CryptoCurrency> list = cryptoInformationService.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
+
+
+            String dates = list.stream()
+                    .map(CryptoCurrency::getDate)
+                    .map(LocalDate::toString)
+                    .collect(joining(","));
+
+            String prices = list.stream()
+                    .map(CryptoCurrency::getPrice)
+                    .map(String::valueOf)
+                    .collect(joining(","));
+
+            model.put("dates", dates);
+            model.put("prices", prices);
+        }
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
-
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
@@ -142,26 +161,31 @@ public class ChoiceServlet extends HttpServlet {
                 .replace(',', '.');
     }
 
-    private static String simpleDateDisplay(String date) {
-        long dateLong = Long.parseLong(date);
-        Date dateEpoch = new Date(dateLong);
-        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
-        return jdf.format(dateEpoch);
-    }
-    private static String shortNameToFullCryptocurrencyName(String name){
+    public String shortNameToFullCryptocurrencyName(String name) {
 
-        switch (name){
-            case "btc": return "Bitcoin";
-            case "bch": return "Bitcoin Cash";
-            case "ltc": return "Litecoin";
-            case "eth": return "Ethereum";
-            case "vtc": return "Vertcoin";
-            case "dcr": return "Decred";
-            case "zec": return "ZCash";
-            case "dash": return "Dash";
-            case "doge": return "Dogecoin";
-            case "pivx": return "PIVX";
-            default: return "Cryptocurrency";
+        switch (name) {
+            case "btc":
+                return "Bitcoin";
+            case "bch":
+                return "Bitcoin Cash";
+            case "ltc":
+                return "Litecoin";
+            case "eth":
+                return "Ethereum";
+            case "vtc":
+                return "Vertcoin";
+            case "dcr":
+                return "Decred";
+            case "zec":
+                return "ZCash";
+            case "dash":
+                return "Dash";
+            case "doge":
+                return "Dogecoin";
+            case "pivx":
+                return "PIVX";
+            default:
+                return "Cryptocurrency";
         }
     }
 }

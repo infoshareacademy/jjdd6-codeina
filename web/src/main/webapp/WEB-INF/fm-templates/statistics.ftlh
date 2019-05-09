@@ -100,7 +100,6 @@
         </div>
         <div class="col-sm-8 text-left">
             <h1>Statistic data</h1>
-
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
