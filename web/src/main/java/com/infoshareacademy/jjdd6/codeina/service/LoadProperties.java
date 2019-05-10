@@ -1,19 +1,15 @@
 package com.infoshareacademy.jjdd6.codeina.service;
 
 import javax.ejb.Stateless;
-import java.io.IOException;
-import java.util.Properties;
+import java.util.logging.Logger;
 
 @Stateless
 public class LoadProperties {
 
-    private static final String SETTINGS_FILE = "settings.properties";
+    private static final Logger logger = Logger.getLogger(LoadProperties.class.getName());
 
-    public String getSettingsFile() throws IOException {
-        Properties prop = new Properties();
-        prop.load(Thread.currentThread()
-                .getContextClassLoader().getResource(SETTINGS_FILE).openStream());
-
-        return (String) prop.get("csvFilePath");
+    public String getTempDirectory() {
+        logger.info("Temp dir: " + System.getProperty("java.io.tmpdir"));
+        return System.getProperty("java.io.tmpdir") + "/";
     }
 }

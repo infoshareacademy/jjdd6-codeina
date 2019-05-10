@@ -19,11 +19,9 @@ import java.util.logging.Logger;
 public class ErrorMessageServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(ErrorMessageServlet.class.getName());
-
+    private static String noStatisticsMessage = "¯\\_(ツ)_/¯ No statistic data available ¯\\_(ツ)_/¯";
     @Inject
     private TemplateProvider templateProvider;
-
-    private static String noStatisticsMessage = "¯\\_(ツ)_/¯ No statistic data available ¯\\_(ツ)_/¯";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

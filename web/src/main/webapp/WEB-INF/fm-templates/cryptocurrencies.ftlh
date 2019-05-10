@@ -4,7 +4,6 @@
 <body>
 
 <#include "navbar.ftlh">
-
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -12,84 +11,12 @@
                 <input type="hidden" id="firstDate" name="firstDate" value=""/>
                 <input type="hidden" id="lastDate" name="lastDate" value=""/>
                 <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
-                        <h3>Choose cryptocurrency</h3>
-                        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="crypto">
-                            <option value="btc" selected>Bitcoin</option>
-                            <option value="bch">Bitcoin Cash</option>
-                            <option value="ltc">Litecoin</option>
-                            <option value="eth">Ethereum</option>
-                            <option value="vtc">Vertcoin</option>
-                            <option value="dcr">Decred</option>
-                            <option value="zec">ZCash</option>
-                            <option value="dash">Dash</option>
-                            <option value="doge">Dogecoin</option>
-                            <option value="pivx">PIVX</option>
-                        </select>
-                    </div>
 
-                    <p></p>
-                    <h3>Dates</h3>
-                    <div id="reportrange"
-                         style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                        <i class="fa fa-calendar"></i>&nbsp;
-                        <span></span> <i class="fa fa-caret-down"></i>
-                    </div>
-
-                    <script type="text/javascript">
-                        $(function () {
-
-                            var start = moment().subtract(30, 'days');
-                            var end = moment().subtract(1, 'days');
-
-                            function cb(start, end) {
-                                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                                $('#firstDate').attr('value', start);
-                                $('#lastDate').attr('value', end);
-                            }
-
-                            var yesterday = moment().subtract(1, 'days');
-
-                            $('#reportrange').daterangepicker({
-                                maxDate: yesterday,
-                                minDate: "01/01/2009",
-                                showDropdowns: true,
-                                startDate: start,
-                                endDate: end,
-                                constrainInput: false,
-                                ranges: {
-                                    'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
-                                    'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
-                                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                                    'Last year': [moment().subtract(365, 'days'), moment().subtract(1, 'days')],
-                                    'Last 2 years': [moment().subtract(730, 'days'), moment().subtract(1, 'days')],
-                                    'Last 3 years': [moment().subtract(1095, 'days'), moment().subtract(1, 'days')]
-                                }
-                            }, cb);
-
-                            cb(start, end);
-
-                        });
-                    </script>
-                    <p></p>
-                    <p></p>
-
-                    <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
-                    </div>
-                    <#if badRequest??>
-                        <div class="alert alert-danger">
-                            ${badRequest}
-                        </div>
-                    </#if>
 
                 </div>
             </form>
         </div>
+
         <div class="col-sm-8 text-left">
             <h1>Welcome User!</h1>
             <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy
@@ -213,6 +140,7 @@
         </div>
     </div>
 </div>
+
 
 
 

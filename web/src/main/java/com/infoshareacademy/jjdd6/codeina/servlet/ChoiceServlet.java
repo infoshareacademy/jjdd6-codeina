@@ -21,7 +21,10 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
@@ -45,6 +48,13 @@ public class ChoiceServlet extends HttpServlet {
 
     @Inject
     private StatisticData statisticData;
+
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
+        Date dateEpoch = new Date(dateLong);
+        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
+        return jdf.format(dateEpoch);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -76,8 +86,11 @@ public class ChoiceServlet extends HttpServlet {
         CryptoCurrency cryptoCurrencyFirst = cryptoInformationService.getFirstDate(cryptoCurrencies);
         CryptoCurrency cryptoCurrencyLast = cryptoInformationService.getLastDate(cryptoCurrencies);
         if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
-            model.put("badRequest", String.format("Dane z poza zakresu : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+            model.put("badRequest", String.format("Data out of range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+        } else if (firstDate.equals(lastDate) || cryptoCurrencyLast.getDate().equals(firstDate)) {
+            model.put("badRequest", String.format("Choose more data in range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else {
+
 
             statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
@@ -128,7 +141,6 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
     }
 
     private LocalDate getLocalDateFromString(String localDateStr) {
@@ -147,13 +159,6 @@ public class ChoiceServlet extends HttpServlet {
         final DecimalFormat df = new DecimalFormat("0.00");
         return (df.format(number * 100) + " %")
                 .replace(',', '.');
-    }
-
-    private static String simpleDateDisplay(String date) {
-        long dateLong = Long.parseLong(date);
-        Date dateEpoch = new Date(dateLong);
-        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
-        return jdf.format(dateEpoch);
     }
 
     public String shortNameToFullCryptocurrencyName(String name) {
