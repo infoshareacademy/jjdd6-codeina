@@ -5,6 +5,15 @@ import java.time.LocalDate;
 public class CryptoCurrency {
     private Double price;
     private LocalDate date;
+    private Double marketCap;
+
+    public Double getMarketCap() {
+        return marketCap;
+    }
+
+    public void setMarketCap(Double marketCap) {
+        this.marketCap = marketCap;
+    }
 
     public CryptoCurrency() {
 
@@ -13,6 +22,12 @@ public class CryptoCurrency {
     public CryptoCurrency(Double price, LocalDate date) {
         this.price = price;
         this.date = date;
+    }
+
+    public CryptoCurrency(Double price, LocalDate date,Double marketCap) {
+        this.price = price;
+        this.date = date;
+        this.marketCap=marketCap;
     }
 
     public Double getPrice() {
