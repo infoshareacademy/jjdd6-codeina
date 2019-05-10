@@ -11,10 +11,13 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 @RequestScoped
 public class LoadingAllCryptocurrenciesService {
+
+    private static final Logger logger = Logger.getLogger(LoadingAllCryptocurrenciesService.class.getName());
 
     private static final String[] cryptoCurrencyShortNames = {"btc", "bch", "ltc",
             "eth", "vtc", "dcr", "zec", "dash",
@@ -30,15 +33,19 @@ public class LoadingAllCryptocurrenciesService {
         List<CryptoCurrencyInformation> listOfCryptoInformation = new ArrayList<>();
         String path = loadProperties.getTempDirectory();
 
-        for (String shortName : cryptoCurrencyShortNames) {
-            String filePath = path + shortName + ".csv";
-            String fullName = choiceServlet.shortNameToFullCryptocurrencyName(shortName);
-            List<CryptoCurrency> cryptoCurrencies = cryptoService.getAllCryptoCurrencies(filePath);
-            LocalDate firstDate = loadingData.getFirstDate(cryptoCurrencies).getDate();
-            LocalDate lastDate = loadingData.getLastDate(cryptoCurrencies).getDate();
-            CryptoCurrencyInformation cryptoCurrencyInformation = new CryptoCurrencyInformation(
-                    cryptoCurrencies, shortName, fullName, firstDate, lastDate);
-            listOfCryptoInformation.add(cryptoCurrencyInformation);
+        try {
+            for (String shortName : cryptoCurrencyShortNames) {
+                String filePath = path + shortName + ".csv";
+                String fullName = choiceServlet.shortNameToFullCryptocurrencyName(shortName);
+                List<CryptoCurrency> cryptoCurrencies = cryptoService.getAllCryptoCurrencies(filePath);
+                LocalDate firstDate = loadingData.getFirstDate(cryptoCurrencies).getDate();
+                LocalDate lastDate = loadingData.getLastDate(cryptoCurrencies).getDate();
+                CryptoCurrencyInformation cryptoCurrencyInformation = new CryptoCurrencyInformation(
+                        cryptoCurrencies, shortName, fullName, firstDate, lastDate);
+                listOfCryptoInformation.add(cryptoCurrencyInformation);
+            }
+        } catch (Exception e) {
+            logger.warning("Error while loading data: " + e);
         }
         return listOfCryptoInformation;
     }
