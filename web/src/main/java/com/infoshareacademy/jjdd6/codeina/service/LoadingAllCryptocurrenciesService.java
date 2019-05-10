@@ -28,7 +28,7 @@ public class LoadingAllCryptocurrenciesService {
 
     public List<CryptoCurrencyInformation> listOfCryptoInformation() throws IOException {
         List<CryptoCurrencyInformation> listOfCryptoInformation = new ArrayList<>();
-        String path = loadProperties.getSettingsFile();
+        String path = loadProperties.getTempDirectory();
 
         for (String shortName : cryptoCurrencyShortNames) {
             String filePath = path + shortName + ".csv";

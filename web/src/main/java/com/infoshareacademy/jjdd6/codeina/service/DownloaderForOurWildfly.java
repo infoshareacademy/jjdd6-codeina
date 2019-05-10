@@ -16,7 +16,7 @@ public class DownloaderForOurWildfly {
         Downloader.downloadAllForServer();
     }
 
-    @Schedule(hour = "09", minute = "30", second = "30", info = "Download all cryptocurrencies")
+    @Schedule(hour = "09", minute = "30", second = "30", info = "Download all cryptocurrencies.ftlh")
     public void downloader() throws IOException {
         Downloader.downloadAllForServer();
     }

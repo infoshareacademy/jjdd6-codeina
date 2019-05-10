@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.logging.Logger;
 
 public class Downloader {
+
+    private static final Logger logger = Logger.getLogger(Downloader.class.getName());
 
     public static void downloadAll() throws IOException {
         for (int i = 1; i <= 10; i++) {
@@ -28,7 +31,8 @@ public class Downloader {
     public static void downloaderForServer(String urlCsvFile, String fileName) throws IOException {
         URL website = new URL(urlCsvFile);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-        FileOutputStream fos = new FileOutputStream("/home/lukasz-ratajczak/IdeaProjects/jjdd6-codeina/csv/" + fileName + ".csv");
+        logger.info("Temp dir: " + System.getProperty("java.io.tmpdir"));
+        FileOutputStream fos = new FileOutputStream(System.getProperty("java.io.tmpdir") + "/" + fileName + ".csv");
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
     }
 
