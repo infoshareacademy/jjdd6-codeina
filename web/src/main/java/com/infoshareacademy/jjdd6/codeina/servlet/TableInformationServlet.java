@@ -31,7 +31,7 @@ public class TableInformationServlet extends HttpServlet {
     private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
 
     @Inject
-    private CryptoInformationService cryptoInformationService ;
+    private CryptoInformationService cryptoInformationService;
 
     @Inject
     private TemplateProvider templateProvider;
@@ -39,19 +39,19 @@ public class TableInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if(cryptoCurrencyAllInformations==null){
+        if (cryptoCurrencyAllInformations == null) {
             resp.sendRedirect("error");
             return;
         }
-        Map<String,Object> model = new HashMap<>();
+        Map<String, Object> model = new HashMap<>();
 
         List<TableInfo> tableInfos = new ArrayList<>();
 
-        cryptoCurrencyAllInformations.getListOfAllInformations().forEach(i->putTableInfoIntoModel(i,tableInfos));
+        cryptoCurrencyAllInformations.getListOfAllInformations().forEach(i -> putTableInfoIntoModel(i, tableInfos));
 
-        model.put("table",tableInfos);
+        model.put("table", tableInfos);
 
-        Template template=templateProvider.getTemplate(req.getServletContext(),"table.ftlh");
+        Template template = templateProvider.getTemplate(req.getServletContext(), "table.ftlh");
 
         try {
             template.process(model, resp.getWriter());
@@ -61,26 +61,25 @@ public class TableInformationServlet extends HttpServlet {
 
     }
 
-    private List<TableInfo> putTableInfoIntoModel(CryptoCurrencyInformation information ,List<TableInfo> list){
+    private List<TableInfo> putTableInfoIntoModel(CryptoCurrencyInformation information, List<TableInfo> list) {
         Double marketCap = cryptoInformationService.getLastDate(information.getCryptoCurrencies()).getMarketCap();
         Double price = cryptoInformationService.getLastDate(information.getCryptoCurrencies()).getPrice();
         String date = cryptoInformationService.getLastDate(information.getCryptoCurrencies()).getDate().toString();
-        Double change =  cryptoInformationService.changeOverNight(information.getShortName())*100;
+        Double change = cryptoInformationService.changeOverNight(information.getShortName()) * 100;
         String fullName = information.getFullName();
         final DecimalFormat df = new DecimalFormat("0");
         final DecimalFormat df2 = new DecimalFormat("0.000");
         final DecimalFormat df3 = new DecimalFormat("0.00");
-        String priceString = df2.format(price).replace(',','.');
-        String marketCapString =df.format(marketCap);
-        String changeStr = df3.format(change).replace(',','.') + "%";
-        boolean growth= change >= 0;
+        String priceString = df2.format(price).replace(',', '.');
+        String marketCapString = df.format(marketCap);
+        String changeStr = df3.format(change).replace(',', '.') + "%";
+        boolean growth = change >= 0;
 
-        TableInfo tableInfo = new TableInfo(marketCapString,fullName,priceString,changeStr,date,growth);
+        TableInfo tableInfo = new TableInfo(marketCapString, fullName, priceString, changeStr, date, growth);
 
         list.add(tableInfo);
-        return list ;
+        return list;
     }
-
 
 
 }

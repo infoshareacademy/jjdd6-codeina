@@ -1,84 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>CRYPTOPOL</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-    <script async="" src="//www.google-analytics.com/analytics.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script id="_carbonads_projs" type="text/javascript"
-            src="https://srv.carbonads.net/ads/CK7DC5QN.json?segment=placement:eonasdangithubio&amp;callback=_carbonads_go"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
-    <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
-        }
-
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 450px
-        }
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 150%;
-        }
-
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-
-            .row.content {
-                height: auto;
-            }
-        }
-    </style>
-</head>
+<#include "head.ftlh">
 <body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">CRYPTOPOL</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8080/statistics" target="_blank"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<#include "navbar.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -134,11 +59,13 @@
                                 endDate: end,
                                 constrainInput: false,
                                 ranges: {
-                                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                                     'Last 7 Days': [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
                                     'Last 30 Days': [moment().subtract(30, 'days'), moment().subtract(1, 'days')],
                                     'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                                    'Last year': [moment().subtract(365, 'days'), moment().subtract(1, 'days')],
+                                    'Last 2 years': [moment().subtract(730, 'days'), moment().subtract(1, 'days')],
+                                    'Last 3 years': [moment().subtract(1095, 'days'), moment().subtract(1, 'days')]
                                 }
                             }, cb);
 
@@ -150,10 +77,14 @@
                     <p></p>
 
                     <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
-                    </div><#if badRequest??>
-                    <div>${badRequest}</div>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                    <#if badRequest??>
+                        <div class="alert alert-danger">
+                            ${badRequest}
+                        </div>
                     </#if>
 
                 </div>
@@ -161,56 +92,93 @@
         </div>
         <div class="col-sm-8 text-left">
             <h1>Welcome User!</h1>
-            <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy yourself. :)</p>
+            <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy
+                yourself. :)</p>
             <hr>
             <h3>Chart</h3>
 
 
-            <#if dates??>
-                <script type="text/javascript">
+            <script type="text/javascript">
+
+                <#if choice??>
+                let dates = "${dates}"
+                let prices = "${prices}"
+                let average = "${average}"
+                let median = "${median}"
+
+                let prices_arr = prices.split(",")
+                let dates_arr = dates.split(",")
+                let average_arr = average.split(",")
+                let median_arr = median.split(",")
+
+                let result = []
+                for (let i = 0; i < dates_arr.length; i++) {
+                    result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
+                }
+                let resultAverage = []
+                for (let i = 0; i < dates_arr.length; i++) {
+                    resultAverage.push({x: new Date(dates_arr[i]), y: parseFloat(average_arr[0])})
+                }
+                let resultMedian = []
+                for (let i = 0; i < dates_arr.length; i++) {
+                    resultMedian.push({x: new Date(dates_arr[i]), y: parseFloat(median_arr[0])})
+                }
 
 
-                    let dates = "${dates}"
-                    let prices = "${prices}"
+                </#if>
+                window.onload = function () {
 
-                    let prices_arr = prices.split(",")
-                    let dates_arr = dates.split(",")
-                    let result = []
-                    for (let i = 0; i < dates_arr.length; i++) {
-                        result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
-                    }
-
-
-                    window.onload = function () {
-
-                        var chart = new CanvasJS.Chart("chartContainer", {
-                            animationEnabled: true,
-                            title: {
-                                text: "<#if choice??>${choice}</#if>"
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        title: {
+                            text: "<#if choice??>${choice}<#else>Cryptocurrencies</#if>"
+                        },
+                        axisX: {
+                            title: "Date"
+                        },
+                        axisY: {
+                            title: "Price",
+                            includeZero: false,
+                            suffix: "$"
+                        },
+                        data: [
+                            {
+                                type: "area",
+                                fillOpacity: .3,
+                                showInLegend: true,
+                                legendText: "Price",
+                                legendMarkerType: "square",
+                                name: "Cryptocurrency",
+                                connectNullData: true,
+                                xValueType: "dateTime",
+                                xValueFormatString: "YYYY-MM-DD",
+                                yValueFormatString: "#,##0.###",
+                                dataPoints: <#if choice??>result<#else>[]</#if>
                             },
-                            axisX: {
-                                title: "Date"
+                            {
+                                type: "line",
+                                markerType: "none",
+                                showInLegend: true,
+                                legendText: "Average",
+                                connectNullData: true,
+                                dataPoints: <#if choice??>resultAverage<#else>[]</#if>
                             },
-                            axisY: {
-                                title: "Price",
-                                suffix: "$"
-                            },
-                            data: [
-                                {
-                                    type: "line",
-                                    name: "Cryptocurrency",
-                                    connectNullData: true,
-                                    xValueType: "dateTime",
-                                    xValueFormatString: "YYYY-MM-DD",
-                                    yValueFormatString: "#,##0.##",
-                                    dataPoints: result
-                                }
-                            ]
-                        });
+                            {
+                                type: "line",
+                                color: "green",
+                                lineColor: "green",
+                                markerType: "none",
+                                showInLegend: true,
+                                legendText: "Median",
+                                connectNullData: true,
+                                dataPoints: <#if choice??>resultMedian<#else>[]</#if>
+                            }
+                        ]
+                    });
 
-                        chart.render();
-                    }
-                </script></#if>
+                    chart.render();
+                }
+            </script>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -246,11 +214,9 @@
     </div>
 </div>
 
-<footer class="container-fluid text-center">
-    <p>
-    <div>Copyright&copy; CRYPTOPOL ${.now?string.yyyy}</div>
-    </p>
-</footer>
+
+
+<#include "footer.ftlh">
 
 </body>
 </html>

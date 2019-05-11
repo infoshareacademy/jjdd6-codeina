@@ -34,7 +34,7 @@ public class StatisticDataServlet extends HttpServlet {
             return;
         }
         Map<String, Object> model = new HashMap<>();
-        Template template = templateProvider.getTemplate(getServletContext(), "test.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "statistics.ftlh");
         int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
         logger.info("SumOfAll=" + sumOfAll);
 
@@ -54,7 +54,7 @@ public class StatisticDataServlet extends HttpServlet {
     }
 
     private Map<String, Object> putStatisticsIntoModel(String cryptoName, Map<String, Object> model) {
-        model.put(cryptoName + "Number", statisticData.getStatisticDataMap().get(cryptoName));
+        model.put(cryptoName + "N", statisticData.getStatisticDataMap().get(cryptoName));
         return model;
     }
 }

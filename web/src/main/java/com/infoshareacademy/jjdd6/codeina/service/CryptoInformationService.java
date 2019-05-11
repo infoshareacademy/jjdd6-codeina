@@ -15,11 +15,10 @@ import java.util.stream.Collectors;
 @RequestScoped
 public class CryptoInformationService {
 
-    private LoadingData loadingData = new LoadingData();
-    private MathematicOperation mathematicOperation = new MathematicOperation();
-
     @Inject
     CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
+    private LoadingData loadingData = new LoadingData();
+    private MathematicOperation mathematicOperation = new MathematicOperation();
 
     public CryptoCurrency getNewestDate(String shortName) {
         return cryptoCurrencyAllInformations.findByShortName(shortName).getCryptoCurrencies().get(cryptoCurrencyAllInformations.findByShortName(shortName).getCryptoCurrencies().size() - 1);

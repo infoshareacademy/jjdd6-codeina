@@ -11,40 +11,43 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 @RequestScoped
 public class LoadingAllCryptocurrenciesService {
 
-   @Inject
-   private LoadProperties loadProperties;
+    private static final Logger logger = Logger.getLogger(LoadingAllCryptocurrenciesService.class.getName());
 
-   @Inject
-   private CryptoService cryptoService;
+    private static final String[] cryptoCurrencyShortNames = {"btc", "bch", "ltc",
+            "eth", "vtc", "dcr", "zec", "dash",
+            "doge", "pivx"};
+    @Inject
+    private LoadProperties loadProperties;
+    @Inject
+    private CryptoService cryptoService;
+    private ChoiceServlet choiceServlet = new ChoiceServlet();
+    private LoadingData loadingData = new LoadingData();
 
-   private ChoiceServlet choiceServlet = new ChoiceServlet();
+    public List<CryptoCurrencyInformation> listOfCryptoInformation() throws IOException {
+        List<CryptoCurrencyInformation> listOfCryptoInformation = new ArrayList<>();
+        String path = loadProperties.getTempDirectory();
 
-   private LoadingData loadingData = new LoadingData();
-
-   private static final String[] cryptoCurrencyShortNames = {"btc", "bch", "ltc",
-           "eth", "vtc", "dcr", "zec", "dash",
-           "doge", "pivx"};
-
-   public List<CryptoCurrencyInformation> listOfCryptoInformation() throws IOException {
-      List<CryptoCurrencyInformation> listOfCryptoInformation = new ArrayList<>();
-      String path = loadProperties.getSettingsFile();
-
-      for (String shortName:cryptoCurrencyShortNames) {
-         String filePath = path + shortName + ".csv";
-         String fullName = choiceServlet.shortNameToFullCryptocurrencyName(shortName);
-         List<CryptoCurrency> cryptoCurrencies = cryptoService.getAllCryptoCurrencies(filePath);
-         LocalDate firstDate =  loadingData.getFirstDate(cryptoCurrencies).getDate();
-         LocalDate lastDate =  loadingData.getLastDate(cryptoCurrencies).getDate();
-         CryptoCurrencyInformation cryptoCurrencyInformation= new CryptoCurrencyInformation(
-                 cryptoCurrencies,shortName,fullName,firstDate,lastDate);
-         listOfCryptoInformation.add(cryptoCurrencyInformation);
-      }
-      return listOfCryptoInformation;
-   }
+        try {
+            for (String shortName : cryptoCurrencyShortNames) {
+                String filePath = path + shortName + ".csv";
+                String fullName = choiceServlet.shortNameToFullCryptocurrencyName(shortName);
+                List<CryptoCurrency> cryptoCurrencies = cryptoService.getAllCryptoCurrencies(filePath);
+                LocalDate firstDate = loadingData.getFirstDate(cryptoCurrencies).getDate();
+                LocalDate lastDate = loadingData.getLastDate(cryptoCurrencies).getDate();
+                CryptoCurrencyInformation cryptoCurrencyInformation = new CryptoCurrencyInformation(
+                        cryptoCurrencies, shortName, fullName, firstDate, lastDate);
+                listOfCryptoInformation.add(cryptoCurrencyInformation);
+            }
+        } catch (Exception e) {
+            logger.warning("Error while loading data: " + e);
+        }
+        return listOfCryptoInformation;
+    }
 
 }

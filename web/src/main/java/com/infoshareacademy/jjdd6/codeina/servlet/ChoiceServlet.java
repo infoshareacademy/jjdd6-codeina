@@ -46,6 +46,13 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     private StatisticData statisticData;
 
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
+        Date dateEpoch = new Date(dateLong);
+        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
+        return jdf.format(dateEpoch);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -76,12 +83,11 @@ public class ChoiceServlet extends HttpServlet {
         CryptoCurrency cryptoCurrencyFirst = cryptoInformationService.getFirstDate(cryptoCurrencies);
         CryptoCurrency cryptoCurrencyLast = cryptoInformationService.getLastDate(cryptoCurrencies);
         if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
-            model.put("badRequest", String.format("Dane z poza zakresu : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
-        }
-        else if (firstDate.equals(lastDate) || firstDate == cryptoCurrencyLast.getDate()) {
-            model.put("badRequest", String.format("Dane z poza zakresu : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
-        }
-         else {
+            model.put("badRequest", String.format("Data out of range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+        } else if (firstDate.equals(lastDate) || cryptoCurrencyLast.getDate().equals(firstDate)) {
+            model.put("badRequest", String.format("Choose more data in range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
+        } else {
+
 
             statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
@@ -127,12 +133,12 @@ public class ChoiceServlet extends HttpServlet {
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
+
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
     }
 
     private LocalDate getLocalDateFromString(String localDateStr) {
@@ -153,38 +159,20 @@ public class ChoiceServlet extends HttpServlet {
                 .replace(',', '.');
     }
 
-    private static String simpleDateDisplay(String date) {
-        long dateLong = Long.parseLong(date);
-        Date dateEpoch = new Date(dateLong);
-        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
-        return jdf.format(dateEpoch);
-    }
-
     public String shortNameToFullCryptocurrencyName(String name) {
 
-        switch (name) {
-            case "btc":
-                return "Bitcoin";
-            case "bch":
-                return "Bitcoin Cash";
-            case "ltc":
-                return "Litecoin";
-            case "eth":
-                return "Ethereum";
-            case "vtc":
-                return "Vertcoin";
-            case "dcr":
-                return "Decred";
-            case "zec":
-                return "ZCash";
-            case "dash":
-                return "Dash";
-            case "doge":
-                return "Dogecoin";
-            case "pivx":
-                return "PIVX";
-            default:
-                return "Cryptocurrency";
+        switch (name){
+            case "btc": return "Bitcoin";
+            case "bch": return "Bitcoin Cash";
+            case "ltc": return "Litecoin";
+            case "eth": return "Ethereum";
+            case "vtc": return "Vertcoin";
+            case "dcr": return "Decred";
+            case "zec": return "ZCash";
+            case "dash": return "Dash";
+            case "doge": return "Dogecoin";
+            case "pivx": return "PIVX";
+            default: return "Cryptocurrency";
         }
     }
 }
