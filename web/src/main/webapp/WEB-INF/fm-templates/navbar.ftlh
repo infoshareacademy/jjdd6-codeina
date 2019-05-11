@@ -13,6 +13,9 @@
                 <li class="active"><a href="/choice">Home </a></li>
             </ul>
             <ul class="nav navbar-nav">
+                <li><a href="/table" target="_blank">List </a></li>
+            </ul>
+            <ul class="nav navbar-nav">
                 <li><a href="/statistics" target="_blank">Statistics </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

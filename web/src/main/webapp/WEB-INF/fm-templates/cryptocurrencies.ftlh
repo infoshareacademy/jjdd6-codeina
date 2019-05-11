@@ -7,141 +7,114 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <form method="post" action="choice">
-                <input type="hidden" id="firstDate" name="firstDate" value=""/>
-                <input type="hidden" id="lastDate" name="lastDate" value=""/>
-                <div class="form-row align-items-center">
-
-
-                </div>
-            </form>
         </div>
 
         <div class="col-sm-8 text-left">
-            <h1>Welcome User!</h1>
-            <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy
-                yourself. :)</p>
+            <h1>List of all Cryptocurrencies</h1>
+
             <hr>
-            <h3>Chart</h3>
 
 
-            <script type="text/javascript">
-
-                <#if choice??>
-                let dates = "${dates}"
-                let prices = "${prices}"
-                let average = "${average}"
-                let median = "${median}"
-
-                let prices_arr = prices.split(",")
-                let dates_arr = dates.split(",")
-                let average_arr = average.split(",")
-                let median_arr = median.split(",")
-
-                let result = []
-                for (let i = 0; i < dates_arr.length; i++) {
-                    result.push({x: new Date(dates_arr[i]), y: parseFloat(prices_arr[i])})
-                }
-                let resultAverage = []
-                for (let i = 0; i < dates_arr.length; i++) {
-                    resultAverage.push({x: new Date(dates_arr[i]), y: parseFloat(average_arr[0])})
-                }
-                let resultMedian = []
-                for (let i = 0; i < dates_arr.length; i++) {
-                    resultMedian.push({x: new Date(dates_arr[i]), y: parseFloat(median_arr[0])})
-                }
+            <p>Starting date</p>
 
 
-                </#if>
-                window.onload = function () {
+            <table id="myTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Marketcap</th>
+                    <th>Price</th>
+                    <th>Change</th>
+                    <#--<th>Date</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Anusha</td>
+                    <td>India</td>
+                    <td>10000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Charles</td>
+                    <td>United Kingdom</td>
+                    <td>28000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Sravani</td>
+                    <td>Australia</td>
+                    <td>7000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Amar</td>
+                    <td>India</td>
+                    <td>18000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>Lakshmi</td>
+                    <td>India</td>
+                    <td>12000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>006</td>
+                    <td>James</td>
+                    <td>Canada</td>
+                    <td>50000</td>
+                    <td>10000</td>
+                </tr>
 
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        animationEnabled: true,
-                        title: {
-                            text: "<#if choice??>${choice}<#else>Cryptocurrencies</#if>"
-                        },
-                        axisX: {
-                            title: "Date"
-                        },
-                        axisY: {
-                            title: "Price",
-                            includeZero: false,
-                            suffix: "$"
-                        },
-                        data: [
-                            {
-                                type: "area",
-                                fillOpacity: .3,
-                                showInLegend: true,
-                                legendText: "Price",
-                                legendMarkerType: "square",
-                                name: "Cryptocurrency",
-                                connectNullData: true,
-                                xValueType: "dateTime",
-                                xValueFormatString: "YYYY-MM-DD",
-                                yValueFormatString: "#,##0.###",
-                                dataPoints: <#if choice??>result<#else>[]</#if>
-                            },
-                            {
-                                type: "line",
-                                markerType: "none",
-                                showInLegend: true,
-                                legendText: "Average",
-                                connectNullData: true,
-                                dataPoints: <#if choice??>resultAverage<#else>[]</#if>
-                            },
-                            {
-                                type: "line",
-                                color: "green",
-                                lineColor: "green",
-                                markerType: "none",
-                                showInLegend: true,
-                                legendText: "Median",
-                                connectNullData: true,
-                                dataPoints: <#if choice??>resultMedian<#else>[]</#if>
-                            }
-                        ]
-                    });
+                <tr>
+                    <td>007</td>
+                    <td>Ronald</td>
+                    <td>US</td>
+                    <td>75000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>008</td>
+                    <td>Mike</td>
+                    <td>Belgium</td>
+                    <td>100000</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>009</td>
+                    <td>Andrew</td>
+                    <td>Argentina</td>
+                    <td>45000</td>
+                    <td>10000</td>
+                </tr>
 
-                    chart.render();
-                }
-            </script>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-            <div class="col-sm-4 text-left">
-                <p>Starting date</p>
-                <span class="form-control"><#if firstDate??>${firstDate}</#if></span>
-            </div>
-            <div class="col-sm-4 text-left">
-            </div>
-            <div class="col-sm-4 text-left">
-                <p>Ending date</p>
-                <span class="form-control"><#if lastDate??>${lastDate}</#if></span>
-            </div>
-
+                <tr>
+                    <td>010</td>
+                    <td>Stephen</td>
+                    <td>Austria</td>
+                    <td>30000</td>
+                    <td>10000</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p>Latest price</p>
-                <span class="form-control"><#if lastPrice??>${lastPrice}</#if></span>
-                <p>Average</p>
-                <span class="form-control"><#if average??>${average}</#if></span>
-                <p>Extreme value</p>
-                <span class="form-control"><#if highestPrice??>${highestPrice}</#if></span>
-                <p>Minimal value</p>
-                <span class="form-control"><#if lowestPrice??>${lowestPrice}</#if></span>
-                <p>Median</p>
-                <span class="form-control"><#if median??>${median}</#if></span>
-                <p>changeOverNight</p>
-                <span class="form-control" <#if positive??>  style="color: green" <#else >style="color: red" </#if> > <#if changeOverNight??>${changeOverNight}</#if></span>
-            </div>
-        </div>
+
+    </div>
+    <div class="col-sm-2 sidenav">
     </div>
 </div>
 
-
+<script>
+    $(document).ready(function () {
+        $('#myTable').dataTable();
+    });
+</script>
 
 
 <#include "footer.ftlh">
