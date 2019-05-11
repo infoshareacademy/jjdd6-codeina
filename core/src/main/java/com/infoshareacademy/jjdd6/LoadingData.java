@@ -190,7 +190,6 @@ public class LoadingData {
         return list.get(list.size() - 1);
     }
     private boolean isInformationAvailable(String[] parts ){
-        if(parts[0].equals("date")|| parts[5].equals("")){return false;}
-        else return true;
+        return !parts[0].equals("date") && !parts[5].equals("");
     }
 }
