@@ -74,6 +74,7 @@ public class TableInformationServlet extends HttpServlet {
         String marketCapString = df.format(marketCap);
         String changeStr = df3.format(change).replace(',', '.') + "%";
         boolean growth = change >= 0;
+        changeStr = growth ? "+" + changeStr : changeStr;
 
         TableInfo tableInfo = new TableInfo(marketCapString, fullName, priceString, changeStr, date, growth);
 
