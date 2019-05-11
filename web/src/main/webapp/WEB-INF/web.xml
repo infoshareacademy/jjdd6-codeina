@@ -4,4 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         metadata-complete="false"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Error404.html</location>
+    </error-page>
 </web-app>

@@ -21,10 +21,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
@@ -136,6 +133,7 @@ public class ChoiceServlet extends HttpServlet {
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
+
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
@@ -163,29 +161,18 @@ public class ChoiceServlet extends HttpServlet {
 
     public String shortNameToFullCryptocurrencyName(String name) {
 
-        switch (name) {
-            case "btc":
-                return "Bitcoin";
-            case "bch":
-                return "Bitcoin Cash";
-            case "ltc":
-                return "Litecoin";
-            case "eth":
-                return "Ethereum";
-            case "vtc":
-                return "Vertcoin";
-            case "dcr":
-                return "Decred";
-            case "zec":
-                return "ZCash";
-            case "dash":
-                return "Dash";
-            case "doge":
-                return "Dogecoin";
-            case "pivx":
-                return "PIVX";
-            default:
-                return "Cryptocurrency";
+        switch (name){
+            case "btc": return "Bitcoin";
+            case "bch": return "Bitcoin Cash";
+            case "ltc": return "Litecoin";
+            case "eth": return "Ethereum";
+            case "vtc": return "Vertcoin";
+            case "dcr": return "Decred";
+            case "zec": return "ZCash";
+            case "dash": return "Dash";
+            case "doge": return "Dogecoin";
+            case "pivx": return "PIVX";
+            default: return "Cryptocurrency";
         }
     }
 }

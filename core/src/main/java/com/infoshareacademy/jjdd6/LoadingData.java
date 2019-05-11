@@ -17,6 +17,7 @@ public class LoadingData {
     public CryptoCurrency sortingLineOfText(String lineOfText) {
         String[] parts = lineOfText.split(",");
         Double price;
+        Double marketCap;
         LocalDate date;
         try {
             price = Double.parseDouble(parts[5]);
@@ -25,12 +26,19 @@ public class LoadingData {
             price = 0.0;
         }
         try {
+            marketCap = Double.parseDouble(parts[4]);
+        } catch (Exception e) {
+            LOGGER.warn("Empty marketCap at date");
+            marketCap = 0.0;
+        }
+        try {
             date = LocalDate.parse(parts[0]);
         } catch (Exception e) {
             LOGGER.error("No such date!");
             date = LocalDate.now();
         }
-        return new CryptoCurrency(price, date);
+
+        return new CryptoCurrency(price, date,marketCap);
     }
 
     public void printingInformation(CryptoCurrency cryptoCurrency) {
@@ -181,8 +189,7 @@ public class LoadingData {
     public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
         return list.get(list.size() - 1);
     }
-
-    private boolean isInformationAvailable(String[] parts) {
-        return !(parts[0].equals("date") || parts[5].equals(""));
+    private boolean isInformationAvailable(String[] parts ){
+        return !parts[0].equals("date") && !parts[5].equals("");
     }
 }

@@ -59,12 +59,10 @@ public class CryptoInformationService {
         Double todayPrice = list.get(list.size() - 1).getPrice();
         return todayPrice / yesterdaysPrice - 1;
     }
-
-    public CryptoCurrency getFirstDate(List<CryptoCurrency> list) {
-        return list.get(0);
+    public CryptoCurrency getFirstDate(List<CryptoCurrency> list){
+      return list.get(0);
     }
-
-    public CryptoCurrency getLastDate(List<CryptoCurrency> list) {
-        return list.get(list.size() - 1);
+    public CryptoCurrency getLastDate(List<CryptoCurrency> list){
+        return list.get(list.size()-1);
     }
 }
