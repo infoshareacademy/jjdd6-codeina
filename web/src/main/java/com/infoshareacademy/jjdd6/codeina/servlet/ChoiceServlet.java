@@ -4,6 +4,7 @@ import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
@@ -46,6 +47,9 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     private StatisticData statisticData;
 
+    @Inject
+    private TableFiller tableFiller;
+
     private static String simpleDateDisplay(String date) {
         long dateLong = Long.parseLong(date);
         Date dateEpoch = new Date(dateLong);
@@ -57,6 +61,9 @@ public class ChoiceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
+
+        tableFiller.fillTable(cryptoCurrencyAllInformations);
+
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
         try {
