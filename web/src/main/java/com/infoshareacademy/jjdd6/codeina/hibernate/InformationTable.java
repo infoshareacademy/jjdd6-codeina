@@ -7,6 +7,12 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name ="INFORMATIONS")
+@NamedQueries({
+        @NamedQuery(
+                name = "InformationTable.getNewestDate",
+                query = "SELECT it FROM InformationTable it where it.shortName LIKE :shortName order by it.date desc"
+        )
+})
 public class InformationTable {
 
     @Id

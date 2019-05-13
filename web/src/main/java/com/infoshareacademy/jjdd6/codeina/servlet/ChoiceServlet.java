@@ -61,11 +61,6 @@ public class ChoiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
-
-        tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
-
-
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
         try {
             template.process(null, resp.getWriter());
