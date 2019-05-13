@@ -85,11 +85,11 @@
 
                     <#list table as item>
 
-                <h1> ${item.fullName} </h1>
-                <h1> ${item.marketCap} </h1>
-                <h1> ${item.price} </h1>
-                <#if item.growth==true ><h1 style="color: green">  <#else > <h1 style="color: red">   </#if>  ${item.change} </h1>
-                    <h1> ${item.date} </h1><br><br>
+                <label> ${item.fullName} </label>
+                <label> ${item.marketCap} </label>
+                <label> ${item.price} </label>
+                <#if item.growth==true ><label style="color: green">  <#else > <label style="color: red">   </#if>  ${item.change} </label>
+                    <label> ${item.date} </label><br><br>
 
 
                     </#list>

@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class InformationDAO {
@@ -22,16 +24,25 @@ public class InformationDAO {
 
     public CryptoCurrency getNewestDate(String shortName) {
         final Query query = entityManager.createNamedQuery("InformationTable.getNewestDate");
+
         query.setParameter("shortName", shortName);
-        InformationTable i = (InformationTable) query.getSingleResult();
-        return new CryptoCurrency(i.getPrice(), i.getDate());
+        InformationTable i = (InformationTable)query.setMaxResults(1).getSingleResult();
+        return new CryptoCurrency(i.getPrice(), i.getDate(),i.getMarketCap());
     }
 
 
-//
-//    public List<CryptoCurrency> getAllCryptoCurrencies(String shortName) {
-//        return cryptoCurrencyAllInformations.findByShortName(shortName).getCryptoCurrencies();
-//    }
+
+    public List<CryptoCurrency> getAllCryptoCurrencies(String shortName) {
+        final Query query = entityManager.createNamedQuery("InformationTable.getAllCryptoCurrencies");
+        query.setParameter("shortName",shortName);
+        List<InformationTable> informationTables = (List<InformationTable>) query.getResultList();
+        List<CryptoCurrency> list = new ArrayList<CryptoCurrency>();
+        for (InformationTable i:informationTables ) {
+            list.add( new  CryptoCurrency(i.getPrice(), i.getDate(),i.getMarketCap()));
+        }
+
+        return list;
+    }
 //
 //    public List<CryptoCurrency> getAllCryptoCurrenciesInRange(String shortName, LocalDate firstDate, LocalDate lastDate) {
 //        List<CryptoCurrency> list = getAllCryptoCurrencies(shortName);

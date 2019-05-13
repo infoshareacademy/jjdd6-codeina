@@ -11,6 +11,10 @@ import java.time.LocalDate;
         @NamedQuery(
                 name = "InformationTable.getNewestDate",
                 query = "SELECT it FROM InformationTable it where it.shortName LIKE :shortName order by it.date desc"
+        ),
+        @NamedQuery(
+                name = "InformationTable.getAllCryptoCurrencies",
+                query = "SELECT it FROM InformationTable it where it.shortName LIKE :shortName order by it.date "
         )
 })
 public class InformationTable {
