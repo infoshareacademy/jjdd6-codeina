@@ -10,6 +10,7 @@ import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesServ
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +48,7 @@ public class ChoiceServlet extends HttpServlet {
     @Inject
     private StatisticData statisticData;
 
-    @Inject
+    @EJB
     private TableFiller tableFiller;
 
     private static String simpleDateDisplay(String date) {
@@ -62,7 +63,7 @@ public class ChoiceServlet extends HttpServlet {
 
         cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
-        tableFiller.fillTable(cryptoCurrencyAllInformations);
+        tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
 
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");

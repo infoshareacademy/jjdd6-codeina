@@ -1,9 +1,7 @@
 package com.infoshareacademy.jjdd6.codeina.hibernate;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -11,12 +9,17 @@ import java.time.LocalDate;
 @Table(name ="INFORMATIONS")
 public class InformationTable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name="price",length = 16)
+
+    @Column(name="shortName",length = 16)
     @NotNull
     private String shortName ;
 
-    @Column(name="price",length = 16)
+    @Column(name="fullName",length = 16)
     @NotNull
     private String fullName;
 
@@ -24,11 +27,11 @@ public class InformationTable {
     @NotNull
     private Double price;
 
-    @Column(name="price",length = 16)
+    @Column(name="marketCap",length = 16)
     @NotNull
     private Double marketCap;
 
-    @Column(name="price",length = 16)
+    @Column(name="date",length = 16)
     @NotNull
     private LocalDate date ;
 

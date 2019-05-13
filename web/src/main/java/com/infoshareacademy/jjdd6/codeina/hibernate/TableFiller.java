@@ -22,8 +22,7 @@ public class TableFiller {
         entityManager.persist(s);
     }
 
-    public void fillTable(CryptoCurrencyAllInformations currencyAllInformations) {
-        List<CryptoCurrencyInformation> cryptoList = currencyAllInformations.getListOfAllInformations();
+    public void fillTable(List<CryptoCurrencyInformation>  cryptoList) {
         for (CryptoCurrencyInformation information : cryptoList) {
             String shortName = information.getShortName();
             String fullName = information.getFullName();
