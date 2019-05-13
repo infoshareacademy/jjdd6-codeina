@@ -22,6 +22,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
@@ -30,6 +31,7 @@ import static java.util.stream.Collectors.joining;
 public class ChoiceServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
+
 
     @Inject
     private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
@@ -68,6 +70,9 @@ public class ChoiceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") +"/userslogs.log", true);
+        logger.addHandler(fileHandler);
 
         String choice = req.getParameter("crypto");
         String firstDateStr = req.getParameter("firstDate");
@@ -130,7 +135,10 @@ public class ChoiceServlet extends HttpServlet {
 
             model.put("dates", dates);
             model.put("prices", prices);
+            logger.info("User data : " + choiceName + " " + firstDate + " " + lastDate);
         }
+
+
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
 
