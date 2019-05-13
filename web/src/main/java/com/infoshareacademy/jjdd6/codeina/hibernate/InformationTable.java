@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
-@Table(name ="INFORMATIONS")
+@Table(name = "INFORMATIONS")
 @NamedQueries({
         @NamedQuery(
                 name = "InformationTable.getNewestDate",
@@ -15,7 +15,7 @@ import java.time.LocalDate;
         @NamedQuery(
                 name = "InformationTable.getAllCryptoCurrencies",
                 query = "SELECT it FROM InformationTable it where it.shortName LIKE :shortName order by it.date "
-        )
+        ),
 })
 public class InformationTable {
 
@@ -25,25 +25,25 @@ public class InformationTable {
     private Long id;
 
 
-    @Column(name="shortName",length = 16)
+    @Column(name = "shortName", length = 16)
     @NotNull
-    private String shortName ;
+    private String shortName;
 
-    @Column(name="fullName",length = 16)
+    @Column(name = "fullName", length = 16)
     @NotNull
     private String fullName;
 
-    @Column(name="price",length = 16)
+    @Column(name = "price", length = 16)
     @NotNull
     private Double price;
 
-    @Column(name="marketCap",length = 16)
+    @Column(name = "marketCap", length = 16)
     @NotNull
     private Double marketCap;
 
-    @Column(name="date",length = 16)
+    @Column(name = "date", length = 16)
     @NotNull
-    private LocalDate date ;
+    private LocalDate date;
 
     public InformationTable(@NotNull String shortName, @NotNull String fullName, @NotNull Double price, @NotNull Double marketCap, @NotNull LocalDate date) {
         this.shortName = shortName;

@@ -4,6 +4,7 @@ import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
@@ -34,32 +35,24 @@ public class ChoiceServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
 
     @Inject
-    private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
+    private TemplateProvider templateProvider;
+
+    @Inject
+    private InformationDAO informationDAO;
+
+    @Inject
+    private StatisticData statisticData;
 
     @Inject
     private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
 
     @Inject
-    private TemplateProvider templateProvider;
-
-    @Inject
-    private CryptoInformationService cryptoInformationService;
-
-    @Inject
-    private StatisticData statisticData;
-
-    @EJB
-    private TableFiller tableFiller;
-
-    private static String simpleDateDisplay(String date) {
-        long dateLong = Long.parseLong(date);
-        Date dateEpoch = new Date(dateLong);
-        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
-        return jdf.format(dateEpoch);
-    }
+    private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
         try {
@@ -81,10 +74,10 @@ public class ChoiceServlet extends HttpServlet {
 
         Map<String, Object> model = new HashMap<>();
 
-        List<CryptoCurrency> cryptoCurrencies = cryptoInformationService.getAllCryptoCurrencies(choice);
+        List<CryptoCurrency> cryptoCurrencies = informationDAO.getAllCryptoCurrencies(choice);
 
-        CryptoCurrency cryptoCurrencyFirst = cryptoInformationService.getFirstDate(cryptoCurrencies);
-        CryptoCurrency cryptoCurrencyLast = cryptoInformationService.getLastDate(cryptoCurrencies);
+        CryptoCurrency cryptoCurrencyFirst = informationDAO.getFirstDate(cryptoCurrencies);
+        CryptoCurrency cryptoCurrencyLast = informationDAO.getLastDate(cryptoCurrencies);
         if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
             model.put("badRequest", String.format("Data out of range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else if (firstDate.equals(lastDate) || cryptoCurrencyLast.getDate().equals(firstDate)) {
@@ -94,13 +87,13 @@ public class ChoiceServlet extends HttpServlet {
 
             statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
 
-            CryptoCurrency cryptoCurrency = cryptoInformationService.getNewestDate(choice);
-            Double median = cryptoInformationService.getMedian(choice, firstDate, lastDate);
-            Double average = cryptoInformationService.getAverage(choice, firstDate, lastDate);
-            CryptoCurrency lowestValue = cryptoInformationService.getLowestValue(choice, firstDate, lastDate);
-            CryptoCurrency highestValue = cryptoInformationService.getHighestValue(choice, firstDate, lastDate);
+            CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);
+            Double median = informationDAO.getMedian(choice, firstDate, lastDate);
+            Double average = informationDAO.getAverage(choice, firstDate, lastDate);
+            CryptoCurrency lowestValue = informationDAO.getLowestValue(choice, firstDate, lastDate);
+            CryptoCurrency highestValue = informationDAO.getHighestValue(choice, firstDate, lastDate);
 
-            Double changeOverNight = cryptoInformationService.changeOverNight(choice);
+            Double changeOverNight = informationDAO.changeOverNight(choice);
 
             model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
             model.put("median", priceFormatter(median));
@@ -118,7 +111,7 @@ public class ChoiceServlet extends HttpServlet {
             model.put("firstDate", simpleDateDisplay(firstDateStr));
             model.put("lastDate", simpleDateDisplay(lastDateStr));
 
-            List<CryptoCurrency> list = cryptoInformationService.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
+            List<CryptoCurrency> list = informationDAO.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
 
 
             String dates = list.stream()
@@ -164,19 +157,37 @@ public class ChoiceServlet extends HttpServlet {
 
     public String shortNameToFullCryptocurrencyName(String name) {
 
-        switch (name){
-            case "btc": return "Bitcoin";
-            case "bch": return "Bitcoin Cash";
-            case "ltc": return "Litecoin";
-            case "eth": return "Ethereum";
-            case "vtc": return "Vertcoin";
-            case "dcr": return "Decred";
-            case "zec": return "ZCash";
-            case "dash": return "Dash";
-            case "doge": return "Dogecoin";
-            case "pivx": return "PIVX";
-            default: return "Cryptocurrency";
+        switch (name) {
+            case "btc":
+                return "Bitcoin";
+            case "bch":
+                return "Bitcoin Cash";
+            case "ltc":
+                return "Litecoin";
+            case "eth":
+                return "Ethereum";
+            case "vtc":
+                return "Vertcoin";
+            case "dcr":
+                return "Decred";
+            case "zec":
+                return "ZCash";
+            case "dash":
+                return "Dash";
+            case "doge":
+                return "Dogecoin";
+            case "pivx":
+                return "PIVX";
+            default:
+                return "Cryptocurrency";
         }
+    }
+
+    private static String simpleDateDisplay(String date) {
+        long dateLong = Long.parseLong(date);
+        Date dateEpoch = new Date(dateLong);
+        SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
+        return jdf.format(dateEpoch);
     }
 }
 

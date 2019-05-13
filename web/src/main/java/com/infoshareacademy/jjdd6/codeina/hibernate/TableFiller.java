@@ -22,7 +22,7 @@ public class TableFiller {
         entityManager.persist(s);
     }
 
-    public void fillTable(List<CryptoCurrencyInformation>  cryptoList) {
+    public void fillTable(List<CryptoCurrencyInformation> cryptoList) {
         for (CryptoCurrencyInformation information : cryptoList) {
             String shortName = information.getShortName();
             String fullName = information.getFullName();

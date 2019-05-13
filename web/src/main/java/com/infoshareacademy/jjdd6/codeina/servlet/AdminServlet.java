@@ -38,6 +38,9 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
+
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
         Map<String, Object> model = new HashMap<>();
         try {
@@ -49,8 +52,6 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
         tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
 
@@ -64,7 +65,5 @@ public class AdminServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
-
-
     }
 }

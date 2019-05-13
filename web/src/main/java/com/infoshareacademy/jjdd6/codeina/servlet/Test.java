@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet("test")
 public class Test extends HttpServlet {
@@ -21,5 +22,8 @@ public class Test extends HttpServlet {
 
 
         resp.getWriter().println(informationDAO.getNewestDate("btc"));
+        StringBuffer stringBuffer = new StringBuffer();
+        informationDAO.getAllCryptoCurrenciesInRange("btc", LocalDate.of(2019, 05, 03), LocalDate.of(2019, 05, 05)).forEach(o -> stringBuffer.append(o.toString() + ", "));
+        resp.getWriter().println(stringBuffer.toString());
     }
 }
