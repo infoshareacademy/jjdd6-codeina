@@ -23,6 +23,7 @@ public class StatisticDataServlet extends HttpServlet {
 
     @Inject
     private StatisticData statisticData;
+
     @Inject
     private TemplateProvider templateProvider;
 

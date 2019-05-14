@@ -15,7 +15,8 @@ public class CryptoCurrencyAllInformations {
     public void setListOfAllInformations(List<CryptoCurrencyInformation> listOfAllInformations) {
         this.listOfAllInformations = listOfAllInformations;
     }
+
     public CryptoCurrencyInformation findByShortName(String shortName) {
-       return listOfAllInformations.stream().filter(c-> c.getShortName().equals(shortName)).findFirst().orElse(null);
+        return listOfAllInformations.stream().filter(c -> c.getShortName().equals(shortName)).findFirst().orElse(null);
     }
 }
