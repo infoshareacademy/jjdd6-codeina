@@ -51,7 +51,7 @@ public class TableInformationServlet extends HttpServlet {
 
         model.put("table", tableInfos);
 
-        Template template = templateProvider.getTemplate(req.getServletContext(), "table.ftlh");
+        Template template = templateProvider.getTemplate(req.getServletContext(), "cryptocurrencies.ftlh");
 
         try {
             template.process(model, resp.getWriter());

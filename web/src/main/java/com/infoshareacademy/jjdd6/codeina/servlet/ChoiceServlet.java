@@ -7,13 +7,10 @@ import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
-import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
-import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +24,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 import static java.util.stream.Collectors.joining;
@@ -73,6 +71,9 @@ public class ChoiceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
+        logger.addHandler(fileHandler);
 
         String choice = req.getParameter("crypto");
         String firstDateStr = req.getParameter("firstDate");
@@ -137,6 +138,7 @@ public class ChoiceServlet extends HttpServlet {
 
             model.put("dates", dates);
             model.put("prices", prices);
+            logger.info("User data : " + choiceName + " " + firstDate + " " + lastDate);
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");

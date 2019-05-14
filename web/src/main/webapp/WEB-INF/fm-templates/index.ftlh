@@ -207,7 +207,7 @@
                 <span class="form-control"><#if lowestPrice??>${lowestPrice}</#if></span>
                 <p>Median</p>
                 <span class="form-control"><#if median??>${median}</#if></span>
-                <p>changeOverNight</p>
+                <p>Change over Night</p>
                 <span class="form-control" <#if positive??>  style="color: green" <#else >style="color: red" </#if> > <#if changeOverNight??>${changeOverNight}</#if></span>
             </div>
         </div>
