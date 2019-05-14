@@ -18,7 +18,7 @@ public class TableFiller {
     private EntityManager entityManager;
 
 
-    public void save(InformationTable s) {
+    private void save(InformationTable s) {
         entityManager.persist(s);
     }
 

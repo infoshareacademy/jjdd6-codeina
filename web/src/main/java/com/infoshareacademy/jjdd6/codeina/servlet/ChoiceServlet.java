@@ -2,9 +2,11 @@ package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
+import com.infoshareacademy.jjdd6.codeina.cdi.SettingsDAO;
 import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
+import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
 import com.infoshareacademy.jjdd6.codeina.service.CryptoInformationService;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
@@ -34,6 +36,10 @@ public class ChoiceServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
 
+
+    @Inject
+    private SettingsDAO settingsDAO;
+
     @Inject
     private TemplateProvider templateProvider;
 
@@ -48,6 +54,9 @@ public class ChoiceServlet extends HttpServlet {
 
     @Inject
     private LoadingAllCryptocurrenciesService loadingAllCryptocurrenciesService;
+
+    @Inject
+    private StatisticsDAO statisticsDAO;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -86,6 +95,8 @@ public class ChoiceServlet extends HttpServlet {
 
 
             statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
+            statisticsDAO.update(choice);
+
 
             CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);
             Double median = informationDAO.getMedian(choice, firstDate, lastDate);
@@ -144,7 +155,17 @@ public class ChoiceServlet extends HttpServlet {
     }
 
     private String priceFormatter(Double price) {
-        final DecimalFormat df = new DecimalFormat("0.000000");
+        DecimalFormat df = new DecimalFormat("0.00000");
+        if (settingsDAO.getDecimalPlaces() != null && settingsDAO.getDecimalPlaces() < 6 && settingsDAO.getDecimalPlaces() >= 0) {
+            int i = settingsDAO.getDecimalPlaces();
+            StringBuilder sb = new StringBuilder();
+            sb.append("0");
+            for (int j = 0; j < i; j++) {
+                if (j == 0) sb.append(".");
+                sb.append("0");
+            }
+            df = new DecimalFormat(sb.toString());
+        }
         return (df.format(price) + " USD")
                 .replace(',', '.');
     }
