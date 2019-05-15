@@ -5,7 +5,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass123
       - MYSQL_DATABASE=CryptoPol
-      - MYSQL_USER=root
+      - MYSQL_USER=codeina
       - MYSQL_PASSWORD=pass123
     ports:
       - 4332:3306
