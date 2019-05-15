@@ -41,10 +41,6 @@
             <div id="somediv" style="font-size: medium">
                 <label style="color: green"> </label><br>
             </div>
-
-            <#if number?? >
-
-            </#if>
         </div>
 
 
