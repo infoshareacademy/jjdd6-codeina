@@ -21,6 +21,17 @@
         </#if>
 
         <div class="col-sm-8 text-left">
+
+            <div class="col-sm-8 text-left">
+                <h1>Delete database :</h1>
+                <form method="post" action="delete"><input type="submit" value="ARE YOU SURE?" style="color: red;"></form>
+                <h2 style="color: red">(<b>WARNING!</b> long waiting time)</h2><br>
+            </div>
+            <#if m1?? >
+                <div>
+                    <label style="color: green"><b>${m1}</b> </label><br>
+                </div>
+            </#if>
             <h2>Format decimal places:</h2>
             <button id="somebutton" type="submit"> Update !</button>
 
@@ -42,9 +53,6 @@
                 <label style="color: green"> </label><br>
             </div>
 
-            <#if number?? >
-
-            </#if>
         </div>
 
 
