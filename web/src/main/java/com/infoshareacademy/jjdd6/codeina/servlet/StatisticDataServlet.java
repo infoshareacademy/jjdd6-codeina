@@ -1,7 +1,8 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
-import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
+import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsTable;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -22,40 +24,32 @@ public class StatisticDataServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(StatisticDataServlet.class.getName());
 
     @Inject
-    private StatisticData statisticData;
+    private TemplateProvider templateProvider;
 
     @Inject
-    private TemplateProvider templateProvider;
+    private StatisticsDAO statisticsDAO;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (statisticData.getStatisticDataMap() == null) {
+        if (statisticsDAO.findAll() == null) {
             resp.sendRedirect("error");
             return;
         }
-        Map<String, Object> model = new HashMap<>();
-        Template template = templateProvider.getTemplate(getServletContext(), "statistics.ftlh");
-        int sumOfAll = statisticData.getStatisticDataMap().entrySet().stream().map(o -> o.getValue()).reduce(0, Integer::sum);
-        logger.info("SumOfAll=" + sumOfAll);
 
-        statisticData.getStatisticDataMap().keySet().forEach((o -> putPercentageStatisticsIntoModel(o, sumOfAll, model)));
-        statisticData.getStatisticDataMap().keySet().forEach((o -> putStatisticsIntoModel(o, model)));
-        logger.info("statisticData.size=" + statisticData.getStatisticDataMap().size());
+        Map<String, Object> model = new HashMap<>();
+
+        List<StatisticsTable> statisticsTable = statisticsDAO.findAll();
+
+        model.put("stats",statisticsTable);
+
+        Template template = templateProvider.getTemplate(getServletContext(), "statistics.ftlh");
+
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
     }
-
-    private Map<String, Object> putPercentageStatisticsIntoModel(String cryptoName, int sumOfAll, Map<String, Object> model) {
-        model.put(cryptoName, statisticData.getStatisticDataMap().get(cryptoName) * 100 / sumOfAll);
-        return model;
-    }
-
-    private Map<String, Object> putStatisticsIntoModel(String cryptoName, Map<String, Object> model) {
-        model.put(cryptoName + "N", statisticData.getStatisticDataMap().get(cryptoName));
-        return model;
-    }
 }
+

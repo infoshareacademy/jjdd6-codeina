@@ -88,5 +88,9 @@ public class InformationDAO {
         return list.get(list.size() - 1);
     }
 
+    public void deleteAll(){
+        final Query query = entityManager.createQuery("DELETE  FROM InformationTable  ");
+        query.executeUpdate();
+    }
 
 }
