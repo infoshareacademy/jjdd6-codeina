@@ -30,7 +30,7 @@ public class AdminSettingsServlet extends HttpServlet {
                 resp.getWriter().print("Successfully updated number of decimal places to : "+i);
             } else {
                 logger.warning("Updating failed number : " + i + " is out of range (0-5)");
-                resp.getWriter().print("Number out of range (0-5)");
+                resp.getWriter().print("Number "+i +" is out of range (0-5)");
             }
         } catch (Exception e) {
             resp.getWriter().print("Not a number !");

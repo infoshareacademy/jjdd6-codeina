@@ -161,6 +161,8 @@
                                 showInLegend: true,
                                 legendText: "Average",
                                 connectNullData: true,
+                                xValueFormatString: "YYYY-MM-DD",
+                                yValueFormatString: "#,##0.###",
                                 dataPoints: <#if choice??>resultAverage<#else>[]</#if>
                             },
                             {
@@ -169,6 +171,8 @@
                                 lineColor: "green",
                                 markerType: "none",
                                 showInLegend: true,
+                                xValueFormatString: "YYYY-MM-DD",
+                                yValueFormatString: "#,##0.###",
                                 legendText: "Median",
                                 connectNullData: true,
                                 dataPoints: <#if choice??>resultMedian<#else>[]</#if>
