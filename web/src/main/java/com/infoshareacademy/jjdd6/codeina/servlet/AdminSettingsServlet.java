@@ -27,10 +27,10 @@ public class AdminSettingsServlet extends HttpServlet {
             if (i < 6 && i >= 0) {
                 settingsDAO.setDecimalPlaces(i);
                 logger.info("number of decimal places has been updated to : " + i);
-                resp.getWriter().print("Successfully updated number of decimal places to : "+i);
+                resp.getWriter().print("Successfully updated number of decimal places to : " + i);
             } else {
                 logger.warning("Updating failed number : " + i + " is out of range (0-5)");
-                resp.getWriter().print("Number "+i +" is out of range (0-5)");
+                resp.getWriter().print("Number " + i + " is out of range (0-5)");
             }
         } catch (Exception e) {
             resp.getWriter().print("Not a number !");
