@@ -11,11 +11,13 @@ import java.io.IOException;
 /**
  * Filter class to check if a valid session exists. This will be true if the User Id is present.
  */
-@WebFilter(urlPatterns = {"/", "/choice", "/statistics", "table", "admin"})
-public class Auth0Filter implements Filter {
+@WebFilter(urlPatterns = {"/admin", "/someservlet", "/error"})
+public class Auth0FilterAdmin implements Filter {
+    Boolean isUserAdmin;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        Boolean isUserAdmin = Boolean.valueOf(filterConfig.getInitParameter("IsUserAdmin"));
     }
 
     /**
@@ -40,5 +42,6 @@ public class Auth0Filter implements Filter {
 
     @Override
     public void destroy() {
+        isUserAdmin = false;
     }
 }
