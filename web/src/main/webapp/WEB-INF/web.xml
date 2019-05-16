@@ -12,9 +12,23 @@
     <data-source>
         <name>java:ds/demods</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <!--<url>jdbc:mysql://0.0.0.0:6603/test?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
-        <url>jdbc:mysql://db/CryptoPol?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <url>jdbc:mysql://0.0.0.0:6603/test?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <!--<url>jdbc:mysql://db/CryptoPol?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
         <user>root</user>
         <password>pass123</password>
     </data-source>
+    <context-param>
+        <param-name>com.auth0.domain</param-name>
+        <param-value>dev-kupnxeql.auth0.com</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.auth0.clientId</param-name>
+        <param-value>X8LwHsSthW4yDsw4ndOoHD23qHCPPvQK</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.auth0.clientSecret</param-name>
+        <param-value>YOUR_CLIENT_SECRET</param-value>
+    </context-param>
 </web-app>
