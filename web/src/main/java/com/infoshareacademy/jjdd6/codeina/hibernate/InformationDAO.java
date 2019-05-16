@@ -7,7 +7,6 @@ import com.infoshareacademy.jjdd6.MathematicOperation;
 import com.infoshareacademy.jjdd6.codeina.servlet.AdminServlet;
 
 import javax.ejb.Stateless;
-import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
