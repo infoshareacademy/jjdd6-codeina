@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
@@ -36,6 +37,9 @@ public class AdminServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private InformationDAO informationDAO;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -53,7 +57,14 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        informationDAO.deleteAll();
+
+        logger.info("Whole database has been deleted !");
+
+
         tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
+
+        logger.info("Database has been uploaded !");
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
 

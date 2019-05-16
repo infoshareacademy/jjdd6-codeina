@@ -23,6 +23,24 @@ public class StatisticsTable {
     @Column(name = "fullName", length = 16)
     private String fullName;
 
+    @Column(name="percentage",length = 16)
+    private Integer percentage;
+
+    public StatisticsTable(String shortName, int number, String fullName, Integer percentage) {
+        this.shortName = shortName;
+        this.number = number;
+        this.fullName = fullName;
+        this.percentage = percentage;
+    }
+
+    public Integer getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(Integer percentage) {
+        this.percentage = percentage;
+    }
+
     public StatisticsTable() {
     }
 

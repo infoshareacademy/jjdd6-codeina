@@ -3,7 +3,6 @@ package com.infoshareacademy.jjdd6.codeina.servlet;
 import com.infoshareacademy.jjdd6.CryptoCurrency;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.cdi.SettingsDAO;
-import com.infoshareacademy.jjdd6.codeina.cdi.StatisticData;
 import com.infoshareacademy.jjdd6.codeina.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
@@ -43,9 +42,6 @@ public class ChoiceServlet extends HttpServlet {
 
     @Inject
     private InformationDAO informationDAO;
-
-    @Inject
-    private StatisticData statisticData;
 
     @Inject
     private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
@@ -94,8 +90,6 @@ public class ChoiceServlet extends HttpServlet {
             model.put("badRequest", String.format("Choose more data in range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else {
 
-
-            statisticData.setStatisticDataMap(statisticData.addValue(choice, statisticData.getStatisticDataMap()));
             statisticsDAO.update(choice);
 
 

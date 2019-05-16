@@ -24,16 +24,9 @@
                 indexLabelFontSize: 16,
                 indexLabel: "{label} - {y}%",
                 dataPoints: [
-                    <#if btc??> {y: " ${btc}" , label: "Bitcoin - ${btcN}"}, </#if>
-                    <#if bch??> {y: " ${bch}" , label: "Bitcoin Cash - ${bchN}"}, </#if>
-                    <#if dash??> {y: " ${dash}" , label: "Dash - ${dashN}"}, </#if>
-                    <#if dcr??> {y: " ${dcr}" , label: "Decred - ${dcrN}"}, </#if>
-                    <#if ltc??> {y: " ${ltc}" , label: "Litecoin - ${ltcN}"}, </#if>
-                    <#if pivx??> {y: " ${pivx}" , label: "PIVX - ${pivxN}"}, </#if>
-                    <#if zec??> {y: " ${zec}" , label: "Z Cash - ${zecN}"}, </#if>
-                    <#if doge??> {y: " ${doge}" , label: "Dogecoin - ${dogeN}"}, </#if>
-                    <#if eth??> {y: " ${eth}" , label: "Etherium - ${ethN}"}, </#if>
-                    <#if vtc??> {y: " ${vtc}" , label: "Vertcoin - ${vtcN}"}</#if>
+                    <#list stats as item>
+                    {y: " ${item.percentage}" , label: "${item.fullName} - ${item.number}"},
+                    </#list>
                 ]
             }]
         });
