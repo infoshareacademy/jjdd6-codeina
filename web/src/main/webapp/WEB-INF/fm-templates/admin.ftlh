@@ -20,18 +20,14 @@
             </div>
         </#if>
 
-        <div class="col-sm-8 text-left">
+
 
             <div class="col-sm-8 text-left">
                 <h1>Delete database :</h1>
                 <form method="post" action="delete"><input type="submit" value="ARE YOU SURE?" style="color: red;"></form>
-                <h2 style="color: red">(<b>WARNING!</b> long waiting time)</h2><br>
+                <h2 style="color: red">(<b>WARNING!</b> whole database will be deleted and there will be no access to CryptoPol App )</h2><br>
             </div>
-            <#if m1?? >
-                <div>
-                    <label style="color: green"><b>${m1}</b> </label><br>
-                </div>
-            </#if>
+        <div class="col-sm-8 text-left">
             <h2>Format decimal places:</h2>
             <button id="somebutton" type="submit"> Update !</button>
 
