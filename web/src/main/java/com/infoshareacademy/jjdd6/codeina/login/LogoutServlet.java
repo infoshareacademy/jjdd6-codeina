@@ -31,9 +31,6 @@ public class LogoutServlet extends HttpServlet {
         }
         returnUrl += "/login";
         String logoutUrl = String.format(
-                "https://%s/v2/logout?client_id=%s&returnTo=%s",
-                domain,
-                clientId,
                 returnUrl
         );
         response.sendRedirect(logoutUrl);

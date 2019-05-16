@@ -44,7 +44,7 @@ public class CallbackServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        redirectOnSuccess = "/portal/home";
+        redirectOnSuccess = "/choice";
         redirectOnFail = "/login";
 
         try {

@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/jumbotron-narrow.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="/js/jquery.growl.js" type="text/javascript"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
     <meta name="google-signin-client_id" content="699238214816-o4epvnclr8psr7rh28rmlo8gsq6f1blf.apps.googleusercontent.com">
