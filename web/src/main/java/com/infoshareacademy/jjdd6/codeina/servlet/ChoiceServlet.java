@@ -9,6 +9,7 @@ import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.log4j.or.ObjectRenderer;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -91,48 +92,9 @@ public class ChoiceServlet extends HttpServlet {
         } else {
 
             statisticsDAO.update(choice);
+            model = fillModelWithObjects(model,choice,firstDate,lastDate,firstDateStr,lastDateStr);
 
 
-            CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);
-            Double median = informationDAO.getMedian(choice, firstDate, lastDate);
-            Double average = informationDAO.getAverage(choice, firstDate, lastDate);
-            CryptoCurrency lowestValue = informationDAO.getLowestValue(choice, firstDate, lastDate);
-            CryptoCurrency highestValue = informationDAO.getHighestValue(choice, firstDate, lastDate);
-
-            Double changeOverNight = informationDAO.changeOverNight(choice);
-
-            model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
-            model.put("median", priceFormatter(median));
-            model.put("average", priceFormatter(average));
-            model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
-            model.put("highestPrice", priceFormatter(highestValue.getPrice()));
-            if (changeOverNight >= 0) {
-                model.put("positive", 1);
-                model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
-            } else model.put("changeOverNight", percentageFormatter(changeOverNight));
-
-            String choiceName = shortNameToFullCryptocurrencyName(choice);
-
-            model.put("choice", choiceName);
-            model.put("firstDate", simpleDateDisplay(firstDateStr));
-            model.put("lastDate", simpleDateDisplay(lastDateStr));
-
-            List<CryptoCurrency> list = informationDAO.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
-
-
-            String dates = list.stream()
-                    .map(CryptoCurrency::getDate)
-                    .map(LocalDate::toString)
-                    .collect(joining(","));
-
-            String prices = list.stream()
-                    .map(CryptoCurrency::getPrice)
-                    .map(String::valueOf)
-                    .collect(joining(","));
-
-            model.put("dates", dates);
-            model.put("prices", prices);
-            logger.info("User data : " + choiceName + " " + firstDate + " " + lastDate);
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
@@ -205,6 +167,50 @@ public class ChoiceServlet extends HttpServlet {
         Date dateEpoch = new Date(dateLong);
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
+    }
+    private Map< String ,Object> fillModelWithObjects(Map<String,Object> model,String choice, LocalDate firstDate , LocalDate lastDate,String firstDateStr,String lastDateStr ){
+        CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);
+        Double median = informationDAO.getMedian(choice, firstDate, lastDate);
+        Double average = informationDAO.getAverage(choice, firstDate, lastDate);
+        CryptoCurrency lowestValue = informationDAO.getLowestValue(choice, firstDate, lastDate);
+        CryptoCurrency highestValue = informationDAO.getHighestValue(choice, firstDate, lastDate);
+
+        Double changeOverNight = informationDAO.changeOverNight(choice);
+
+        model.put("lastPrice", priceFormatter(cryptoCurrency.getPrice()));
+        model.put("median", priceFormatter(median));
+        model.put("average", priceFormatter(average));
+        model.put("lowestPrice", priceFormatter(lowestValue.getPrice()));
+        model.put("highestPrice", priceFormatter(highestValue.getPrice()));
+        if (changeOverNight >= 0) {
+            model.put("positive", 1);
+            model.put("changeOverNight", "+" + percentageFormatter(changeOverNight));
+        } else model.put("changeOverNight", percentageFormatter(changeOverNight));
+
+        String choiceName = shortNameToFullCryptocurrencyName(choice);
+
+        model.put("choice", choiceName);
+        model.put("firstDate", simpleDateDisplay(firstDateStr));
+        model.put("lastDate", simpleDateDisplay(lastDateStr));
+
+        List<CryptoCurrency> list = informationDAO.getAllCryptoCurrenciesInRange(choice, firstDate, lastDate);
+
+
+        String dates = list.stream()
+                .map(CryptoCurrency::getDate)
+                .map(LocalDate::toString)
+                .collect(joining(","));
+
+        String prices = list.stream()
+                .map(CryptoCurrency::getPrice)
+                .map(String::valueOf)
+                .collect(joining(","));
+
+        model.put("dates", dates);
+        model.put("prices", prices);
+        logger.info("User data : " + choiceName + " " + firstDate + " " + lastDate);
+
+        return model;
     }
 }
 
