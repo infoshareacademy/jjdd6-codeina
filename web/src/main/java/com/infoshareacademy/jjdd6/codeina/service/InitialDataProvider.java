@@ -17,6 +17,7 @@ public class InitialDataProvider {
     public void init() {
         try {
             Downloader.downloadAllForServer();
+            logger.info("Downloaded all csv files :)");
         } catch (Exception e) {
             logger.warning("Error while loading data: " + e);
         }
