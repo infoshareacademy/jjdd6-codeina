@@ -6,14 +6,13 @@
 	<meta name="viewport" content="width=device-width, maximum-scale=1">
 
 	<title>Homepage</title>
-	<link rel="icon" href="favicon.png" type="image/png">
-	<link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
+	<link rel="icon" href="https://img.icons8.com/dusk/64/000000/bitcoin.png" type="image/png">
+	<link rel="shortcut icon" href="https://img.icons8.com/dusk/64/000000/bitcoin.png" type="img/x-icon">
 
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/animate.css" rel="stylesheet" type="text/css">
-
 
 	<!-- =======================================================
     Theme Name: Knight
