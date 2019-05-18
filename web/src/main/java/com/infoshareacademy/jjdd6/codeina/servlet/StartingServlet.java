@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@WebServlet("/")
+@WebServlet("/start")
 public class StartingServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(StartingServlet.class.getName());
     @Inject

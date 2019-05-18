@@ -17,12 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.FileHandler;
@@ -90,7 +88,6 @@ public class ChoiceServlet extends HttpServlet {
             choice = (String) req.getAttribute("choice");
             firstDateStr = (String) req.getAttribute("firstDate");
             lastDateStr = (String) req.getAttribute("lastDate");
-            logger.info("DZIAŁAM");
 
         } else {
             choice = req.getParameter("crypto");
@@ -193,7 +190,7 @@ public class ChoiceServlet extends HttpServlet {
 
     private static String getDateEpochFromLocalDate(LocalDate localDate) {
         ZoneId zoneId = ZoneId.systemDefault();
-        long epoch = localDate.atStartOfDay(zoneId).toEpochSecond()*1000;
+        long epoch = localDate.atStartOfDay(zoneId).toEpochSecond() * 1000;
         return String.valueOf(epoch);
     }
 

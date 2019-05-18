@@ -21,9 +21,9 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>MarketCap (USD)</th>
+                        <th>Market Cap (USD)</th>
                         <th>Price (USD)</th>
-                        <th>Price Change from last day</th>
+                        <th>Price change from last day</th>
                         <th>Date</th>
                     </tr>
                     </thead>
