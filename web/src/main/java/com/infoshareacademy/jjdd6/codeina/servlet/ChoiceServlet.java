@@ -9,7 +9,6 @@ import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.apache.log4j.or.ObjectRenderer;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -64,6 +63,12 @@ public class ChoiceServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.severe(e.getMessage());
         }
+        String firstDate = getDateEpochFromLocalDate(LocalDate.now().minusDays(31));
+        String lastDate = getDateEpochFromLocalDate(LocalDate.now().minusDays(1));
+        req.setAttribute("firstDate",firstDate);
+        req.setAttribute("lastDate",lastDate);
+        req.setAttribute("choice","btc");
+        req.setAttribute("get","start");
     }
 
     @Override
@@ -72,9 +77,18 @@ public class ChoiceServlet extends HttpServlet {
         FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
         logger.addHandler(fileHandler);
 
-        String choice = req.getParameter("crypto");
-        String firstDateStr = req.getParameter("firstDate");
-        String lastDateStr = req.getParameter("lastDate");
+        String choice ,firstDateStr ,lastDateStr;
+
+        if(req.getAttribute("get").equals("start")){
+            choice = (String) req.getAttribute("choice");
+           firstDateStr = (String) req.getAttribute("firstDate");
+           lastDateStr = (String) req.getAttribute("lastDate");
+
+        }else {
+            choice = req.getParameter("crypto");
+            firstDateStr = req.getParameter("firstDate");
+            lastDateStr = req.getParameter("lastDate");
+        }
 
         LocalDate firstDate = getLocalDateFromString(firstDateStr);
         LocalDate lastDate = getLocalDateFromString(lastDateStr);
@@ -167,6 +181,9 @@ public class ChoiceServlet extends HttpServlet {
         Date dateEpoch = new Date(dateLong);
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
+    }
+    private  static String getDateEpochFromLocalDate(LocalDate localDate){
+       return String.valueOf(localDate.toEpochDay());
     }
     private Map< String ,Object> fillModelWithObjects(Map<String,Object> model,String choice, LocalDate firstDate , LocalDate lastDate,String firstDateStr,String lastDateStr ){
         CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);

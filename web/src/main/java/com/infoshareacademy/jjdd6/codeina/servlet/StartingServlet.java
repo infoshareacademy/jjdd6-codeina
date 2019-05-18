@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class StartingServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(StartingServlet.class.getName());
     @Inject
-    private TemplateProvider templateProvider
+    private TemplateProvider templateProvider;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
