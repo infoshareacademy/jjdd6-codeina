@@ -69,6 +69,8 @@ public class ChoiceServlet extends HttpServlet {
         req.setAttribute("lastDate",lastDate);
         req.setAttribute("choice","btc");
         req.setAttribute("get","start");
+
+        doPost(req,resp);
     }
 
     @Override
