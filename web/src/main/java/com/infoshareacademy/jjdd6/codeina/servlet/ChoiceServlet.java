@@ -17,10 +17,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.FileHandler;
@@ -57,20 +59,17 @@ public class ChoiceServlet extends HttpServlet {
 
         cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
-        Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
-        try {
-            template.process(null, resp.getWriter());
-        } catch (TemplateException e) {
-            logger.severe(e.getMessage());
-        }
-        String firstDate = getDateEpochFromLocalDate(LocalDate.now().minusDays(31));
-        String lastDate = getDateEpochFromLocalDate(LocalDate.now().minusDays(1));
-        req.setAttribute("firstDate",firstDate);
-        req.setAttribute("lastDate",lastDate);
-        req.setAttribute("choice","btc");
-        req.setAttribute("get","start");
+        List<CryptoCurrency> cryptoCurrencies = informationDAO.getAllCryptoCurrencies("btc");
+        LocalDate lastDate = informationDAO.getLastDate(cryptoCurrencies).getDate();
 
-        doPost(req,resp);
+        String firstDateStr = getDateEpochFromLocalDate(lastDate.minusDays(30));
+        String lastDateStr = getDateEpochFromLocalDate(lastDate);
+        req.setAttribute("firstDate", firstDateStr);
+        req.setAttribute("lastDate", lastDateStr);
+        req.setAttribute("choice", "btc");
+        req.setAttribute("get", true);
+
+        doPost(req, resp);
     }
 
     @Override
@@ -79,14 +78,21 @@ public class ChoiceServlet extends HttpServlet {
         FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
         logger.addHandler(fileHandler);
 
-        String choice ,firstDateStr ,lastDateStr;
+        String choice, firstDateStr, lastDateStr;
+        boolean get;
+        try {
+            get = (boolean) req.getAttribute("get");
+        } catch (Exception e) {
+            get = false;
+        }
 
-        if(req.getAttribute("get").equals("start")){
+        if (get) {
             choice = (String) req.getAttribute("choice");
-           firstDateStr = (String) req.getAttribute("firstDate");
-           lastDateStr = (String) req.getAttribute("lastDate");
+            firstDateStr = (String) req.getAttribute("firstDate");
+            lastDateStr = (String) req.getAttribute("lastDate");
+            logger.info("DZIAŁAM");
 
-        }else {
+        } else {
             choice = req.getParameter("crypto");
             firstDateStr = req.getParameter("firstDate");
             lastDateStr = req.getParameter("lastDate");
@@ -101,14 +107,14 @@ public class ChoiceServlet extends HttpServlet {
 
         CryptoCurrency cryptoCurrencyFirst = informationDAO.getFirstDate(cryptoCurrencies);
         CryptoCurrency cryptoCurrencyLast = informationDAO.getLastDate(cryptoCurrencies);
-        if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) < 0) {
+        if (firstDate.compareTo(cryptoCurrencyFirst.getDate()) <= 0) {
             model.put("badRequest", String.format("Data out of range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else if (firstDate.equals(lastDate) || cryptoCurrencyLast.getDate().equals(firstDate)) {
             model.put("badRequest", String.format("Choose more data in range : %s - %s !", cryptoCurrencyFirst.getDate(), cryptoCurrencyLast.getDate()));
         } else {
 
             statisticsDAO.update(choice);
-            model = fillModelWithObjects(model,choice,firstDate,lastDate,firstDateStr,lastDateStr);
+            model = fillModelWithObjects(model, choice, firstDate, lastDate, firstDateStr, lastDateStr);
 
 
         }
@@ -184,10 +190,14 @@ public class ChoiceServlet extends HttpServlet {
         SimpleDateFormat jdf = new SimpleDateFormat("dd-MM-yyyy");
         return jdf.format(dateEpoch);
     }
-    private  static String getDateEpochFromLocalDate(LocalDate localDate){
-       return String.valueOf(localDate.toEpochDay());
+
+    private static String getDateEpochFromLocalDate(LocalDate localDate) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        long epoch = localDate.atStartOfDay(zoneId).toEpochSecond()*1000;
+        return String.valueOf(epoch);
     }
-    private Map< String ,Object> fillModelWithObjects(Map<String,Object> model,String choice, LocalDate firstDate , LocalDate lastDate,String firstDateStr,String lastDateStr ){
+
+    private Map<String, Object> fillModelWithObjects(Map<String, Object> model, String choice, LocalDate firstDate, LocalDate lastDate, String firstDateStr, String lastDateStr) {
         CryptoCurrency cryptoCurrency = informationDAO.getNewestDate(choice);
         Double median = informationDAO.getMedian(choice, firstDate, lastDate);
         Double average = informationDAO.getAverage(choice, firstDate, lastDate);

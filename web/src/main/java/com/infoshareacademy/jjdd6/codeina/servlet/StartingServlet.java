@@ -23,7 +23,7 @@ public class StartingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(),"start.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(),"start.html");
         Map<String,Object> model = new HashMap<>();
         model.put("1",1);
         try {
