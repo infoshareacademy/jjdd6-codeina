@@ -67,7 +67,7 @@ public class TableInformationServlet extends HttpServlet {
         String date = cryptoInformationService.getLastDate(information.getCryptoCurrencies()).getDate().toString();
         Double change = cryptoInformationService.changeOverNight(information.getShortName()) * 100;
         String fullName = information.getFullName();
-        final DecimalFormat df = new DecimalFormat("#,###");
+        final DecimalFormat df = new DecimalFormat("0");
         final DecimalFormat df2 = new DecimalFormat("0.000");
         final DecimalFormat df3 = new DecimalFormat("0.00");
         String marketCapString = df.format(marketCap);
