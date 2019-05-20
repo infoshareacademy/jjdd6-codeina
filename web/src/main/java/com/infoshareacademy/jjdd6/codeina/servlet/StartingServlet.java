@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 @WebServlet("/start")
 public class StartingServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(StartingServlet.class.getName());
+
     @Inject
     private TemplateProvider templateProvider;
     @Override

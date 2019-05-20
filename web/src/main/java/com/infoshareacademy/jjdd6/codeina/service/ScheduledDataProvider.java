@@ -9,6 +9,7 @@ import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 @Singleton
@@ -30,6 +31,9 @@ public class ScheduledDataProvider {
 
     @Schedule(hour = "03", minute = "37", second = "02", info = "Download all cryptocurrencies.ftlh")
     public void downloader() throws IOException {
+        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
+        logger.addHandler(fileHandler);
+
         try {
             Downloader.downloadAllForServer();
             logger.info("Files were downloaded ;-))");

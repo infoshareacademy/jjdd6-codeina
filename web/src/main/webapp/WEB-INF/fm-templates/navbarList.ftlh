@@ -13,7 +13,7 @@
                 <li><a href="/choice">Home </a></li>
             </ul>
             <ul class="nav navbar-nav">
-                <li><a href="/table">List </a></li>
+                <li class="active"><a href="/table">List </a></li>
             </ul>
             <ul class="nav navbar-nav">
                 <li><a href="/statistics" target="_blank">Statistics </a></li>

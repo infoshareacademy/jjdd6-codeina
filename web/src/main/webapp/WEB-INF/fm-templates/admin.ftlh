@@ -14,7 +14,7 @@
             <div class="col-sm-8 text-left" >
                 <br>
                 <h2 style="color: white" >Reload database :</h2>
-                <form method="post" action="admin"><input class="btn btn-danger btn-lg" type="submit" value="ARE YOU SURE?" >
+                <form method="post" action="lukjanadmin"><input class="btn btn-danger btn-lg" type="submit" value="ARE YOU SURE?" >
                 </form>
                 <h2 style="color: red">(<b>WARNING!</b> long waiting time)</h2><br>
             </div>
