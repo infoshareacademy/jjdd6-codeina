@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,18 +16,30 @@ public class LogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        String path = System.getProperty("java.io.tmpdir") + "/userslogs.log";
-        File file = new File(path);
-
-        Scanner input = new Scanner(file);
-
         StringBuilder sb = new StringBuilder();
-        while (input.hasNext()) {
-            sb.append(input.nextLine());
-        }
-        String output = sb.toString();
+        boolean flag = true;
+        int i = 0;
+        while (flag) {
+            try {
+                String path;
+                if (i == 0) {
+                    path = System.getProperty("java.io.tmpdir") + "/userslogs.log";
+                } else {
+                    path = System.getProperty("java.io.tmpdir") + "/userslogs.log" + " (" + i + ")";
+                }
+                File file = new File(path);
 
+                Scanner input = new Scanner(file);
+                while (input.hasNext()) {
+                    sb.append(input.nextLine());
+                }
+                i++;
+            } catch (FileNotFoundException e) {
+                flag=false;
+            }
+        }
+
+        String output = sb.toString();
         resp.getWriter().println(output);
     }
 }
