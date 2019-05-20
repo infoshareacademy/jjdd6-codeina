@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 @WebServlet("/statistics")
@@ -31,6 +32,9 @@ public class StatisticDataServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
+        logger.addHandler(fileHandler);
 
         if (statisticsDAO.findAll() == null) {
             resp.sendRedirect("error");

@@ -3,7 +3,7 @@
 <#include "head.ftlh">
 <body>
 
-<#include "navbar.ftlh">
+<#include "navbarChoice.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -32,9 +32,10 @@
 
                     <p></p>
                     <p></p>
+                    <br/>
                     <p></p>
                     <p></p>
-                    <h3>And then</h3>
+                    <h3>And then,</h3>
                     <h3>Choose dates</h3>
                     <div id="reportrange"
                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
@@ -83,7 +84,7 @@
 
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary">
-                            Submit
+                            Let's do it!
                         </button>
                     </div>
                     <#if badRequest??>
@@ -96,7 +97,7 @@
             </form>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome User!</h1>
+            <h1>Welcome!</h1>
             <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy
                 yourself. :)</p>
             <hr>

@@ -3,7 +3,7 @@
 <#include "head.ftlh">
 <body>
 
-<#include "navbar.ftlh">
+<#include "navbarStats.ftlh">
 
 <script>
     window.onload = function () {
