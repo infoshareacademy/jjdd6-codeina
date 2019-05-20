@@ -1,29 +1,25 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
-import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
-
-import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
-@WebServlet("test")
-public class Test extends HttpServlet {
+public class Test {
+    public static void main(String[] args) {
 
-    @Inject
-    InformationDAO informationDAO;
+        System.out.println( getDateEpochFromLocalDate(LocalDate.now()));
+        System.out.println(getLocalDateFromString(getDateEpochFromLocalDate(LocalDate.now())));
+    }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private static String getDateEpochFromLocalDate(LocalDate localDate) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        long epoch = localDate.atStartOfDay(zoneId).toEpochSecond();
+        return String.valueOf(epoch);
+    }
 
-
-        resp.getWriter().println(informationDAO.getNewestDate("btc"));
-        StringBuffer stringBuffer = new StringBuffer();
-        informationDAO.getAllCryptoCurrenciesInRange("btc", LocalDate.of(2019, 05, 03), LocalDate.of(2019, 05, 05)).forEach(o -> stringBuffer.append(o.toString() + ", "));
-        resp.getWriter().println(stringBuffer.toString());
+    private static LocalDate getLocalDateFromString(String localDateStr) {
+        return Instant.ofEpochMilli(Long.valueOf(localDateStr)*1000)
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 }
