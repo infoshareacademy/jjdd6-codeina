@@ -23,8 +23,8 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
+import java.util.logging.*;
+import java.util.logging.Formatter;
 
 import static java.util.stream.Collectors.joining;
 
@@ -74,6 +74,7 @@ public class ChoiceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
+        fileHandler.setFormatter(new SimpleFormatter());
         logger.addHandler(fileHandler);
 
         String choice, firstDateStr, lastDateStr;

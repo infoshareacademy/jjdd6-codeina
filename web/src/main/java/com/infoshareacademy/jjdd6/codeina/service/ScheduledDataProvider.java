@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 @Singleton
 public class ScheduledDataProvider {
@@ -31,7 +32,9 @@ public class ScheduledDataProvider {
 
     @Schedule(hour = "03", minute = "37", second = "02", info = "Download all cryptocurrencies.ftlh")
     public void downloader() throws IOException {
+
         FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
+        fileHandler.setFormatter(new SimpleFormatter());
         logger.addHandler(fileHandler);
 
         try {
@@ -39,15 +42,16 @@ public class ScheduledDataProvider {
             logger.info("Files were downloaded ;-))");
             cryptoCurrencyAllInformations.setListOfAllInformations(loadingAllCryptocurrenciesService.listOfCryptoInformation());
 
-          try{  logger.info("Files were downloaded ;-))");
+            try {
+                logger.info("Files were downloaded ;-))");
 
-              informationDAO.deleteAll();
+                informationDAO.deleteAll();
 
-              tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
+                tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
 
-          }catch (Exception e){
-              logger.severe("Failed to refill database :-(");
-          }
+            } catch (Exception e) {
+                logger.severe("Failed to refill database :-(");
+            }
 
 
         } catch (Exception e) {
