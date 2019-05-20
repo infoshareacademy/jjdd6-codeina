@@ -13,6 +13,7 @@
                 <input type="hidden" id="lastDate" name="lastDate" value=""/>
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
+                        <h3>To start,</h3>
                         <h3>Choose cryptocurrency</h3>
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="crypto">
@@ -30,7 +31,11 @@
                     </div>
 
                     <p></p>
-                    <h3>Dates</h3>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <h3>And then</h3>
+                    <h3>Choose dates</h3>
                     <div id="reportrange"
                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                         <i class="fa fa-calendar"></i>&nbsp;
