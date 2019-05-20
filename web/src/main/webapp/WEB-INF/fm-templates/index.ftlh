@@ -3,7 +3,7 @@
 <#include "head.ftlh">
 <body>
 
-<#include "navbar.ftlh">
+<#include "navbarChoice.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -13,6 +13,7 @@
                 <input type="hidden" id="lastDate" name="lastDate" value=""/>
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
+                        <h3>To start,</h3>
                         <h3>Choose cryptocurrency</h3>
                         <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="crypto">
@@ -30,7 +31,12 @@
                     </div>
 
                     <p></p>
-                    <h3>Dates</h3>
+                    <p></p>
+                    <br/>
+                    <p></p>
+                    <p></p>
+                    <h3>And then,</h3>
+                    <h3>Choose dates</h3>
                     <div id="reportrange"
                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                         <i class="fa fa-calendar"></i>&nbsp;
@@ -78,7 +84,7 @@
 
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary">
-                            Submit
+                            Let's do it!
                         </button>
                     </div>
                     <#if badRequest??>
@@ -91,7 +97,7 @@
             </form>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome User!</h1>
+            <h1>Welcome!</h1>
             <p>This is the Cryptopol app. You can check values for some of the most famous cryptocurrencies. Enjoy
                 yourself. :)</p>
             <hr>

@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@WebServlet("admin")
+@WebServlet("/lukjanadmin")
 public class AdminServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(AdminServlet.class.getName());

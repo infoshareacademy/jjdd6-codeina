@@ -29,7 +29,7 @@ public class LogoutServlet extends HttpServlet {
         if ((request.getScheme().equals("http") && request.getServerPort() != 80) || (request.getScheme().equals("https") && request.getServerPort() != 443)) {
             returnUrl += ":" + request.getServerPort();
         }
-        returnUrl += "/login";
+        returnUrl += "/";
         String logoutUrl = String.format(
                 returnUrl
         );
