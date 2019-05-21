@@ -3,7 +3,7 @@
 <#include "head.ftlh">
 <body>
 
-<#include "navbar.ftlh">
+<#include "navbarAdm.ftlh">
 
 <div class="container-fluid text-center">
     <div class="row content">
