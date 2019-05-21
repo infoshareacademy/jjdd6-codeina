@@ -12,23 +12,23 @@
     <data-source>
         <name>java:ds/demods</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <!--<url>jdbc:mysql://0.0.0.0:6603/test?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
-        <url>jdbc:mysql://db/CryptoPol?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <url>jdbc:mysql://0.0.0.0:6603/test?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <!--<url>jdbc:mysql://db/CryptoPol?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
         <user>root</user>
         <password>pass123</password>
     </data-source>
     <context-param>
         <param-name>com.auth0.domain</param-name>
-        <param-value>dev-th08ft8r.auth0.com</param-value>
+        <param-value>dev-kupnxeql.auth0.com</param-value>
     </context-param>
 
     <context-param>
         <param-name>com.auth0.clientId</param-name>
-        <param-value>9238VJmugxzJjg1kyeePwAn980emW4fL</param-value>
+        <param-value>X8LwHsSthW4yDsw4ndOoHD23qHCPPvQK</param-value>
     </context-param>
 
     <context-param>
         <param-name>com.auth0.clientSecret</param-name>
-        <param-value>Jl1XSIYu9g1LTck8zEhG3Cv0sz4mLPsAz8rnF1BWk5wC5erl49b14nPH8Fr85qMW</param-value>
+        <param-value>0GQZfFrmMv-bRIEdi2XH_ezGAZjTWHkvhXKzURL24WB23VamXn_U9Fc0e7cFD_HM</param-value>
     </context-param>
 </web-app>
