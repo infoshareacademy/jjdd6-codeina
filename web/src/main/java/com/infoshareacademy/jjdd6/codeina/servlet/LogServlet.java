@@ -16,7 +16,7 @@ public class LogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         StringBuilder sb = new StringBuilder();
-        String path = System.getProperty("java.io.tmpdir") + "/logs.log";
+        String path = "/opt/jboss/wildfly/standalone/logs/server.log";
 //        String path = "logs/logs.log";
 
         File file = new File(path);

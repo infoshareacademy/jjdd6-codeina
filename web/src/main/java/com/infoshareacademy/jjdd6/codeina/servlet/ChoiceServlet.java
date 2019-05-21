@@ -112,6 +112,7 @@ public class ChoiceServlet extends HttpServlet {
 
             statisticsDAO.update(choice);
             model = fillModelWithObjects(model, choice, firstDate, lastDate, firstDateStr, lastDateStr);
+            logger.info("Cryptocurrency : ");
 
 
         }
