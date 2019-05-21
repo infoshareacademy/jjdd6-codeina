@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
 
 @WebServlet("/statistics")
 public class StatisticDataServlet extends HttpServlet {
