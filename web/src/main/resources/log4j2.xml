@@ -11,7 +11,6 @@
     <appender name="file" class="org.apache.log4j.FileAppender">
         <param name="file" value="/tmp/logs.log"/>
         <param name="immediateFlush" value="true"/>
-        <param name="threshold" value="debug"/>
         <param name="append" value="true"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
