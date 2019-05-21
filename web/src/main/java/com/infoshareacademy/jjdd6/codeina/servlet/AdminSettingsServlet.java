@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.codeina.servlet;
 
 import com.infoshareacademy.jjdd6.codeina.cdi.SettingsDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -10,13 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 @WebServlet("someservlet")
 public class AdminSettingsServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(AdminSettingsServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(AdminSettingsServlet.class);
 
     @Inject
     private SettingsDAO settingsDAO;
@@ -24,9 +25,6 @@ public class AdminSettingsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
-        fileHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fileHandler);
 
         try {
             int i = Integer.valueOf(req.getParameter("number"));
@@ -35,12 +33,12 @@ public class AdminSettingsServlet extends HttpServlet {
                 logger.info("number of decimal places has been updated to : " + i);
                 resp.getWriter().print("Successfully updated number of decimal places to : " + i);
             } else {
-                logger.warning("Updating failed number : " + i + " is out of range (0-5)");
+                logger.warn("Updating failed number : " + i + " is out of range (0-5)");
                 resp.getWriter().print("Number " + i + " is out of range (0-5)");
             }
         } catch (Exception e) {
             resp.getWriter().print("Not a number !");
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

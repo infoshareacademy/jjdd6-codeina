@@ -9,6 +9,8 @@ import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -31,7 +33,7 @@ import static java.util.stream.Collectors.joining;
 @WebServlet("choice")
 public class ChoiceServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(ChoiceServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(ChoiceServlet.class);
 
 
     @Inject
@@ -73,9 +75,6 @@ public class ChoiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
-        fileHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fileHandler);
 
         String choice, firstDateStr, lastDateStr;
         boolean get;
@@ -122,7 +121,7 @@ public class ChoiceServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
