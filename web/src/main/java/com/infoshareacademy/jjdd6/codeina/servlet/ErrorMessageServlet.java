@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @WebServlet("/error")
 public class ErrorMessageServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(ErrorMessageServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(ErrorMessageServlet.class);
+
     private static String noStatisticsMessage = "¯\\_(ツ)_/¯ No statistic data available ¯\\_(ツ)_/¯";
     @Inject
     private TemplateProvider templateProvider;
@@ -31,7 +33,7 @@ public class ErrorMessageServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

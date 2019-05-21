@@ -5,6 +5,8 @@ import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.StatisticsTable;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -16,14 +18,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 @WebServlet("/statistics")
 public class StatisticDataServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(StatisticDataServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(ErrorMessageServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
@@ -34,9 +33,6 @@ public class StatisticDataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
-        fileHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fileHandler);
 
         if (statisticsDAO.findAll() == null) {
             resp.sendRedirect("error");
@@ -54,7 +50,7 @@ public class StatisticDataServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

@@ -4,13 +4,15 @@ import com.infoshareacademy.jjdd6.Downloader;
 import com.infoshareacademy.jjdd6.codeina.cdi.CryptoCurrencyAllInformations;
 import com.infoshareacademy.jjdd6.codeina.hibernate.InformationDAO;
 import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
+import com.infoshareacademy.jjdd6.codeina.servlet.ErrorMessageServlet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 @Singleton
@@ -28,14 +30,11 @@ public class ScheduledDataProvider {
     @Inject
     private InformationDAO informationDAO;
 
-    private static final Logger logger = Logger.getLogger(ScheduledDataProvider.class.getName());
+    private static final Logger logger = LogManager.getLogger(ErrorMessageServlet.class);
 
     @Schedule(hour = "03", minute = "37", second = "02", info = "Download all cryptocurrencies.ftlh")
     public void downloader() throws IOException {
 
-        FileHandler fileHandler = new FileHandler(System.getProperty("java.io.tmpdir") + "/userslogs.log", true);
-        fileHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fileHandler);
 
         try {
             Downloader.downloadAllForServer();
@@ -50,12 +49,12 @@ public class ScheduledDataProvider {
                 tableFiller.fillTable(cryptoCurrencyAllInformations.getListOfAllInformations());
 
             } catch (Exception e) {
-                logger.severe("Failed to refill database :-(");
+                logger.info("Failed to refill database :-(");
             }
 
 
         } catch (Exception e) {
-            logger.warning("Error while loading data: " + e);
+            logger.error("Error while loading data: " + e);
         }
     }
 }

@@ -8,6 +8,8 @@ import com.infoshareacademy.jjdd6.codeina.hibernate.TableFiller;
 import com.infoshareacademy.jjdd6.codeina.service.LoadingAllCryptocurrenciesService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -18,12 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @WebServlet("/lukjanadmin")
 public class AdminServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(AdminServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(AdminServlet.class);
 
     @Inject
     private CryptoCurrencyAllInformations cryptoCurrencyAllInformations;
@@ -50,7 +51,7 @@ public class AdminServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
@@ -74,7 +75,7 @@ public class AdminServlet extends HttpServlet {
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }
